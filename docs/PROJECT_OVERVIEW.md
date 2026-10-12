@@ -122,28 +122,25 @@ Dự án kiên quyết **KHÔNG** triển khai các tính năng sau:
 
 ---
 
-## 11. Phạm vi Phase 1 (Phase 1 Scope)
+## 11. Trạng thái thực hiện các Phase
 
-Phase 1 tập trung hoàn toàn vào việc thiết lập nền tảng dự án vững chắc:
-1. Kiểm tra môi trường hệ thống (Flutter SDK, Dart SDK, Android toolchain, Git).
-2. Xây dựng tài liệu tổng quan (`docs/PROJECT_OVERVIEW.md`) và kiến trúc hệ thống (`docs/ARCHITECTURE.md`).
-3. Khởi tạo cấu trúc mã nguồn chuẩn theo mô hình phân lớp rõ ràng (`lib/app/`, `lib/core/`, `lib/shared/`, `lib/features/`).
-4. Xây dựng màn hình khởi đầu tối thiểu (Starter/Welcome Screen) mang phong cách Giáng Sinh tối giản, hiển thị đúng tên `Chrimastsatastracker`.
-5. Đồng bộ cấu hình định danh và nhãn hiển thị trên Android (`AndroidManifest.xml`) và iOS (`Info.plist`).
-6. Viết bộ kiểm thử tự động (Unit test, Widget test) và xác minh `flutter analyze`, `dart format`, `flutter test`.
-7. Kiểm tra khả năng build Android debug APK.
-8. Quản lý phiên bản bằng Git cục bộ (khởi tạo, cấu hình `.gitignore`, commit Phase 1).
-9. Lập báo cáo hoàn thành Phase 1 (`PHASE_1_COMPLETION_REPORT.md`).
+### 11.1. Phase 1 — Khởi tạo nền tảng dự án (Đã hoàn thành - PASS)
+- Thiết lập workspace Flutter chuẩn, Android/iOS configurations, kiểm thử ban đầu, Git cục bộ commit `6cbe8d2`.
+- Hoàn thành `WelcomeScreen` và bộ tài liệu khởi tạo.
 
-*Lưu ý: Không triển khai sớm bất kỳ logic nào của Countdown, Tracker, Village, Mini Games hay Advent Calendar trong Phase 1.*
+### 11.2. Phase 2 — Countdown & Home Navigation (Đã hoàn thành - PASS)
+- **Home Navigation:** Triển khai `HomeScreen` làm trung tâm ứng dụng, kết nối điều hướng mượt mà đến `CountdownScreen` và `WelcomeScreen`.
+- **Countdown Engine:** Logic tính toán thời gian thực theo giờ địa phương, tự động xác định mốc 25/12 tiếp theo, xử lý năm nhuận, không trễ giờ và xử lý mốc 00:00:00 ngày 25/12 chuyển chu kỳ năm sau.
+- **Hệ thống thông điệp:** 5 cấp độ thông điệp động theo thời gian còn lại kết hợp độc lập với trạng thái chúc mừng ngày lễ 25/12.
+- **Khu vực Sắp ra mắt:** Giới thiệu rõ ràng 4 tính năng tương lai (Santa Tracker, North Pole Village, Mini Games, Advent Calendar) dưới dạng thẻ thông tin, không tạo nút giả hay màn hình giả.
+- **Bảo toàn nền tảng:** Không thêm dependency ngoài, zero-tracking, responsive trên mobile và tablet, 42/42 tests PASS, Android debug APK build thành công.
 
 ---
 
 ## 12. Định hướng phát triển các Phase tiếp theo
 
-- **Phase 2 — Countdown Engine & Theming System:** Xây dựng module đếm ngược thời gian thực, cơ chế timezone cục bộ, hoạt họa vòng tròn tiến độ và hoàn thiện hệ thống Design System/Theme động.
 - **Phase 3 — Simulated Santa Tracker & North Pole Village:** Thiết kế bản đồ mô phỏng lộ trình xe trượt tuyết và không gian tương tác các địa điểm tại làng Bắc Cực.
-- **Phase 4 — Advent Calendar & Holiday Mini Games:** Xây dựng cơ chế mở quà 24 ngày với local persistence và 2-3 mini games lễ hội nhẹ nhàng.
+- **Phase 4 — Advent Calendar & Holiday Mini Games:** Xây dựng cơ chế mở quà 24 ngày với local persistence và các mini-game lễ hội nhẹ nhàng.
 - **Phase 5 — Polish, QA Testing & Release Readiness:** Tối ưu hóa hiệu năng toàn diện, kiểm thử hồi quy trên các thiết bị thực tế, kiểm toán bảo mật và chuẩn bị bundle đóng gói phát hành.
 
 ---

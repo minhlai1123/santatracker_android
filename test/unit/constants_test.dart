@@ -16,6 +16,19 @@ void main() {
       expect(AppStrings.offlineFirstBadge, isNotEmpty);
       expect(AppStrings.privacyBadge, isNotEmpty);
       expect(AppStrings.holidayGreeting, isNotEmpty);
+
+      // Phase 2 strings
+      expect(AppStrings.homeTitle, isNotEmpty);
+      expect(AppStrings.countdownPreviewTitle, isNotEmpty);
+      expect(AppStrings.openCountdownButton, isNotEmpty);
+      expect(AppStrings.comingSoonTitle, isNotEmpty);
+      expect(AppStrings.countdownScreenTitle, isNotEmpty);
+      expect(AppStrings.backToHomeButton, isNotEmpty);
+      expect(AppStrings.messageChristmasDay, isNotEmpty);
+      expect(AppStrings.messageUnder24Hours, isNotEmpty);
+      expect(AppStrings.messageOneToSevenDays, isNotEmpty);
+      expect(AppStrings.messageEightToThirtyDays, isNotEmpty);
+      expect(AppStrings.messageOverThirtyDays, isNotEmpty);
     });
 
     test(

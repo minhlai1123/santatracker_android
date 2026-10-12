@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import '../../../../core/constants/app_dimensions.dart';
 import '../../../../core/constants/app_strings.dart';
 import '../../../../core/theme/app_colors.dart';
+import '../../../../shared/widgets/festive_button.dart';
+import '../../../home/presentation/screens/home_screen.dart';
 import '../widgets/festive_badge.dart';
 import '../widgets/welcome_header.dart';
 
@@ -32,6 +34,21 @@ class WelcomeScreen extends StatelessWidget {
                   _buildFoundationStatusCard(),
                   const SizedBox(height: AppDimensions.spaceLG),
                   _buildBadgesSection(),
+                  const SizedBox(height: AppDimensions.spaceXL),
+                  FestiveButton(
+                    label: AppStrings.enterHomeButton,
+                    icon: Icons.arrow_forward_rounded,
+                    isExpanded: true,
+                    onPressed: () {
+                      if (Navigator.of(context).canPop()) {
+                        Navigator.of(context).pop();
+                      } else {
+                        Navigator.of(context).pushReplacement(
+                          MaterialPageRoute(builder: (_) => const HomeScreen()),
+                        );
+                      }
+                    },
+                  ),
                   const SizedBox(height: AppDimensions.spaceXL),
                   _buildFooterGreeting(),
                 ],

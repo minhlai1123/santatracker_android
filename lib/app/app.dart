@@ -2,10 +2,13 @@ import 'package:flutter/material.dart';
 
 import '../core/constants/app_strings.dart';
 import '../core/theme/app_theme.dart';
-import '../features/welcome/presentation/screens/welcome_screen.dart';
+import '../features/home/presentation/screens/home_screen.dart';
 
 class ChrimastsatastrackerApp extends StatelessWidget {
-  const ChrimastsatastrackerApp({super.key});
+  final Widget? home;
+  final DateTime Function()? clock;
+
+  const ChrimastsatastrackerApp({super.key, this.home, this.clock});
 
   @override
   Widget build(BuildContext context) {
@@ -13,7 +16,7 @@ class ChrimastsatastrackerApp extends StatelessWidget {
       title: AppStrings.appName,
       debugShowCheckedModeBanner: false,
       theme: AppTheme.lightTheme,
-      home: const WelcomeScreen(),
+      home: home ?? HomeScreen(clock: clock),
     );
   }
 }

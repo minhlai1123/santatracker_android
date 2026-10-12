@@ -31,7 +31,8 @@ void main() {
       expect(find.text(AppStrings.offlineFirstBadge), findsOneWidget);
       expect(find.text(AppStrings.privacyBadge), findsOneWidget);
 
-      // Holiday greeting
+      // Buttons & Holiday greeting
+      expect(find.text(AppStrings.enterHomeButton), findsOneWidget);
       expect(find.text(AppStrings.holidayGreeting), findsOneWidget);
 
       // Icons

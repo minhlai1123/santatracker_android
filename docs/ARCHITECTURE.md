@@ -51,17 +51,39 @@ lib/
 │       └── festive_button.dart    # Nút bấm thiết kế chuẩn theo phong cách Giáng Sinh
 │
 └── features/                      # Các module tính năng theo từng domain
-    ├── welcome/                   # Màn hình khởi đầu (Trọng tâm của Phase 1)
+    ├── welcome/                   # Màn hình khởi đầu & Giới thiệu nền tảng
     │   ├── presentation/
     │   │   ├── screens/
     │   │   │   └── welcome_screen.dart
     │   │   └── widgets/
     │   │       ├── welcome_header.dart
     │   │       └── festive_badge.dart
-    │   └── domain/                # (Dành cho logic feature khi cần)
+    │
+    ├── home/                      # Trang chủ điều hướng trung tâm (Phase 2)
+    │   └── presentation/
+    │       ├── screens/
+    │       │   └── home_screen.dart
+    │       └── widgets/
+    │           ├── home_header.dart
+    │           ├── home_countdown_preview_card.dart
+    │           └── home_coming_soon_section.dart
+    │
+    ├── countdown/                 # Bộ đếm ngược Giáng Sinh (Phase 2)
+    │   ├── domain/
+    │   │   ├── models/
+    │   │   │   ├── countdown_message_type.dart
+    │   │   │   └── countdown_state.dart
+    │   │   └── services/
+    │   │       └── countdown_calculator.dart
+    │   └── presentation/
+    │       ├── screens/
+    │       │   └── countdown_screen.dart
+    │       └── widgets/
+    │           ├── countdown_display.dart
+    │           ├── countdown_time_unit.dart
+    │           └── countdown_message_card.dart
     │
     │   # [Các module dành cho Phase tiếp theo]
-    ├── countdown/                 # Phase 2: Đếm ngược Giáng Sinh
     ├── santa_tracker/             # Phase 3: Mô phỏng hành trình ông già Noel
     ├── north_pole_village/        # Phase 3: Khám phá ngôi làng Bắc Cực
     ├── mini_games/                # Phase 4: Các trò chơi nhỏ
@@ -80,8 +102,8 @@ lib/
 
 ### 3.2. `lib/app/`
 - Chứa lớp `ChrimastsatastrackerApp` kế thừa từ `StatelessWidget`.
-- Định cấu hình `MaterialApp`: cấu hình tiêu đề `Chrimastsatastracker`, cài đặt `ThemeData`, tắt banner debug, định tuyến màn hình khởi đầu (`WelcomeScreen`).
-- Giữ cấu hình ứng dụng tập trung và tách biệt với `main.dart`.
+- Định cấu hình `MaterialApp`: cấu hình tiêu đề `Chrimastsatastracker`, cài đặt `ThemeData`, tắt banner debug, định tuyến màn hình chính (`HomeScreen`).
+- Hỗ trợ truyền tùy chọn `clock` và `home` phục vụ kiểm thử cô lập.
 
 ### 3.3. `lib/core/`
 - Chứa các định nghĩa nền tảng không thuộc riêng về một tính năng nào:
@@ -89,19 +111,21 @@ lib/
     - Primary Red (`Color(0xFFC41E3A)` - Cardinal Christmas Red)
     - Forest Green (`Color(0xFF1B4D3E)` - Deep Pine Green)
     - Gold Accent (`Color(0xFFD4AF37)` - Festive Warm Gold)
-    - Snow White / Background Snow (`Color(0xFFF9FBFD)` / `Color(0xFF0F172A)`)
-  - **`app_strings.dart`:** Khai báo tập trung toàn bộ chuỗi ký tự, hạn chế việc hardcode chuỗi trong widget, sẵn sàng cho việc đa ngôn ngữ trong tương lai.
+    - Snow White / Soft Snow / Subtle Tints
+  - **`app_strings.dart`:** Khai báo tập trung toàn bộ chuỗi ký tự, nhãn màn hình, thông điệp động theo thời gian và mô tả tính năng sắp ra mắt.
   - **`app_theme.dart`:** Tích hợp `ThemeData` hoàn chỉnh sử dụng Material 3 (`useMaterial3: true`), áp dụng typography và colorScheme hài hòa.
-  - **`app_dimensions.dart`:** Quy định các khoảng cách chuẩn (8, 16, 24, 32dp), bo góc chuẩn (12, 16, 24dp) nhằm đảm bảo giao diện nhất quán.
+  - **`app_dimensions.dart`:** Quy định các khoảng cách chuẩn (8, 16, 24, 32dp), bo góc chuẩn (8, 16, 24dp).
 
 ### 3.4. `lib/shared/`
-- Chứa các widget thuần UI được dùng lại ở nhiều feature khác nhau (ví dụ: nền Giáng Sinh với hiệu ứng tinh tế, nút bấm chuẩn phong cách lễ hội, thẻ hiển thị thẻ bài).
-- Không phụ thuộc vào logic của bất kỳ feature cụ thể nào.
+- Chứa các widget thuần UI được dùng lại ở nhiều feature:
+  - **`festive_button.dart`:** Nút bấm lễ hội chuẩn với hỗ trợ kiểu Primary, Secondary, Outlined, chiều cao chuẩn 50px, tự động co giãn `Flexible` chống tràn.
 
 ### 3.5. `lib/features/`
-- Mỗi thư mục con là một đơn vị tính năng độc lập.
-- Trong **Phase 1**, chỉ triển khai thư mục `features/welcome/` bao gồm màn hình chào mừng tối giản và các widget con hiển thị thông tin giới thiệu.
-- Các module `countdown/`, `santa_tracker/`, `north_pole_village/`, `mini_games/`, `advent_calendar/` được quy hoạch cấu trúc nhưng **chưa triển khai mã trong Phase 1** để tuân thủ phạm vi.
+- Mỗi thư mục con là một đơn vị tính năng độc lập:
+  - **`welcome/`:** Màn hình giới thiệu tầm nhìn dự án, nguyên tắc bảo mật và nút chuyển tiếp sang Trang Chủ.
+  - **`home/`:** Màn hình trung tâm hiển thị preview đếm ngược thời gian thực, nút chuyển đến Countdown Screen và khu vực giới thiệu tính năng "Sắp ra mắt".
+  - **`countdown/`:** Tầng domain thuần Dart (`CountdownCalculator`, `CountdownState`, `CountdownMessageType`) tính toán ngày/giờ/phút/giây và thông điệp động; tầng presentation hiển thị các block thời gian responsive và card chúc mừng lễ hội.
+  - Các module `santa_tracker/`, `north_pole_village/`, `mini_games/`, `advent_calendar/` quy hoạch cho các Phase sau.
 
 ---
 

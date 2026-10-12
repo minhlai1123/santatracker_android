@@ -15,6 +15,11 @@ class AppColors {
   static const Color surfaceLight = Color(0xFFFFFFFF);
   static const Color cardBorder = Color(0xFFE2E8F0);
 
+  // Subtle festive tints for cards and badges
+  static const Color redTint = Color(0xFFFFF1F2);
+  static const Color greenTint = Color(0xFFF0FDF4);
+  static const Color goldTint = Color(0xFFFEFCE8);
+
   // Text colors
   static const Color textPrimary = Color(0xFF0F172A);
   static const Color textSecondary = Color(0xFF475569);
@@ -31,5 +36,11 @@ class AppColors {
     colors: [Color(0xFFFEF2F2), Color(0xFFFFFBEB)],
     begin: Alignment.centerLeft,
     end: Alignment.centerRight,
+  );
+
+  static const LinearGradient countdownCardGradient = LinearGradient(
+    colors: [Color(0xFFFFF8F8), Color(0xFFFFFFFF)],
+    begin: Alignment.topLeft,
+    end: Alignment.bottomRight,
   );
 }
