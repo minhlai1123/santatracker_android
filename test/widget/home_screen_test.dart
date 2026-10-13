@@ -36,14 +36,18 @@ void main() {
       expect(find.text(AppStrings.minutesLabel), findsOneWidget);
       expect(find.text(AppStrings.secondsLabel), findsOneWidget);
 
-      // Coming soon section
+      // Active Santa Tracker card (Phase 3)
+      expect(find.text(AppStrings.trackerFeatureTitle), findsOneWidget);
+      expect(find.text(AppStrings.santaTrackerActiveBadge), findsOneWidget);
+      expect(find.text(AppStrings.openSantaTrackerButton), findsOneWidget);
+
+      // Coming soon section (3 remaining features)
       expect(find.text(AppStrings.comingSoonTitle), findsOneWidget);
       expect(find.text(AppStrings.comingSoonSubtitle), findsOneWidget);
-      expect(find.text(AppStrings.trackerFeatureTitle), findsOneWidget);
       expect(find.text(AppStrings.villageFeatureTitle), findsOneWidget);
       expect(find.text(AppStrings.gamesFeatureTitle), findsOneWidget);
       expect(find.text(AppStrings.adventFeatureTitle), findsOneWidget);
-      expect(find.text(AppStrings.comingSoonBadge), findsNWidgets(4));
+      expect(find.text(AppStrings.comingSoonBadge), findsNWidgets(3));
 
       // About button & holiday greeting
       expect(find.text(AppStrings.aboutAppButton), findsAtLeastNWidgets(1));
@@ -75,6 +79,33 @@ void main() {
 
       // Verify back on HomeScreen
       expect(find.text(AppStrings.openCountdownButton), findsOneWidget);
+    });
+
+    testWidgets('navigates to SantaTrackerScreen and returns to HomeScreen', (
+      WidgetTester tester,
+    ) async {
+      await tester.pumpWidget(buildTestableWidget());
+      await tester.pumpAndSettle();
+
+      // Tap "Mở Santa Tracker"
+      final openTrackerBtn = find.text(AppStrings.openSantaTrackerButton);
+      expect(openTrackerBtn, findsOneWidget);
+      await tester.ensureVisible(openTrackerBtn);
+      await tester.tap(openTrackerBtn);
+      await tester.pumpAndSettle();
+
+      // Verify on SantaTrackerScreen
+      expect(find.text(AppStrings.simulationBadgeLabel), findsOneWidget);
+
+      // Tap "Quay lại Trang Chủ"
+      final backBtn = find.text(AppStrings.backToHomeButton);
+      expect(backBtn, findsOneWidget);
+      await tester.ensureVisible(backBtn);
+      await tester.tap(backBtn);
+      await tester.pumpAndSettle();
+
+      // Verify back on HomeScreen
+      expect(find.text(AppStrings.openSantaTrackerButton), findsOneWidget);
     });
 
     testWidgets('navigates to WelcomeScreen and returns to HomeScreen', (

@@ -29,6 +29,20 @@ void main() {
       expect(AppStrings.messageOneToSevenDays, isNotEmpty);
       expect(AppStrings.messageEightToThirtyDays, isNotEmpty);
       expect(AppStrings.messageOverThirtyDays, isNotEmpty);
+
+      // Phase 3 strings
+      expect(AppStrings.santaTrackerScreenTitle, isNotEmpty);
+      expect(AppStrings.simulationBadgeLabel, equals('HÀNH TRÌNH MÔ PHỎNG'));
+      expect(AppStrings.offlineSimulationBanner, isNotEmpty);
+      expect(AppStrings.statusNotStarted, isNotEmpty);
+      expect(AppStrings.statusInProgress, isNotEmpty);
+      expect(AppStrings.statusPaused, isNotEmpty);
+      expect(AppStrings.statusCompleted, isNotEmpty);
+      expect(AppStrings.startJourneyButton, isNotEmpty);
+      expect(AppStrings.nextStopButton, isNotEmpty);
+      expect(AppStrings.pauseJourneyButton, isNotEmpty);
+      expect(AppStrings.resumeJourneyButton, isNotEmpty);
+      expect(AppStrings.resetJourneyButton, isNotEmpty);
     });
 
     test(

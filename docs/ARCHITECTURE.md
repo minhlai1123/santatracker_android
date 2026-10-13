@@ -59,13 +59,14 @@ lib/
     │   │       ├── welcome_header.dart
     │   │       └── festive_badge.dart
     │
-    ├── home/                      # Trang chủ điều hướng trung tâm (Phase 2)
+    ├── home/                      # Trang chủ điều hướng trung tâm (Phase 2 & 3)
     │   └── presentation/
     │       ├── screens/
     │       │   └── home_screen.dart
     │       └── widgets/
     │           ├── home_header.dart
     │           ├── home_countdown_preview_card.dart
+    │           ├── home_santa_tracker_card.dart
     │           └── home_coming_soon_section.dart
     │
     ├── countdown/                 # Bộ đếm ngược Giáng Sinh (Phase 2)
@@ -83,11 +84,31 @@ lib/
     │           ├── countdown_time_unit.dart
     │           └── countdown_message_card.dart
     │
+    ├── santa_tracker/             # Hành trình ông già Noel mô phỏng (Phase 3)
+    │   ├── domain/
+    │   │   ├── models/
+    │   │   │   ├── santa_stop.dart
+    │   │   │   ├── santa_journey_status.dart
+    │   │   │   └── santa_tracker_state.dart
+    │   │   └── services/
+    │   │       ├── santa_route_data.dart
+    │   │       └── network_status_provider.dart
+    │   └── presentation/
+    │       ├── controllers/
+    │       │   └── santa_tracker_controller.dart
+    │       ├── screens/
+    │       │   └── santa_tracker_screen.dart
+    │       └── widgets/
+    │           ├── santa_world_map.dart
+    │           ├── santa_marker.dart
+    │           ├── santa_journey_info_card.dart
+    │           ├── santa_control_panel.dart
+    │           └── santa_offline_banner.dart
+    │
     │   # [Các module dành cho Phase tiếp theo]
-    ├── santa_tracker/             # Phase 3: Mô phỏng hành trình ông già Noel
-    ├── north_pole_village/        # Phase 3: Khám phá ngôi làng Bắc Cực
-    ├── mini_games/                # Phase 4: Các trò chơi nhỏ
-    └── advent_calendar/           # Phase 4: Lịch mở quà 24 ngày
+    ├── north_pole_village/        # Khám phá ngôi làng Bắc Cực
+    ├── mini_games/                # Các trò chơi nhỏ Giáng Sinh
+    └── advent_calendar/           # Lịch mở quà 24 ngày
 ```
 
 ---
@@ -112,7 +133,7 @@ lib/
     - Forest Green (`Color(0xFF1B4D3E)` - Deep Pine Green)
     - Gold Accent (`Color(0xFFD4AF37)` - Festive Warm Gold)
     - Snow White / Soft Snow / Subtle Tints
-  - **`app_strings.dart`:** Khai báo tập trung toàn bộ chuỗi ký tự, nhãn màn hình, thông điệp động theo thời gian và mô tả tính năng sắp ra mắt.
+  - **`app_strings.dart`:** Khai báo tập trung toàn bộ chuỗi ký tự, nhãn màn hình, thông điệp động theo thời gian, nhãn mô phỏng Santa Tracker và mô tả tính năng sắp ra mắt.
   - **`app_theme.dart`:** Tích hợp `ThemeData` hoàn chỉnh sử dụng Material 3 (`useMaterial3: true`), áp dụng typography và colorScheme hài hòa.
   - **`app_dimensions.dart`:** Quy định các khoảng cách chuẩn (8, 16, 24, 32dp), bo góc chuẩn (8, 16, 24dp).
 
@@ -123,9 +144,12 @@ lib/
 ### 3.5. `lib/features/`
 - Mỗi thư mục con là một đơn vị tính năng độc lập:
   - **`welcome/`:** Màn hình giới thiệu tầm nhìn dự án, nguyên tắc bảo mật và nút chuyển tiếp sang Trang Chủ.
-  - **`home/`:** Màn hình trung tâm hiển thị preview đếm ngược thời gian thực, nút chuyển đến Countdown Screen và khu vực giới thiệu tính năng "Sắp ra mắt".
+  - **`home/`:** Màn hình trung tâm hiển thị preview đếm ngược thời gian thực, thẻ mở `SantaTrackerScreen` (`HomeSantaTrackerCard`) và khu vực giới thiệu 3 tính năng "Sắp ra mắt" còn lại.
   - **`countdown/`:** Tầng domain thuần Dart (`CountdownCalculator`, `CountdownState`, `CountdownMessageType`) tính toán ngày/giờ/phút/giây và thông điệp động; tầng presentation hiển thị các block thời gian responsive và card chúc mừng lễ hội.
-  - Các module `santa_tracker/`, `north_pole_village/`, `mini_games/`, `advent_calendar/` quy hoạch cho các Phase sau.
+  - **`santa_tracker/`:**
+    - **Domain Layer:** `SantaStop` (dữ liệu điểm dừng với tọa độ chuẩn hóa `0.0..1.0`), `SantaJourneyStatus` (4 trạng thái hành trình), `SantaTrackerState` (trạng thái bất biến tính toán quà từ `completedStopIds`), `SantaRouteData` (12 điểm dừng vòng quanh thế giới) và `NetworkStatusProvider` (trừu tượng hóa trạng thái offline/online có thể mock).
+    - **Presentation Layer:** `SantaTrackerController` (`ChangeNotifier` điều khiển mô phỏng thủ công và lắng nghe vòng đời ứng dụng), `SantaWorldMap` (bản đồ minh họa vẽ bằng `CustomPainter`), `SantaMarker` (marker vị trí hiện tại có hiệu ứng pulse nhẹ tách biệt hoàn toàn khỏi logic hành trình), `SantaControlPanel`, `SantaJourneyInfoCard` và `SantaOfflineBanner`.
+  - Các module `north_pole_village/`, `mini_games/`, `advent_calendar/` quy hoạch cho các Phase sau.
 
 ---
 

@@ -29,12 +29,6 @@ class HomeComingSoonSection extends StatelessWidget {
         ),
         const SizedBox(height: AppDimensions.spaceMD),
         _buildFeatureCard(
-          icon: Icons.explore_outlined,
-          title: AppStrings.trackerFeatureTitle,
-          description: AppStrings.trackerFeatureDesc,
-        ),
-        const SizedBox(height: AppDimensions.spaceSM),
-        _buildFeatureCard(
           icon: Icons.holiday_village_outlined,
           title: AppStrings.villageFeatureTitle,
           description: AppStrings.villageFeatureDesc,

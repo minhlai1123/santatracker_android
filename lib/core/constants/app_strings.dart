@@ -65,4 +65,48 @@ class AppStrings {
       'Mùa lễ hội đang đến gần, hãy chuẩn bị đón Giáng Sinh ấm áp bên gia đình!';
   static const String messageOverThirtyDays =
       'Cùng mong chờ và đón chào một mùa Giáng Sinh an lành sắp đến!';
+
+  // Santa Tracker (Phase 3)
+  static const String santaTrackerScreenTitle = 'Santa Tracker';
+  static const String simulationBadgeLabel = 'HÀNH TRÌNH MÔ PHỎNG';
+  static const String simulationSubtitle =
+      'Theo dõi lộ trình phát quà mô phỏng của Ông Già Noel qua 12 điểm dừng vòng quanh thế giới.';
+  static const String openSantaTrackerButton = 'Mở Santa Tracker';
+  static const String santaTrackerActiveBadge = 'Hoạt động';
+
+  // Offline Banner
+  static const String offlineSimulationBanner =
+      'Bạn đang offline — hành trình mô phỏng vẫn hoạt động';
+
+  // Journey Status Labels
+  static const String statusNotStarted = 'Chưa bắt đầu';
+  static const String statusInProgress = 'Đang di chuyển';
+  static const String statusPaused = 'Đang tạm dừng';
+  static const String statusCompleted = 'Đã hoàn thành';
+
+  // Journey Info Labels
+  static const String infoCardTitle = 'Thông Tin Hành Trình';
+  static const String currentLocationLabel = 'Vị trí hiện tại';
+  static const String nextDestinationLabel = 'Điểm đến tiếp theo';
+  static const String journeyStatusLabel = 'Trạng thái hành trình';
+  static const String giftsDeliveredLabel = 'Số quà đã giao (mô phỏng)';
+  static const String simulatedEtaLabel = 'Thời gian đến dự kiến (ETA)';
+  static const String routeProgressLabel = 'Tiến độ lộ trình';
+  static const String etaMinutesSuffix = 'phút mô phỏng';
+  static const String giftsUnitSuffix = 'món quà';
+
+  // Manual Controls
+  static const String controlPanelTitle = 'Điều Khiển Hành Trình';
+  static const String startJourneyButton = 'Bắt đầu hành trình';
+  static const String nextStopButton = 'Điểm dừng tiếp theo';
+  static const String pauseJourneyButton = 'Tạm dừng';
+  static const String resumeJourneyButton = 'Tiếp tục';
+  static const String resetJourneyButton = 'Đặt lại hành trình';
+
+  // Map & Legend
+  static const String mapLegendCurrent = 'Vị trí Santa';
+  static const String mapLegendCompleted = 'Đã đi qua';
+  static const String mapLegendUpcoming = 'Chưa đến';
+  static const String journeyCompletedBanner =
+      'Ông già Noel đã hoàn thành hành trình phát quà mô phỏng vòng quanh thế giới!';
 }
