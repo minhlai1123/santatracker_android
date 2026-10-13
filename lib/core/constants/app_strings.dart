@@ -109,4 +109,33 @@ class AppStrings {
   static const String mapLegendUpcoming = 'Chưa đến';
   static const String journeyCompletedBanner =
       'Ông già Noel đã hoàn thành hành trình phát quà mô phỏng vòng quanh thế giới!';
+
+  // North Pole Village (Phase 4)
+  static const String villageScreenTitle = 'Ngôi Làng Bắc Cực';
+  static const String villageSubtitle =
+      'Khám phá các địa điểm diệu kỳ trong ngôi làng Giáng Sinh của Ông Già Noel.';
+  static const String openVillageButton = 'Khám Phá Ngôi Làng';
+  static const String villageActiveBadge = 'Hoạt động';
+  static const String villageProgressLabel = 'Tiến độ khám phá';
+  static const String villageLocationsCountSuffix = 'địa điểm';
+  static const String villageCompletedTitle =
+      'Làng Bắc Cực Đã Khám Phá Hoàn Tất!';
+  static const String villageCompletedBanner =
+      'Chúc mừng! Bạn đã khám phá toàn bộ 8 địa điểm diệu kỳ tại Ngôi Làng Bắc Cực!';
+  static const String locationStatusDiscovered = 'Đã khám phá';
+  static const String locationStatusUndiscovered = 'Chưa khám phá';
+  static const String discoverLocationButton = 'Khám Phá Địa Điểm Này';
+  static const String closeDetailSheetButton = 'Đóng chi tiết';
+  static const String selectLocationHint =
+      'Nhấn vào một địa điểm trên bản đồ làng để khám phá.';
+
+  // Village Categories
+  static const String categoryPlaza = 'Quảng trường';
+  static const String categoryResidence = 'Nơi ở';
+  static const String categoryWorkshop = 'Xưởng quà';
+  static const String categoryStables = 'Chuồng tuần lộc';
+  static const String categoryLandmark = 'Biểu tượng';
+  static const String categoryPostOffice = 'Bưu điện';
+  static const String categoryBakery = 'Tiệm bánh';
+  static const String categoryNature = 'Thiên nhiên';
 }

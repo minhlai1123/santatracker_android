@@ -59,7 +59,7 @@ lib/
     │   │       ├── welcome_header.dart
     │   │       └── festive_badge.dart
     │
-    ├── home/                      # Trang chủ điều hướng trung tâm (Phase 2 & 3)
+    ├── home/                      # Trang chủ điều hướng trung tâm (Phase 2 & 3 & 4)
     │   └── presentation/
     │       ├── screens/
     │       │   └── home_screen.dart
@@ -67,6 +67,7 @@ lib/
     │           ├── home_header.dart
     │           ├── home_countdown_preview_card.dart
     │           ├── home_santa_tracker_card.dart
+    │           ├── home_village_card.dart
     │           └── home_coming_soon_section.dart
     │
     ├── countdown/                 # Bộ đếm ngược Giáng Sinh (Phase 2)
@@ -105,8 +106,29 @@ lib/
     │           ├── santa_control_panel.dart
     │           └── santa_offline_banner.dart
     │
+    ├── north_pole_village/        # Khám phá ngôi làng Bắc Cực (Phase 4)
+    │   ├── data/
+    │   │   ├── village_storage.dart
+    │   │   ├── shared_preferences_village_storage.dart
+    │   │   └── memory_village_storage.dart
+    │   ├── domain/
+    │   │   ├── models/
+    │   │   │   ├── village_location_type.dart
+    │   │   │   ├── village_location.dart
+    │   │   │   └── village_exploration_state.dart
+    │   │   └── services/
+    │   │       └── north_pole_village_data.dart
+    │   └── presentation/
+    │       ├── controllers/
+    │       │   └── village_controller.dart
+    │       ├── screens/
+    │       │   └── north_pole_village_screen.dart
+    │       └── widgets/
+    │           ├── village_progress_header.dart
+    │           ├── village_map.dart
+    │           └── village_location_detail_sheet.dart
+    │
     │   # [Các module dành cho Phase tiếp theo]
-    ├── north_pole_village/        # Khám phá ngôi làng Bắc Cực
     ├── mini_games/                # Các trò chơi nhỏ Giáng Sinh
     └── advent_calendar/           # Lịch mở quà 24 ngày
 ```
@@ -144,12 +166,16 @@ lib/
 ### 3.5. `lib/features/`
 - Mỗi thư mục con là một đơn vị tính năng độc lập:
   - **`welcome/`:** Màn hình giới thiệu tầm nhìn dự án, nguyên tắc bảo mật và nút chuyển tiếp sang Trang Chủ.
-  - **`home/`:** Màn hình trung tâm hiển thị preview đếm ngược thời gian thực, thẻ mở `SantaTrackerScreen` (`HomeSantaTrackerCard`) và khu vực giới thiệu 3 tính năng "Sắp ra mắt" còn lại.
+  - **`home/`:** Màn hình trung tâm hiển thị preview đếm ngược thời gian thực, thẻ mở `SantaTrackerScreen` (`HomeSantaTrackerCard`), thẻ mở `NorthPoleVillageScreen` (`HomeVillageCard`) và khu vực giới thiệu 2 tính năng "Sắp ra mắt" còn lại.
   - **`countdown/`:** Tầng domain thuần Dart (`CountdownCalculator`, `CountdownState`, `CountdownMessageType`) tính toán ngày/giờ/phút/giây và thông điệp động; tầng presentation hiển thị các block thời gian responsive và card chúc mừng lễ hội.
   - **`santa_tracker/`:**
     - **Domain Layer:** `SantaStop` (dữ liệu điểm dừng với tọa độ chuẩn hóa `0.0..1.0`), `SantaJourneyStatus` (4 trạng thái hành trình), `SantaTrackerState` (trạng thái bất biến tính toán quà từ `completedStopIds`), `SantaRouteData` (12 điểm dừng vòng quanh thế giới) và `NetworkStatusProvider` (trừu tượng hóa trạng thái offline/online có thể mock).
     - **Presentation Layer:** `SantaTrackerController` (`ChangeNotifier` điều khiển mô phỏng thủ công và lắng nghe vòng đời ứng dụng), `SantaWorldMap` (bản đồ minh họa vẽ bằng `CustomPainter`), `SantaMarker` (marker vị trí hiện tại có hiệu ứng pulse nhẹ tách biệt hoàn toàn khỏi logic hành trình), `SantaControlPanel`, `SantaJourneyInfoCard` và `SantaOfflineBanner`.
-  - Các module `north_pole_village/`, `mini_games/`, `advent_calendar/` quy hoạch cho các Phase sau.
+  - **`north_pole_village/`:**
+    - **Data Layer:** `VillageStorage` (interface lưu trữ trạng thái), `SharedPreferencesVillageStorage` (adapter production sử dụng SharedPreferences), `MemoryVillageStorage` (adapter in-memory phục vụ unit/widget test).
+    - **Domain Layer:** `VillageLocationType` (enum loại địa điểm), `VillageLocation` (entity địa điểm với tọa độ chuẩn hóa `0.0..1.0`), `VillageExplorationState` (trạng thái bất biến của tiến độ khám phá và địa điểm đang chọn), `NorthPoleVillageData` (dữ liệu cố định 8 địa điểm làng Bắc Cực).
+    - **Presentation Layer:** `VillageController` (`ChangeNotifier` quản lý nạp/lưu trạng thái, chọn địa điểm, khám phá với tính lũy đẳng idempotency), `VillageMap` (bản đồ minh họa vẽ bằng `CustomPainter` kết hợp các Interactive Marker), `VillageLocationDetailSheet` (bottom sheet hiển thị chi tiết và nút khám phá), `VillageProgressHeader` (tiến độ khám phá và banner chúc mừng hoàn thành), `NorthPoleVillageScreen` (màn hình chính quản lý điều hướng và vòng đời controller).
+  - Các module `mini_games/`, `advent_calendar/` quy hoạch cho các Phase sau.
 
 ---
 

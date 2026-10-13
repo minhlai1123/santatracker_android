@@ -135,26 +135,26 @@ Dự án kiên quyết **KHÔNG** triển khai các tính năng sau:
 - **Khu vực Sắp ra mắt:** Giới thiệu rõ ràng 4 tính năng tương lai (Santa Tracker, North Pole Village, Mini Games, Advent Calendar) dưới dạng thẻ thông tin, không tạo nút giả hay màn hình giả.
 - **Bảo toàn nền tảng:** Không thêm dependency ngoài, zero-tracking, responsive trên mobile và tablet, 42/42 tests PASS, Android debug APK build thành công.
 
-### 11.3. Phase 3 — Santa Tracker (Đã hoàn thành - PASS)
-- **Bản đồ thế giới minh họa riêng (`SantaWorldMap`):** Xây dựng 100% cục bộ bằng Flutter `CustomPainter` kết hợp `LayoutBuilder`, `Stack` và `Positioned` theo hệ tọa độ chuẩn hóa (`0.0..1.0`), hoàn toàn không sử dụng API bản đồ bên ngoài.
-- **Lộ trình 12 điểm dừng toàn cầu (`SantaRouteData`):** Khởi hành từ Bắc Cực đi qua Auckland, Sydney, Tokyo, Seoul, Hà Nội, New Delhi, Cairo, Paris, London, New York và kết thúc tại Rio de Janeiro.
-- **Điều khiển mô phỏng thủ công (`SantaTrackerController`):** Hỗ trợ đầy đủ Bắt đầu, Điểm dừng tiếp theo, Tạm dừng, Tiếp tục và Đặt lại hành trình; tính toán quà mô phỏng chính xác theo tập điểm dừng đã hoàn thành (`completedStopIds`), không cộng trùng và không lỗi out-of-bounds.
-- **Thông tin hành trình & Banner Offline:** Hiển thị nhãn `"HÀNH TRÌNH MÔ PHỎNG"`, vị trí hiện tại, điểm đến tiếp theo, trạng thái hành trình, số quà đã giao, ETA mô phỏng và banner offline (`"Bạn đang offline — hành trình mô phỏng vẫn hoạt động"`) qua `NetworkStatusProvider` có thể inject/mock.
-- **Tích hợp Home Navigation:** Chuyển Santa Tracker trên `HomeScreen` thành thẻ tính năng hoạt động (`HomeSantaTrackerCard`), giữ nguyên 3 tính năng tương lai (`Ngôi Làng Bắc Cực`, `Trò Chơi Giáng Sinh`, `Lịch Advent`) ở trạng thái `"Sắp ra mắt"`.
+### 11.4. Phase 4 — North Pole Village (Đã hoàn thành - PASS)
+- **Bản đồ Ngôi Làng Bắc Cực minh họa riêng (`VillageMap`):** Xây dựng 100% bằng Flutter `CustomPainter`, `LayoutBuilder`, `Stack` và `Positioned` theo hệ tọa độ chuẩn hóa (`0.0..1.0`), không sử dụng API bản đồ ngoài, tile server hay web view.
+- **8 địa điểm tương tác phong phú (`NorthPoleVillageData`):** Quảng Trường Bắc Cực, Nhà Ông Già Noel, Xưởng Đồ Chơi Yêu Tinh, Chuồng Tuần Lộc Diệu Kỳ, Cây Thông Lễ Hội Khổng Lồ, Bưu Điện Bắc Cực, Tiệm Bánh Gừng & Kẹo Ngọt, và Hồ Băng Pha Lê.
+- **Lưu trữ trạng thái cục bộ lâu dài (`VillageStorage` & `SharedPreferencesVillageStorage`):** Sử dụng `shared_preferences: ^2.5.6` được bọc qua interface trừu tượng `VillageStorage`, đảm bảo tiến độ khám phá được lưu an toàn trên thiết bị và duy trì nguyên vẹn khi khởi động lại ứng dụng. Có sẵn `MemoryVillageStorage` cho Unit/Widget Test.
+- **Trải nghiệm khám phá tương tác:** Nhấn marker mở chi tiết địa điểm (`VillageLocationDetailSheet`), hỗ trợ đánh dấu đã khám phá với hiệu ứng hào quang động, thanh tiến độ và thông báo chúc mừng khi hoàn thành tất cả 8 địa điểm (`VillageProgressHeader`).
+- **Tích hợp Home Navigation:** Chuyển Ngôi Làng Bắc Cực trên `HomeScreen` thành thẻ tính năng hoạt động (`HomeVillageCard`), thu gọn danh mục Sắp ra mắt xuống đúng 2 tính năng (`Trò Chơi Giáng Sinh` và `Lịch Advent`).
 
 ---
 
 ## 12. Định hướng phát triển các Phase tiếp theo
 
-- **Phase 4 — North Pole Village, Mini Games & Advent Calendar:** Triển khai không gian tương tác Ngôi làng Bắc Cực, các mini-game lễ hội nhẹ nhàng và lịch mở quà 24 ngày theo lộ trình tiếp theo.
-- **Phase 5 — Polish, QA Testing & Release Readiness:** Tối ưu hóa hiệu năng toàn diện, kiểm thử hồi quy trên các thiết bị thực tế, kiểm toán bảo mật và chuẩn bị bundle đóng gói phát hành.
+- **Phase 5 — Mini Games & Advent Calendar:** Triển khai các trò chơi nhỏ Giáng Sinh mang tính giải trí nhẹ nhàng và lịch mở quà 24 ngày đón chào lễ hội.
+- **Phase 6 — Polish, QA Testing & Release Readiness:** Tối ưu hóa hiệu năng toàn diện, kiểm thử hồi quy trên các thiết bị thực tế, kiểm toán bảo mật và chuẩn bị bundle đóng gói phát hành.
 
 ---
 
 ## 13. Những quyết định kỹ thuật đã chốt & chưa xác định (TBD)
 
 1. **Công nghệ hiển thị bản đồ cho Santa Tracker (Đã chốt ở Phase 3):** Sử dụng `CustomPainter` / Canvas vẽ bản đồ thế giới minh họa kết hợp tọa độ chuẩn hóa (`0.0..1.0`), hoạt động 100% offline, siêu nhẹ và không phụ thuộc dịch vụ bản đồ bên ngoài.
-2. **Âm thanh hiệu ứng lễ hội (TBD):** Lựa chọn thư viện âm thanh và cân đối kích thước file âm thanh nén để không làm tăng đột biến dung lượng ứng dụng.
-3. **Danh mục mini games cụ thể (TBD):** Lựa chọn chính xác các mini games phù hợp nhất với trải nghiệm người dùng và dung lượng mục tiêu.
-4. **Cơ chế lưu trữ dữ liệu cục bộ cho Phase tương lai (TBD):** Đánh giá giải pháp lưu trữ nhẹ khi triển khai trạng thái game và lịch mở quà.
+2. **Cơ chế lưu trữ dữ liệu cục bộ (Đã chốt ở Phase 4):** Sử dụng `shared_preferences` bọc qua Clean Interface (`VillageStorage`), hỗ trợ lưu trữ cục bộ nhẹ nhàng, tin cậy và hoàn toàn tách biệt khỏi tầng UI/Domain.
+3. **Âm thanh hiệu ứng lễ hội (TBD):** Lựa chọn thư viện âm thanh và cân đối kích thước file âm thanh nén để không làm tăng đột biến dung lượng ứng dụng.
+4. **Danh mục mini games cụ thể (TBD):** Lựa chọn chính xác các mini games phù hợp nhất với trải nghiệm người dùng và dung lượng mục tiêu.
 

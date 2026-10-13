@@ -36,18 +36,21 @@ void main() {
       expect(find.text(AppStrings.minutesLabel), findsOneWidget);
       expect(find.text(AppStrings.secondsLabel), findsOneWidget);
 
-      // Active Santa Tracker card (Phase 3)
+      // Active Santa Tracker card (Phase 3) & Village card (Phase 4)
       expect(find.text(AppStrings.trackerFeatureTitle), findsOneWidget);
-      expect(find.text(AppStrings.santaTrackerActiveBadge), findsOneWidget);
+      expect(find.text(AppStrings.santaTrackerActiveBadge), findsNWidgets(2));
       expect(find.text(AppStrings.openSantaTrackerButton), findsOneWidget);
 
-      // Coming soon section (3 remaining features)
+      // Active North Pole Village card (Phase 4)
+      expect(find.text(AppStrings.villageFeatureTitle), findsOneWidget);
+      expect(find.text(AppStrings.openVillageButton), findsOneWidget);
+
+      // Coming soon section (2 remaining features)
       expect(find.text(AppStrings.comingSoonTitle), findsOneWidget);
       expect(find.text(AppStrings.comingSoonSubtitle), findsOneWidget);
-      expect(find.text(AppStrings.villageFeatureTitle), findsOneWidget);
       expect(find.text(AppStrings.gamesFeatureTitle), findsOneWidget);
       expect(find.text(AppStrings.adventFeatureTitle), findsOneWidget);
-      expect(find.text(AppStrings.comingSoonBadge), findsNWidgets(3));
+      expect(find.text(AppStrings.comingSoonBadge), findsNWidgets(2));
 
       // About button & holiday greeting
       expect(find.text(AppStrings.aboutAppButton), findsAtLeastNWidgets(1));
@@ -107,6 +110,37 @@ void main() {
       // Verify back on HomeScreen
       expect(find.text(AppStrings.openSantaTrackerButton), findsOneWidget);
     });
+
+    testWidgets(
+      'navigates to NorthPoleVillageScreen and returns to HomeScreen',
+      (WidgetTester tester) async {
+        await tester.pumpWidget(buildTestableWidget());
+        await tester.pumpAndSettle();
+
+        // Tap "Khám Phá Ngôi Làng"
+        final openVillageBtn = find.byKey(const Key('btn_open_village'));
+        expect(openVillageBtn, findsOneWidget);
+        await tester.ensureVisible(openVillageBtn);
+        await tester.tap(openVillageBtn);
+        await tester.pumpAndSettle();
+
+        // Verify on NorthPoleVillageScreen
+        expect(
+          find.text(AppStrings.villageScreenTitle),
+          findsAtLeastNWidgets(1),
+        );
+
+        // Tap "Quay lại Trang Chủ"
+        final backBtn = find.text(AppStrings.backToHomeButton);
+        expect(backBtn, findsOneWidget);
+        await tester.ensureVisible(backBtn);
+        await tester.tap(backBtn);
+        await tester.pumpAndSettle();
+
+        // Verify back on HomeScreen
+        expect(find.byKey(const Key('btn_open_village')), findsOneWidget);
+      },
+    );
 
     testWidgets('navigates to WelcomeScreen and returns to HomeScreen', (
       WidgetTester tester,

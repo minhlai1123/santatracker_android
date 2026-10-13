@@ -229,11 +229,10 @@ void main() {
         );
         await tester.pumpAndSettle();
 
-        // 15. Verify remaining 3 features are still Coming Soon
-        expect(find.text(AppStrings.villageFeatureTitle), findsOneWidget);
+        // 15. Verify remaining 2 features are still Coming Soon
         expect(find.text(AppStrings.gamesFeatureTitle), findsOneWidget);
         expect(find.text(AppStrings.adventFeatureTitle), findsOneWidget);
-        expect(find.text(AppStrings.comingSoonBadge), findsNWidgets(3));
+        expect(find.text(AppStrings.comingSoonBadge), findsNWidgets(2));
 
         // 14. Navigate to SantaTrackerScreen and back
         final openTrackerBtn = find.byKey(const Key('btn_open_santa_tracker'));

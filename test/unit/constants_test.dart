@@ -43,6 +43,18 @@ void main() {
       expect(AppStrings.pauseJourneyButton, isNotEmpty);
       expect(AppStrings.resumeJourneyButton, isNotEmpty);
       expect(AppStrings.resetJourneyButton, isNotEmpty);
+
+      // Phase 4 strings
+      expect(AppStrings.villageScreenTitle, isNotEmpty);
+      expect(AppStrings.villageSubtitle, isNotEmpty);
+      expect(AppStrings.openVillageButton, isNotEmpty);
+      expect(AppStrings.villageActiveBadge, equals('Hoạt động'));
+      expect(AppStrings.villageProgressLabel, isNotEmpty);
+      expect(AppStrings.villageCompletedBanner, isNotEmpty);
+      expect(AppStrings.locationStatusDiscovered, equals('Đã khám phá'));
+      expect(AppStrings.locationStatusUndiscovered, equals('Chưa khám phá'));
+      expect(AppStrings.discoverLocationButton, isNotEmpty);
+      expect(AppStrings.selectLocationHint, isNotEmpty);
     });
 
     test(

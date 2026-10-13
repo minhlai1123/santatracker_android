@@ -5,12 +5,14 @@ import '../../../../core/constants/app_strings.dart';
 import '../../../../core/theme/app_colors.dart';
 import '../../../../shared/widgets/festive_button.dart';
 import '../../../countdown/presentation/screens/countdown_screen.dart';
+import '../../../north_pole_village/presentation/screens/north_pole_village_screen.dart';
 import '../../../santa_tracker/presentation/screens/santa_tracker_screen.dart';
 import '../../../welcome/presentation/screens/welcome_screen.dart';
 import '../widgets/home_coming_soon_section.dart';
 import '../widgets/home_countdown_preview_card.dart';
 import '../widgets/home_header.dart';
 import '../widgets/home_santa_tracker_card.dart';
+import '../widgets/home_village_card.dart';
 
 class HomeScreen extends StatelessWidget {
   final DateTime Function()? clock;
@@ -25,6 +27,12 @@ class HomeScreen extends StatelessWidget {
   void _navigateToSantaTracker(BuildContext context) {
     Navigator.of(context)
         .push(MaterialPageRoute(builder: (_) => const SantaTrackerScreen()));
+  }
+
+  void _navigateToVillage(BuildContext context) {
+    Navigator.of(
+      context,
+    ).push(MaterialPageRoute(builder: (_) => const NorthPoleVillageScreen()));
   }
 
   void _navigateToWelcome(BuildContext context) {
@@ -67,6 +75,10 @@ class HomeScreen extends StatelessWidget {
                   const SizedBox(height: AppDimensions.spaceLG),
                   HomeSantaTrackerCard(
                     onOpenSantaTracker: () => _navigateToSantaTracker(context),
+                  ),
+                  const SizedBox(height: AppDimensions.spaceLG),
+                  HomeVillageCard(
+                    onOpenVillage: () => _navigateToVillage(context),
                   ),
                   const SizedBox(height: AppDimensions.spaceXL),
                   const HomeComingSoonSection(),
