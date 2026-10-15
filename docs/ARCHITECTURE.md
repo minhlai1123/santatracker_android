@@ -128,9 +128,58 @@ lib/
     │           ├── village_map.dart
     │           └── village_location_detail_sheet.dart
     │
-    │   # [Các module dành cho Phase tiếp theo]
-    ├── mini_games/                # Các trò chơi nhỏ Giáng Sinh
-    └── advent_calendar/           # Lịch mở quà 24 ngày
+    ├── mini_games/                # Trò chơi Giáng Sinh offline (Phase 5)
+    │   ├── data/
+    │   │   ├── mini_games_storage.dart
+    │   │   ├── shared_preferences_mini_games_storage.dart
+    │   │   └── memory_mini_games_storage.dart
+    │   ├── domain/
+    │   │   ├── models/
+    │   │   │   ├── mini_game_type.dart
+    │   │   │   ├── mini_game_record.dart
+    │   │   │   ├── memory_card.dart
+    │   │   │   ├── memory_match_state.dart
+    │   │   │   ├── falling_gift.dart
+    │   │   │   └── catch_gifts_state.dart
+    │   │   └── services/
+    │   │       ├── memory_match_engine.dart
+    │   │       └── catch_gifts_engine.dart
+    │   └── presentation/
+    │       ├── controllers/
+    │       │   ├── mini_games_controller.dart
+    │       │   ├── memory_match_controller.dart
+    │       │   └── catch_gifts_controller.dart
+    │       ├── screens/
+    │       │   ├── christmas_mini_games_screen.dart
+    │       │   ├── memory_match_screen.dart
+    │       │   └── catch_gifts_screen.dart
+    │       └── widgets/
+    │           ├── mini_game_hub_card.dart
+    │           ├── memory_card_widget.dart
+    │           └── catch_gift_target_widget.dart
+    │
+    └── advent_storybook/          # Cuốn sách Giáng Sinh 24 chương (Phase 5)
+        ├── data/
+        │   ├── advent_storage.dart
+        │   ├── shared_preferences_advent_storage.dart
+        │   └── memory_advent_storage.dart
+        ├── domain/
+        │   ├── models/
+        │   │   ├── advent_chapter_status.dart
+        │   │   ├── advent_chapter.dart
+        │   │   └── advent_storybook_state.dart
+        │   └── services/
+        │       ├── advent_unlock_rules.dart
+        │       └── advent_storybook_data.dart
+        └── presentation/
+            ├── controllers/
+            │   └── advent_storybook_controller.dart
+            ├── screens/
+            │   ├── advent_storybook_screen.dart
+            │   └── advent_chapter_reader_screen.dart
+            └── widgets/
+                ├── storybook_cover_header.dart
+                └── storybook_chapter_card.dart
 ```
 
 ---
@@ -155,7 +204,7 @@ lib/
     - Forest Green (`Color(0xFF1B4D3E)` - Deep Pine Green)
     - Gold Accent (`Color(0xFFD4AF37)` - Festive Warm Gold)
     - Snow White / Soft Snow / Subtle Tints
-  - **`app_strings.dart`:** Khai báo tập trung toàn bộ chuỗi ký tự, nhãn màn hình, thông điệp động theo thời gian, nhãn mô phỏng Santa Tracker và mô tả tính năng sắp ra mắt.
+  - **`app_strings.dart`:** Khai báo tập trung toàn bộ chuỗi ký tự, nhãn màn hình, thông điệp động theo thời gian, nhãn mô phỏng Santa Tracker, Ngôi Làng Bắc Cực, Trò Chơi Giáng Sinh và Advent Storybook.
   - **`app_theme.dart`:** Tích hợp `ThemeData` hoàn chỉnh sử dụng Material 3 (`useMaterial3: true`), áp dụng typography và colorScheme hài hòa.
   - **`app_dimensions.dart`:** Quy định các khoảng cách chuẩn (8, 16, 24, 32dp), bo góc chuẩn (8, 16, 24dp).
 
@@ -166,7 +215,7 @@ lib/
 ### 3.5. `lib/features/`
 - Mỗi thư mục con là một đơn vị tính năng độc lập:
   - **`welcome/`:** Màn hình giới thiệu tầm nhìn dự án, nguyên tắc bảo mật và nút chuyển tiếp sang Trang Chủ.
-  - **`home/`:** Màn hình trung tâm hiển thị preview đếm ngược thời gian thực, thẻ mở `SantaTrackerScreen` (`HomeSantaTrackerCard`), thẻ mở `NorthPoleVillageScreen` (`HomeVillageCard`) và khu vực giới thiệu 2 tính năng "Sắp ra mắt" còn lại.
+  - **`home/`:** Màn hình trung tâm hiển thị preview đếm ngược thời gian thực, thẻ mở `SantaTrackerScreen` (`HomeSantaTrackerCard`), thẻ mở `NorthPoleVillageScreen` (`HomeVillageCard`), thẻ mở `ChristmasMiniGamesScreen` (`HomeMiniGamesCard`) và thẻ mở `AdventStorybookScreen` (`HomeAdventStorybookCard`). Tất cả 4 thẻ đều gắn huy hiệu "Hoạt động".
   - **`countdown/`:** Tầng domain thuần Dart (`CountdownCalculator`, `CountdownState`, `CountdownMessageType`) tính toán ngày/giờ/phút/giây và thông điệp động; tầng presentation hiển thị các block thời gian responsive và card chúc mừng lễ hội.
   - **`santa_tracker/`:**
     - **Domain Layer:** `SantaStop` (dữ liệu điểm dừng với tọa độ chuẩn hóa `0.0..1.0`), `SantaJourneyStatus` (4 trạng thái hành trình), `SantaTrackerState` (trạng thái bất biến tính toán quà từ `completedStopIds`), `SantaRouteData` (12 điểm dừng vòng quanh thế giới) và `NetworkStatusProvider` (trừu tượng hóa trạng thái offline/online có thể mock).
@@ -175,7 +224,14 @@ lib/
     - **Data Layer:** `VillageStorage` (interface lưu trữ trạng thái), `SharedPreferencesVillageStorage` (adapter production sử dụng SharedPreferences), `MemoryVillageStorage` (adapter in-memory phục vụ unit/widget test).
     - **Domain Layer:** `VillageLocationType` (enum loại địa điểm), `VillageLocation` (entity địa điểm với tọa độ chuẩn hóa `0.0..1.0`), `VillageExplorationState` (trạng thái bất biến của tiến độ khám phá và địa điểm đang chọn), `NorthPoleVillageData` (dữ liệu cố định 8 địa điểm làng Bắc Cực).
     - **Presentation Layer:** `VillageController` (`ChangeNotifier` quản lý nạp/lưu trạng thái, chọn địa điểm, khám phá với tính lũy đẳng idempotency), `VillageMap` (bản đồ minh họa vẽ bằng `CustomPainter` kết hợp các Interactive Marker), `VillageLocationDetailSheet` (bottom sheet hiển thị chi tiết và nút khám phá), `VillageProgressHeader` (tiến độ khám phá và banner chúc mừng hoàn thành), `NorthPoleVillageScreen` (màn hình chính quản lý điều hướng và vòng đời controller).
-  - Các module `mini_games/`, `advent_calendar/` quy hoạch cho các Phase sau.
+  - **`mini_games/`:**
+    - **Data Layer:** `MiniGamesStorage`, `SharedPreferencesMiniGamesStorage`, `MemoryMiniGamesStorage`.
+    - **Domain Layer:** `MiniGameRecord` (thống kê số lần thắng, kỷ lục ít lượt nhất, điểm cao nhất, tổng quà), `MemoryMatchEngine` (engine thuần Dart quản lý 12 thẻ, lật, so khớp, đếm số lượt, phát hiện chiến thắng), `CatchGiftsEngine` (engine thuần Dart quản lý 30 giây đếm ngược, sinh hộp quà rơi trong khung an toàn `0.1..0.9`, phát hiện chạm trúng và game over chính xác ở 0s).
+    - **Presentation Layer:** `MiniGamesController` (quản lý thống kê thành tích toàn cục), `MemoryMatchController` (controller cho game lật thẻ với độ trễ khóa lật tự động), `CatchGiftsController` (controller cho game bắt quà với `Timer.periodic`), `ChristmasMiniGamesScreen` (hub trung tâm), `MemoryMatchScreen`, `CatchGiftsScreen`.
+  - **`advent_storybook/`:**
+    - **Data Layer:** `AdventStorage`, `SharedPreferencesAdventStorage`, `MemoryAdventStorage`.
+    - **Domain Layer:** `AdventChapter` (dữ liệu chương gồm ngày, tiêu đề, câu chuyện, danh ngôn, câu đố), `AdventStorybookState`, `AdventUnlockRules` (24 luật mở khóa minh bạch dựa trên thành tích 2 mini-games và số chương đã đọc), `AdventStorybookData` (24 chương Giáng Sinh độc bản đầy đủ).
+    - **Presentation Layer:** `AdventStorybookController` (quản lý trạng thái mở khóa, đánh dấu đã đọc idempotent, kết nối với `MiniGamesController`), `AdventStorybookScreen` (bố cục sách với bìa sách, tiến độ kép và 24 thẻ chương), `AdventChapterReaderScreen` (trình đọc nội dung và đánh dấu đã đọc).
 
 ---
 

@@ -219,7 +219,7 @@ void main() {
     });
 
     testWidgets(
-      '14-15. HomeScreen navigates to SantaTrackerScreen and keeps remaining 3 features as Coming Soon',
+      '14-15. HomeScreen navigates to SantaTrackerScreen and features are accessible',
       (WidgetTester tester) async {
         await tester.pumpWidget(
           MaterialApp(
@@ -229,10 +229,10 @@ void main() {
         );
         await tester.pumpAndSettle();
 
-        // 15. Verify remaining 2 features are still Coming Soon
+        // 15. Verify games and advent features are present on HomeScreen as active features
         expect(find.text(AppStrings.gamesFeatureTitle), findsOneWidget);
         expect(find.text(AppStrings.adventFeatureTitle), findsOneWidget);
-        expect(find.text(AppStrings.comingSoonBadge), findsNWidgets(2));
+        expect(find.text('Hoạt động'), findsNWidgets(4));
 
         // 14. Navigate to SantaTrackerScreen and back
         final openTrackerBtn = find.byKey(const Key('btn_open_santa_tracker'));

@@ -138,4 +138,68 @@ class AppStrings {
   static const String categoryPostOffice = 'Bưu điện';
   static const String categoryBakery = 'Tiệm bánh';
   static const String categoryNature = 'Thiên nhiên';
+
+  // Mini Games (Phase 5)
+  static const String miniGamesScreenTitle = 'Trò Chơi Giáng Sinh';
+  static const String miniGamesSubtitle =
+      'Hai trò chơi lễ hội vui nhộn, rèn luyện trí nhớ và phản xạ nhanh.';
+  static const String openMiniGamesButton = 'Chơi Trò Chơi';
+  static const String miniGamesActiveBadge = 'Hoạt động';
+  static const String playGameButton = 'Bắt Đầu Chơi';
+  static const String replayGameButton = 'Chơi Lại';
+  static const String gameCompletedBadge = 'Đã hoàn thành';
+
+  // Memory Match Game
+  static const String memoryMatchTitle = 'Lật Thẻ Giáng Sinh';
+  static const String memoryMatchDesc =
+      'Lật thẻ và tìm 6 cặp biểu tượng Giáng sinh giống nhau.';
+  static const String movesLabel = 'Lượt thử';
+  static const String pairsFoundLabel = 'Cặp đã tìm';
+  static const String bestMovesLabel = 'Kỷ lục ít lượt nhất';
+  static const String completedCountLabel = 'Số lần thắng';
+  static const String memoryMatchWinTitle = 'Tuyệt Vời! Bạn Đã Thắng!';
+  static const String memoryMatchWinMessage =
+      'Bạn đã tìm thấy tất cả các cặp thẻ Giáng Sinh!';
+
+  // Catch the Gifts Game
+  static const String catchGiftsTitle = 'Bắt Quà Giáng Sinh';
+  static const String catchGiftsDesc =
+      'Chạm nhanh vào những hộp quà xuất hiện trong 30 giây.';
+  static const String scoreLabel = 'Điểm số';
+  static const String highScoreLabel = 'Điểm cao nhất';
+  static const String timeRemainingLabel = 'Thời gian';
+  static const String totalGiftsLabel = 'Tổng quà đã bắt';
+  static const String secondsSuffix = 'giây';
+  static const String pointsSuffix = 'điểm';
+  static const String catchGiftsGameOverTitle = 'Hết Giờ Rồi!';
+  static const String catchGiftsGameOverMessage =
+      'Bạn đã hoàn thành lượt chơi Bắt Quà Giáng Sinh!';
+  static const String catchGiftsInstructions =
+      'Chạm vào những hộp quà xuất hiện trên màn hình để ghi điểm!';
+
+  // Advent Storybook (Phase 5)
+  static const String adventScreenTitle = 'Cuốn Sách Advent 24 Ngày';
+  static const String adventSubtitle =
+      'Mở khóa 24 câu chuyện, điều ước và câu đố Giáng sinh diệu kỳ.';
+  static const String openAdventButton = 'Đọc Cuốn Sách';
+  static const String adventActiveBadge = 'Hoạt động';
+  static const String adventChapterPrefix = 'Chương';
+  static const String adventDayPrefix = 'Ngày';
+  static const String adventUnlockedCountLabel = 'Đã mở khóa';
+  static const String adventReadCountLabel = 'Đã đọc';
+  static const String adventStatusLocked = 'Đang khóa';
+  static const String adventStatusUnlocked = 'Sẵn sàng đọc';
+  static const String adventStatusRead = 'Đã đọc';
+  static const String readChapterButton = 'Đọc Chương Này';
+  static const String markAsReadButton = 'Đã Đọc Xong';
+  static const String backToStorybookButton = 'Quay Lại Cuốn Sách';
+  static const String unlockConditionPrefix = 'Điều kiện mở khóa';
+  static const String chapterLockedMessage =
+      'Chương này đang bị khóa. Hãy hoàn thành nhiệm vụ để mở khóa!';
+  static const String festiveMessageTitle = 'Lời Chúc Lễ Hội';
+  static const String activityPromptTitle = 'Hoạt Động / Câu Đố Vui';
+  static const String allChaptersUnlockedBanner =
+      'Tuyệt vời! Bạn đã mở khóa toàn bộ 24 chương sách Advent!';
+  static const String allChaptersReadBanner =
+      'Chúc mừng! Bạn đã đọc trọn vẹn cuốn sách Advent 24 Ngày!';
 }

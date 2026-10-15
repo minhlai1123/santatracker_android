@@ -171,10 +171,10 @@ void main() {
           findsOneWidget,
         );
 
-        // 15. Only 2 remaining features in Coming Soon
+        // 15. All 4 features are active in Phase 5
         expect(find.text(AppStrings.gamesFeatureTitle), findsOneWidget);
         expect(find.text(AppStrings.adventFeatureTitle), findsOneWidget);
-        expect(find.text(AppStrings.comingSoonBadge), findsNWidgets(2));
+        expect(find.text('Hoạt động'), findsNWidgets(4));
 
         // 12. Open North Pole Village
         final openVillageBtn = find.byKey(const Key('btn_open_village'));

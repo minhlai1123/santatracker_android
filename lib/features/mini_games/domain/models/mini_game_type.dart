@@ -1,0 +1,1 @@
+enum MiniGameType { memoryMatch, catchGifts }

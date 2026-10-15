@@ -55,6 +55,21 @@ void main() {
       expect(AppStrings.locationStatusUndiscovered, equals('Chưa khám phá'));
       expect(AppStrings.discoverLocationButton, isNotEmpty);
       expect(AppStrings.selectLocationHint, isNotEmpty);
+
+      // Phase 5 strings
+      expect(AppStrings.miniGamesScreenTitle, isNotEmpty);
+      expect(AppStrings.miniGamesSubtitle, isNotEmpty);
+      expect(AppStrings.openMiniGamesButton, isNotEmpty);
+      expect(AppStrings.miniGamesActiveBadge, equals('Hoạt động'));
+      expect(AppStrings.memoryMatchTitle, isNotEmpty);
+      expect(AppStrings.catchGiftsTitle, isNotEmpty);
+      expect(AppStrings.adventScreenTitle, isNotEmpty);
+      expect(AppStrings.adventSubtitle, isNotEmpty);
+      expect(AppStrings.openAdventButton, isNotEmpty);
+      expect(AppStrings.adventActiveBadge, equals('Hoạt động'));
+      expect(AppStrings.adventStatusLocked, isNotEmpty);
+      expect(AppStrings.adventStatusUnlocked, isNotEmpty);
+      expect(AppStrings.adventStatusRead, isNotEmpty);
     });
 
     test(

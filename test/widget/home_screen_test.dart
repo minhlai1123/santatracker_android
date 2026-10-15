@@ -36,21 +36,20 @@ void main() {
       expect(find.text(AppStrings.minutesLabel), findsOneWidget);
       expect(find.text(AppStrings.secondsLabel), findsOneWidget);
 
-      // Active Santa Tracker card (Phase 3) & Village card (Phase 4)
+      // Active feature cards (Phase 3, 4, 5)
       expect(find.text(AppStrings.trackerFeatureTitle), findsOneWidget);
-      expect(find.text(AppStrings.santaTrackerActiveBadge), findsNWidgets(2));
-      expect(find.text(AppStrings.openSantaTrackerButton), findsOneWidget);
-
-      // Active North Pole Village card (Phase 4)
       expect(find.text(AppStrings.villageFeatureTitle), findsOneWidget);
-      expect(find.text(AppStrings.openVillageButton), findsOneWidget);
-
-      // Coming soon section (2 remaining features)
-      expect(find.text(AppStrings.comingSoonTitle), findsOneWidget);
-      expect(find.text(AppStrings.comingSoonSubtitle), findsOneWidget);
       expect(find.text(AppStrings.gamesFeatureTitle), findsOneWidget);
       expect(find.text(AppStrings.adventFeatureTitle), findsOneWidget);
-      expect(find.text(AppStrings.comingSoonBadge), findsNWidgets(2));
+
+      // All 4 feature cards have "Hoạt động" active badge
+      expect(find.text('Hoạt động'), findsNWidgets(4));
+
+      // Open buttons for all features
+      expect(find.text(AppStrings.openSantaTrackerButton), findsOneWidget);
+      expect(find.text(AppStrings.openVillageButton), findsOneWidget);
+      expect(find.text(AppStrings.openMiniGamesButton), findsOneWidget);
+      expect(find.text(AppStrings.openAdventButton), findsOneWidget);
 
       // About button & holiday greeting
       expect(find.text(AppStrings.aboutAppButton), findsAtLeastNWidgets(1));
@@ -139,6 +138,66 @@ void main() {
 
         // Verify back on HomeScreen
         expect(find.byKey(const Key('btn_open_village')), findsOneWidget);
+      },
+    );
+
+    testWidgets(
+      'navigates to ChristmasMiniGamesScreen and returns to HomeScreen',
+      (WidgetTester tester) async {
+        await tester.pumpWidget(buildTestableWidget());
+        await tester.pumpAndSettle();
+
+        // Tap "Chơi Trò Chơi"
+        final openGamesBtn = find.byKey(const Key('btn_open_mini_games'));
+        expect(openGamesBtn, findsOneWidget);
+        await tester.ensureVisible(openGamesBtn);
+        await tester.tap(openGamesBtn);
+        await tester.pumpAndSettle();
+
+        // Verify on ChristmasMiniGamesScreen
+        expect(
+          find.text(AppStrings.miniGamesScreenTitle),
+          findsAtLeastNWidgets(1),
+        );
+
+        // Tap back
+        final backBtn = find.byType(BackButton);
+        expect(backBtn, findsOneWidget);
+        await tester.tap(backBtn);
+        await tester.pumpAndSettle();
+
+        // Verify back on HomeScreen
+        expect(find.byKey(const Key('btn_open_mini_games')), findsOneWidget);
+      },
+    );
+
+    testWidgets(
+      'navigates to AdventStorybookScreen and returns to HomeScreen',
+      (WidgetTester tester) async {
+        await tester.pumpWidget(buildTestableWidget());
+        await tester.pumpAndSettle();
+
+        // Tap "Đọc Cuốn Sách"
+        final openAdventBtn = find.byKey(const Key('btn_open_advent'));
+        expect(openAdventBtn, findsOneWidget);
+        await tester.ensureVisible(openAdventBtn);
+        await tester.tap(openAdventBtn);
+        await tester.pumpAndSettle();
+
+        // Verify on AdventStorybookScreen
+        expect(
+          find.text(AppStrings.adventScreenTitle),
+          findsAtLeastNWidgets(1),
+        );
+
+        // Tap back
+        final backBtn = find.byType(BackButton);
+        expect(backBtn, findsOneWidget);
+        await tester.tap(backBtn);
+        await tester.pumpAndSettle();
+
+        // Verify back on HomeScreen
+        expect(find.byKey(const Key('btn_open_advent')), findsOneWidget);
       },
     );
 
