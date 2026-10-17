@@ -3,6 +3,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:chrimastsatastracker/features/advent_storybook/data/shared_preferences_advent_storage.dart';
 import 'package:chrimastsatastracker/features/advent_storybook/presentation/controllers/advent_storybook_controller.dart';
 import 'package:chrimastsatastracker/features/mini_games/data/memory_mini_games_storage.dart';
+import 'package:chrimastsatastracker/features/mini_games/data/shared_preferences_mini_games_storage.dart';
 import 'package:chrimastsatastracker/features/mini_games/presentation/controllers/mini_games_controller.dart';
 
 void main() {
@@ -78,6 +79,85 @@ void main() {
         controller2.state.isChapterUnlocked(4),
         isTrue,
       ); // Chapter 4 was unlocked by reading Chapter 1!
+    });
+
+    test('4. Cross-feature persistence: SharedPreferences across MiniGames and Advent Storybook', () async {
+      const gamesStorage = SharedPreferencesMiniGamesStorage();
+      const adventStorage = SharedPreferencesAdventStorage();
+
+      // 1. First session: Play games and earn milestones
+      final gamesController1 = MiniGamesController(storage: gamesStorage);
+      await gamesController1.initialize();
+      await gamesController1.recordMemoryMatchWin(14);
+      await gamesController1.recordCatchGiftsGameOver(
+        score: 45,
+        giftsCaught: 25,
+      );
+
+      // Open Advent Storybook in session 1
+      final adventController1 = AdventStorybookController(
+        storage: adventStorage,
+        gamesController: gamesController1,
+      );
+      await adventController1.initialize();
+
+      // Verify milestones unlocked
+      expect(adventController1.state.isChapterUnlocked(1), isTrue); // default
+      expect(
+        adventController1.state.isChapterUnlocked(2),
+        isTrue,
+      ); // Memory win >= 1
+      expect(
+        adventController1.state.isChapterUnlocked(3),
+        isTrue,
+      ); // Catch completions >= 1
+      expect(
+        adventController1.state.isChapterUnlocked(5),
+        isTrue,
+      ); // High score >= 10
+      expect(
+        adventController1.state.isChapterUnlocked(6),
+        isTrue,
+      ); // Best moves <= 18 (14)
+      expect(
+        adventController1.state.isChapterUnlocked(7),
+        isTrue,
+      ); // Total gifts >= 15 (25)
+      expect(
+        adventController1.state.isChapterUnlocked(10),
+        isTrue,
+      ); // High score >= 20 (45)
+
+      // Read Chapter 1
+      await adventController1.markChapterAsRead(1);
+      expect(adventController1.state.isChapterRead(1), isTrue);
+      expect(
+        adventController1.state.isChapterUnlocked(4),
+        isTrue,
+      ); // unlocked by reading Ch 1
+
+      // 2. Simulate complete app restart: dispose and create fresh controllers
+      adventController1.dispose();
+      gamesController1.dispose();
+
+      final gamesController2 = MiniGamesController(storage: gamesStorage);
+      await gamesController2.initialize();
+
+      final adventController2 = AdventStorybookController(
+        storage: adventStorage,
+        gamesController: gamesController2,
+      );
+      await adventController2.initialize();
+
+      // Verify complete restoration across both domains
+      expect(gamesController2.record.memoryMatchCompletions, equals(1));
+      expect(gamesController2.record.memoryMatchBestMoves, equals(14));
+      expect(gamesController2.record.catchGiftsHighScore, equals(45));
+      expect(gamesController2.record.catchGiftsTotalGifts, equals(25));
+
+      expect(adventController2.state.isChapterRead(1), isTrue);
+      expect(adventController2.state.isChapterUnlocked(4), isTrue);
+      expect(adventController2.state.isChapterUnlocked(10), isTrue);
     });
   });
 }
