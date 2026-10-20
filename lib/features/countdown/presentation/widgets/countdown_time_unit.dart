@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../../../../core/constants/app_dimensions.dart';
 import '../../../../core/theme/app_colors.dart';
+import '../../../../core/theme/christmas_typography.dart';
 
 class CountdownTimeUnit extends StatelessWidget {
   final String value;
@@ -23,19 +24,33 @@ class CountdownTimeUnit extends StatelessWidget {
         vertical: AppDimensions.spaceMD,
       ),
       decoration: BoxDecoration(
-        color: isHighlight ? AppColors.redTint : AppColors.surfaceLight,
+        gradient: LinearGradient(
+          colors: isHighlight
+              ? [const Color(0xFFFFF5F5), const Color(0xFFFEE8E8)]
+              : [const Color(0xFFFFFFFF), const Color(0xFFF6F9FD)],
+          begin: Alignment.topCenter,
+          end: Alignment.bottomCenter,
+        ),
         borderRadius: BorderRadius.circular(AppDimensions.radiusMD),
         border: Border.all(
           color: isHighlight
-              ? AppColors.christmasRed.withAlpha(80)
-              : AppColors.cardBorder,
+              ? AppColors.christmasRed.withAlpha(120)
+              : AppColors.warmGold.withAlpha(80),
           width: 1.5,
         ),
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withAlpha(6),
+            color: isHighlight
+                ? AppColors.christmasRed.withAlpha(25)
+                : const Color(0xFF0F1E36).withAlpha(14),
             blurRadius: 10,
-            offset: const Offset(0, 3),
+            offset: const Offset(0, 4),
+          ),
+          const BoxShadow(
+            color: Colors.white,
+            blurRadius: 1,
+            spreadRadius: 1,
+            offset: Offset(0, -1),
           ),
         ],
       ),
@@ -47,14 +62,19 @@ class CountdownTimeUnit extends StatelessWidget {
             child: Text(
               value,
               textAlign: TextAlign.center,
-              style: TextStyle(
-                fontSize: 28,
-                fontWeight: FontWeight.w800,
+              style: ChristmasTypography.countdownDigit.copyWith(
                 color: isHighlight
                     ? AppColors.christmasRed
                     : AppColors.textPrimary,
-                height: 1.1,
-                letterSpacing: 0.5,
+                fontWeight: FontWeight.w900,
+                shadows: [
+                  Shadow(
+                    color: (isHighlight ? AppColors.christmasRed : Colors.black)
+                        .withAlpha(30),
+                    blurRadius: 2,
+                    offset: const Offset(0, 1),
+                  ),
+                ],
               ),
             ),
           ),
@@ -62,11 +82,11 @@ class CountdownTimeUnit extends StatelessWidget {
           Text(
             label,
             textAlign: TextAlign.center,
-            style: const TextStyle(
-              fontSize: 12,
-              fontWeight: FontWeight.w600,
-              color: AppColors.textSecondary,
-              letterSpacing: 0.3,
+            style: ChristmasTypography.badgeLabel.copyWith(
+              color: isHighlight
+                  ? AppColors.christmasRed
+                  : AppColors.textSecondary,
+              fontWeight: FontWeight.w700,
             ),
           ),
         ],

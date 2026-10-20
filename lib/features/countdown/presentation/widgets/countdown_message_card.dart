@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import '../../../../core/constants/app_dimensions.dart';
 import '../../../../core/constants/app_strings.dart';
 import '../../../../core/theme/app_colors.dart';
+import '../../../../core/theme/christmas_typography.dart';
 import '../../domain/models/countdown_message_type.dart';
 import '../../domain/models/countdown_state.dart';
 
@@ -78,22 +79,19 @@ class CountdownMessageCard extends StatelessWidget {
                 color: AppColors.christmasRed,
                 borderRadius: BorderRadius.circular(AppDimensions.radiusPill),
               ),
-              child: const Row(
+              child: Row(
                 mainAxisSize: MainAxisSize.min,
                 children: [
-                  Icon(
+                  const Icon(
                     Icons.star_rounded,
                     size: AppDimensions.iconSizeSM,
                     color: AppColors.warmGold,
                   ),
-                  SizedBox(width: AppDimensions.spaceXS),
+                  const SizedBox(width: AppDimensions.spaceXS),
                   Text(
                     AppStrings.christmasDayBadge,
-                    style: TextStyle(
-                      fontSize: 12,
-                      fontWeight: FontWeight.w700,
+                    style: ChristmasTypography.badgeLabel.copyWith(
                       color: AppColors.snowWhite,
-                      letterSpacing: 0.2,
                     ),
                   ),
                 ],
@@ -120,11 +118,8 @@ class CountdownMessageCard extends StatelessWidget {
               Expanded(
                 child: Text(
                   state.message,
-                  style: const TextStyle(
-                    fontSize: 15,
+                  style: ChristmasTypography.bodyLarge.copyWith(
                     fontWeight: FontWeight.w600,
-                    color: AppColors.textPrimary,
-                    height: 1.45,
                   ),
                 ),
               ),

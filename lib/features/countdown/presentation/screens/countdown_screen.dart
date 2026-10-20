@@ -5,6 +5,8 @@ import 'package:flutter/material.dart';
 import '../../../../core/constants/app_dimensions.dart';
 import '../../../../core/constants/app_strings.dart';
 import '../../../../core/theme/app_colors.dart';
+import '../../../../core/theme/christmas_typography.dart';
+import '../../../../shared/widgets/christmas_background.dart';
 import '../../../../shared/widgets/festive_button.dart';
 import '../../../welcome/presentation/widgets/festive_badge.dart';
 import '../../domain/models/countdown_state.dart';
@@ -84,46 +86,50 @@ class _CountdownScreenState extends State<CountdownScreen>
           },
         ),
       ),
-      body: SafeArea(
-        child: Center(
-          child: SingleChildScrollView(
-            padding: const EdgeInsets.symmetric(
-              horizontal: AppDimensions.spaceLG,
-              vertical: AppDimensions.spaceLG,
-            ),
-            child: ConstrainedBox(
-              constraints: const BoxConstraints(maxWidth: 540),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.stretch,
-                children: [
-                  _buildHeader(targetYear),
-                  const SizedBox(height: AppDimensions.spaceXL),
-                  CountdownDisplay(state: _state),
-                  const SizedBox(height: AppDimensions.spaceXL),
-                  CountdownMessageCard(state: _state),
-                  const SizedBox(height: AppDimensions.spaceXL),
-                  FestiveButton(
-                    label: AppStrings.backToHomeButton,
-                    icon: Icons.home_rounded,
-                    style: FestiveButtonStyle.outlined,
-                    isExpanded: true,
-                    onPressed: () {
-                      Navigator.of(context).maybePop();
-                    },
-                  ),
-                  const SizedBox(height: AppDimensions.spaceXL),
-                  const Text(
-                    AppStrings.holidayGreeting,
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                      fontSize: 13,
-                      fontWeight: FontWeight.w600,
-                      color: AppColors.textMuted,
-                      letterSpacing: 0.3,
+      body: ChristmasBackground(
+        isDarkTheme: false,
+        showSnowfall: true,
+        child: SafeArea(
+          child: Center(
+            child: SingleChildScrollView(
+              padding: const EdgeInsets.symmetric(
+                horizontal: AppDimensions.spaceLG,
+                vertical: AppDimensions.spaceLG,
+              ),
+              child: ConstrainedBox(
+                constraints: const BoxConstraints(maxWidth: 540),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  children: [
+                    _buildHeader(targetYear),
+                    const SizedBox(height: AppDimensions.spaceXL),
+                    CountdownDisplay(state: _state),
+                    const SizedBox(height: AppDimensions.spaceXL),
+                    CountdownMessageCard(state: _state),
+                    const SizedBox(height: AppDimensions.spaceXL),
+                    FestiveButton(
+                      label: AppStrings.backToHomeButton,
+                      icon: Icons.home_rounded,
+                      style: FestiveButtonStyle.outlined,
+                      isExpanded: true,
+                      onPressed: () {
+                        Navigator.of(context).maybePop();
+                      },
                     ),
-                  ),
-                ],
+                    const SizedBox(height: AppDimensions.spaceXL),
+                    const Text(
+                      AppStrings.holidayGreeting,
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        fontSize: 13,
+                        fontWeight: FontWeight.w600,
+                        color: AppColors.textMuted,
+                        letterSpacing: 0.3,
+                      ),
+                    ),
+                  ],
+                ),
               ),
             ),
           ),
@@ -161,11 +167,8 @@ class _CountdownScreenState extends State<CountdownScreen>
         Text(
           '${AppStrings.nextChristmasPrefix}$targetYear',
           textAlign: TextAlign.center,
-          style: const TextStyle(
-            fontSize: 20,
-            fontWeight: FontWeight.w700,
-            color: AppColors.textPrimary,
-            letterSpacing: 0.3,
+          style: ChristmasTypography.titleLarge.copyWith(
+            color: AppColors.christmasRed,
           ),
         ),
         const SizedBox(height: AppDimensions.spaceSM),

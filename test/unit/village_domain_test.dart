@@ -89,7 +89,7 @@ void main() {
       expect(controller.state.selectedLocationId, isNull);
       expect(
         controller.state.progressDisplay,
-        equals('0 / ${locations.length} địa điểm'),
+        equals('0 / ${locations.length} locations'),
       );
     });
 
@@ -101,7 +101,7 @@ void main() {
         expect(controller.state.selectedLocation, isNotNull);
         expect(
           controller.state.selectedLocation!.name,
-          equals('Quảng Trường Lễ Hội'),
+          equals('Holiday Plaza'),
         );
 
         // Deselect

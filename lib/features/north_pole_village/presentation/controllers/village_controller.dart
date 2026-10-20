@@ -43,7 +43,7 @@ class VillageController extends ChangeNotifier {
       if (_isDisposed) return;
       _state = _state.copyWith(
         isLoading: false,
-        errorMessage: () => 'Không thể tải dữ liệu đã khám phá',
+        errorMessage: () => 'Failed to load discovery data',
       );
     }
     notifyListeners();
@@ -86,7 +86,7 @@ class VillageController extends ChangeNotifier {
         return true;
       } else {
         _state = _state.copyWith(
-          errorMessage: () => 'Không thể lưu trạng thái khám phá',
+          errorMessage: () => 'Failed to save discovery progress',
         );
         notifyListeners();
         return false;
@@ -94,7 +94,7 @@ class VillageController extends ChangeNotifier {
     } catch (_) {
       if (_isDisposed) return false;
       _state = _state.copyWith(
-        errorMessage: () => 'Không thể lưu trạng thái khám phá',
+        errorMessage: () => 'Failed to save discovery progress',
       );
       notifyListeners();
       return false;

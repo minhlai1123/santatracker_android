@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 
 import '../../core/constants/app_dimensions.dart';
+import '../../core/services/christmas_audio_service.dart';
 import '../../core/theme/app_colors.dart';
+import '../../core/theme/christmas_typography.dart';
 
 enum FestiveButtonStyle { primary, secondary, outlined }
 
@@ -56,10 +58,8 @@ class FestiveButton extends StatelessWidget {
         Flexible(
           child: Text(
             label,
-            style: const TextStyle(
-              fontSize: 15,
-              fontWeight: FontWeight.w700,
-              letterSpacing: 0.3,
+            style: ChristmasTypography.buttonLabel.copyWith(
+              color: foregroundColor,
             ),
             overflow: TextOverflow.ellipsis,
             textAlign: TextAlign.center,
@@ -72,7 +72,12 @@ class FestiveButton extends StatelessWidget {
       height: 50,
       width: isExpanded ? double.infinity : null,
       child: ElevatedButton(
-        onPressed: onPressed,
+        onPressed: onPressed == null
+            ? null
+            : () {
+                ChristmasAudioService.playButtonClick();
+                onPressed!();
+              },
         style: ElevatedButton.styleFrom(
           backgroundColor: backgroundColor,
           foregroundColor: foregroundColor,

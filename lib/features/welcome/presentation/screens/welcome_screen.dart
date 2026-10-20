@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import '../../../../core/constants/app_dimensions.dart';
 import '../../../../core/constants/app_strings.dart';
 import '../../../../core/theme/app_colors.dart';
+import '../../../../core/theme/christmas_typography.dart';
+import '../../../../shared/widgets/christmas_background.dart';
 import '../../../../shared/widgets/festive_button.dart';
 import '../../../home/presentation/screens/home_screen.dart';
 import '../widgets/festive_badge.dart';
@@ -14,44 +16,50 @@ class WelcomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SafeArea(
-        child: Center(
-          child: SingleChildScrollView(
-            padding: const EdgeInsets.symmetric(
-              horizontal: AppDimensions.spaceLG,
-              vertical: AppDimensions.spaceXL,
-            ),
-            child: ConstrainedBox(
-              constraints: const BoxConstraints(maxWidth: 480),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.stretch,
-                children: [
-                  const WelcomeHeader(),
-                  const SizedBox(height: AppDimensions.spaceXL),
-                  _buildIntroCard(),
-                  const SizedBox(height: AppDimensions.spaceMD),
-                  _buildFoundationStatusCard(),
-                  const SizedBox(height: AppDimensions.spaceLG),
-                  _buildBadgesSection(),
-                  const SizedBox(height: AppDimensions.spaceXL),
-                  FestiveButton(
-                    label: AppStrings.enterHomeButton,
-                    icon: Icons.arrow_forward_rounded,
-                    isExpanded: true,
-                    onPressed: () {
-                      if (Navigator.of(context).canPop()) {
-                        Navigator.of(context).pop();
-                      } else {
-                        Navigator.of(context).pushReplacement(
-                          MaterialPageRoute(builder: (_) => const HomeScreen()),
-                        );
-                      }
-                    },
-                  ),
-                  const SizedBox(height: AppDimensions.spaceXL),
-                  _buildFooterGreeting(),
-                ],
+      body: ChristmasBackground(
+        isDarkTheme: false,
+        showSnowfall: true,
+        child: SafeArea(
+          child: Center(
+            child: SingleChildScrollView(
+              padding: const EdgeInsets.symmetric(
+                horizontal: AppDimensions.spaceLG,
+                vertical: AppDimensions.spaceXL,
+              ),
+              child: ConstrainedBox(
+                constraints: const BoxConstraints(maxWidth: 480),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  children: [
+                    const WelcomeHeader(),
+                    const SizedBox(height: AppDimensions.spaceXL),
+                    _buildIntroCard(),
+                    const SizedBox(height: AppDimensions.spaceMD),
+                    _buildFoundationStatusCard(),
+                    const SizedBox(height: AppDimensions.spaceLG),
+                    _buildBadgesSection(),
+                    const SizedBox(height: AppDimensions.spaceXL),
+                    FestiveButton(
+                      label: AppStrings.enterHomeButton,
+                      icon: Icons.arrow_forward_rounded,
+                      isExpanded: true,
+                      onPressed: () {
+                        if (Navigator.of(context).canPop()) {
+                          Navigator.of(context).pop();
+                        } else {
+                          Navigator.of(context).pushReplacement(
+                            MaterialPageRoute(
+                              builder: (_) => const HomeScreen(),
+                            ),
+                          );
+                        }
+                      },
+                    ),
+                    const SizedBox(height: AppDimensions.spaceXL),
+                    _buildFooterGreeting(),
+                  ],
+                ),
               ),
             ),
           ),
@@ -77,21 +85,18 @@ class WelcomeScreen extends StatelessWidget {
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
-        children: const [
+        children: [
           Text(
             AppStrings.welcomeTitle,
-            style: TextStyle(
+            style: ChristmasTypography.titleMedium.copyWith(
               fontSize: 18,
-              fontWeight: FontWeight.w700,
-              color: AppColors.textPrimary,
-              height: 1.3,
+              color: AppColors.christmasRed,
             ),
           ),
-          SizedBox(height: AppDimensions.spaceSM),
+          const SizedBox(height: AppDimensions.spaceSM),
           Text(
             AppStrings.welcomeSubtitle,
-            style: TextStyle(
-              fontSize: 14,
+            style: ChristmasTypography.bodyMedium.copyWith(
               color: AppColors.textSecondary,
               height: 1.5,
             ),

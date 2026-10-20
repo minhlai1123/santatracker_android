@@ -84,7 +84,7 @@ class VillageMap extends StatelessWidget {
             child: Semantics(
               button: true,
               label:
-                  'Địa điểm ${loc.name}. ${isDiscovered ? 'Đã khám phá' : 'Chưa khám phá'}',
+                  'Location ${loc.name}. ${isDiscovered ? 'Discovered' : 'Undiscovered'}',
               child: SizedBox(
                 width: 44,
                 height: 44,

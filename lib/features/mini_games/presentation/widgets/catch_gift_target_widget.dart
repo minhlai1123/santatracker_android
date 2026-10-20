@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../../../core/constants/app_dimensions.dart';
+import '../../../../core/services/christmas_audio_service.dart';
 import '../../../../core/theme/app_colors.dart';
 import '../../domain/models/falling_gift.dart';
 
@@ -34,10 +35,13 @@ class CatchGiftTargetWidget extends StatelessWidget {
 
     return Semantics(
       button: true,
-      label: 'Hộp quà ${gift.points} điểm',
+      label: 'Gift box ${gift.points} pts',
       child: GestureDetector(
         behavior: HitTestBehavior.opaque,
-        onTap: onTap,
+        onTap: () {
+          ChristmasAudioService.playGiftPop();
+          onTap();
+        },
         child: Container(
           width: 56,
           height: 56,

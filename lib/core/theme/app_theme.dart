@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'app_colors.dart';
+import 'christmas_typography.dart';
 
 class AppTheme {
   const AppTheme._();
@@ -11,6 +12,9 @@ class AppTheme {
       brightness: Brightness.light,
       primaryColor: AppColors.christmasRed,
       scaffoldBackgroundColor: AppColors.backgroundLight,
+      fontFamily: ChristmasTypography.fontFamilyBody,
+      fontFamilyFallback: ChristmasTypography.fallbackFonts,
+      textTheme: ChristmasTypography.buildTextTheme(),
       colorScheme: ColorScheme.fromSeed(
         seedColor: AppColors.christmasRed,
         primary: AppColors.christmasRed,
@@ -24,12 +28,7 @@ class AppTheme {
         elevation: 0,
         centerTitle: true,
         iconTheme: IconThemeData(color: AppColors.textPrimary),
-        titleTextStyle: TextStyle(
-          color: AppColors.textPrimary,
-          fontSize: 20,
-          fontWeight: FontWeight.w700,
-          letterSpacing: 0.3,
-        ),
+        titleTextStyle: ChristmasTypography.titleLarge,
       ),
       cardTheme: const CardThemeData(
         color: AppColors.surfaceLight,

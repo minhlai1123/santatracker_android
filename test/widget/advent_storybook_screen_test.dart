@@ -46,7 +46,7 @@ void main() {
       // Chapter 1 is unlocked
       expect(find.byKey(const Key('chapter_card_1')), findsOneWidget);
       expect(
-        find.text('${AppStrings.adventDayPrefix} 1: Món Quà Khởi Đầu'),
+        find.text('${AppStrings.adventDayPrefix} 1: The First Gift'),
         findsOneWidget,
       );
       expect(find.text(AppStrings.adventStatusUnlocked), findsOneWidget);
@@ -72,9 +72,7 @@ void main() {
       expect(
         find.descendant(
           of: find.byType(SnackBar),
-          matching: find.textContaining(
-            'Chiến thắng trò chơi Lật Thẻ Giáng Sinh',
-          ),
+          matching: find.textContaining('Win the Holiday Memory Match'),
         ),
         findsOneWidget,
       );
@@ -104,7 +102,7 @@ void main() {
         await tester.pumpAndSettle();
 
         // Verify on AdventChapterReaderScreen
-        expect(find.text('Món Quà Khởi Đầu'), findsOneWidget);
+        expect(find.text('The First Gift'), findsOneWidget);
         expect(find.text(AppStrings.festiveMessageTitle), findsOneWidget);
         expect(find.text(AppStrings.activityPromptTitle), findsOneWidget);
 

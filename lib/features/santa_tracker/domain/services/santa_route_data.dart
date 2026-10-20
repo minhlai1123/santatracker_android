@@ -6,9 +6,9 @@ class SantaRouteData {
   static const List<SantaStop> defaultStops = [
     SantaStop(
       id: 'north_pole',
-      name: 'Bắc Cực',
-      region: 'Bắc Băng Dương',
-      description: 'Xưởng quà Giáng Sinh — điểm khởi hành của Ông Già Noel và đàn tuần lộc.',
+      name: 'North Pole',
+      region: 'Arctic Ocean',
+      description: 'Christmas Workshop — departure point for Santa Claus and his team of magical reindeer.',
       normalizedX: 0.50,
       normalizedY: 0.11,
       giftsToDeliver: 0,
@@ -19,8 +19,7 @@ class SantaRouteData {
       id: 'auckland',
       name: 'Auckland',
       region: 'New Zealand',
-      description:
-          'Điểm dừng chân đầu tiên đón đêm Giáng Sinh tại Nam Bán Cầu.',
+      description: 'First major stop celebrating Christmas Eve in the Southern Hemisphere.',
       normalizedX: 0.91,
       normalizedY: 0.82,
       giftsToDeliver: 180000,
@@ -30,8 +29,9 @@ class SantaRouteData {
     SantaStop(
       id: 'sydney',
       name: 'Sydney',
-      region: 'Úc',
-      description: 'Cảng Sydney rực rỡ ánh đèn lễ hội mùa hè.',
+      region: 'Australia',
+      description:
+          'Sydney Harbour glowing brightly with festive summer lights.',
       normalizedX: 0.84,
       normalizedY: 0.75,
       giftsToDeliver: 320000,
@@ -41,8 +41,9 @@ class SantaRouteData {
     SantaStop(
       id: 'tokyo',
       name: 'Tokyo',
-      region: 'Nhật Bản',
-      description: 'Những tòa tháp lung linh sắc màu Giáng Sinh tại Đông Á.',
+      region: 'Japan',
+      description:
+          'Towers glistening in vibrant Christmas colors across East Asia.',
       normalizedX: 0.85,
       normalizedY: 0.38,
       giftsToDeliver: 540000,
@@ -52,8 +53,9 @@ class SantaRouteData {
     SantaStop(
       id: 'seoul',
       name: 'Seoul',
-      region: 'Hàn Quốc',
-      description: 'Tuyết rơi nhẹ trên những mái nhà cổ kính và hiện đại.',
+      region: 'South Korea',
+      description:
+          'Soft snow falling over historic palaces and modern skylines.',
       normalizedX: 0.79,
       normalizedY: 0.36,
       giftsToDeliver: 410000,
@@ -62,10 +64,10 @@ class SantaRouteData {
     ),
     SantaStop(
       id: 'hanoi',
-      name: 'Hà Nội',
-      region: 'Việt Nam',
+      name: 'Hanoi',
+      region: 'Vietnam',
       description:
-          'Không khí Giáng Sinh ấm áp quanh phố phường ngàn năm văn hiến.',
+          'Warm festive atmosphere filling centuries-old historic streets.',
       normalizedX: 0.74,
       normalizedY: 0.49,
       giftsToDeliver: 480000,
@@ -75,9 +77,8 @@ class SantaRouteData {
     SantaStop(
       id: 'new_delhi',
       name: 'New Delhi',
-      region: 'Ấn Độ',
-      description:
-          'Hành trình băng qua Nam Á với hàng trăm nghìn phần quà nhỏ.',
+      region: 'India',
+      description: 'Journeying across South Asia delivering hundreds of thousands of gifts.',
       normalizedX: 0.66,
       normalizedY: 0.45,
       giftsToDeliver: 620000,
@@ -87,9 +88,8 @@ class SantaRouteData {
     SantaStop(
       id: 'cairo',
       name: 'Cairo',
-      region: 'Ai Cập',
-      description:
-          'Đoàn xe trượt tuyết bay ngang qua dòng sông Nile và kim tự tháp.',
+      region: 'Egypt',
+      description: 'Sleigh soaring above the Nile River and ancient pyramids.',
       normalizedX: 0.55,
       normalizedY: 0.44,
       giftsToDeliver: 390000,
@@ -99,8 +99,9 @@ class SantaRouteData {
     SantaStop(
       id: 'paris',
       name: 'Paris',
-      region: 'Pháp',
-      description: 'Kinh đô ánh sáng ngập tràn giai điệu Giáng Sinh châu Âu.',
+      region: 'France',
+      description:
+          'City of Lights echoing with classic European Christmas carols.',
       normalizedX: 0.49,
       normalizedY: 0.32,
       giftsToDeliver: 510000,
@@ -110,8 +111,8 @@ class SantaRouteData {
     SantaStop(
       id: 'london',
       name: 'London',
-      region: 'Vương Quốc Anh',
-      description: 'Tháp đồng hồ Big Ben ngân vang đón chào cỗ xe tuần lộc.',
+      region: 'United Kingdom',
+      description: 'Big Ben chimes ringing out to welcome the flying reindeer.',
       normalizedX: 0.45,
       normalizedY: 0.27,
       giftsToDeliver: 490000,
@@ -121,8 +122,8 @@ class SantaRouteData {
     SantaStop(
       id: 'new_york',
       name: 'New York',
-      region: 'Hoa Kỳ',
-      description: 'Cây thông lớn tỏa sáng giữa màn đêm mùa đông Bắc Mỹ.',
+      region: 'United States',
+      description: 'The giant Christmas tree illuminating the winter night in North America.',
       normalizedX: 0.26,
       normalizedY: 0.35,
       giftsToDeliver: 680000,
@@ -133,7 +134,8 @@ class SantaRouteData {
       id: 'rio_de_janeiro',
       name: 'Rio de Janeiro',
       region: 'Brazil',
-      description: 'Điểm dừng cuối cùng khép lại hành trình phát quà vòng quanh thế giới.',
+      description:
+          'Final stop concluding the global Christmas gift-giving voyage.',
       normalizedX: 0.34,
       normalizedY: 0.70,
       giftsToDeliver: 450000,

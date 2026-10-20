@@ -3,6 +3,7 @@ import 'dart:math';
 
 import 'package:flutter/foundation.dart';
 
+import '../../../../core/services/christmas_audio_service.dart';
 import '../../domain/models/memory_match_state.dart';
 import '../../domain/services/memory_match_engine.dart';
 import 'mini_games_controller.dart';
@@ -34,8 +35,13 @@ class MemoryMatchController extends ChangeNotifier {
     final nextState = MemoryMatchEngine.flipCard(_state, index);
     if (nextState == _state) return;
 
+    final wasMatchedCount = _state.matchedPairCount;
     _state = nextState;
     notifyListeners();
+
+    if (_state.matchedPairCount > wasMatchedCount) {
+      ChristmasAudioService.playSuccessChime();
+    }
 
     if (_state.isBusyWaiting) {
       _mismatchTimer?.cancel();

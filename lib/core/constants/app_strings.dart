@@ -3,203 +3,228 @@ class AppStrings {
 
   // Core App
   static const String appName = 'Chrimastsatastracker';
-  static const String festiveTagline = 'Ấm áp • Diệu kỳ • Tối giản';
+  static const String festiveTagline = 'Cozy • Magical • Elegant';
   static const String holidayGreeting = 'Merry Christmas & Happy Holidays!';
 
   // Welcome Screen (Phase 1)
-  static const String welcomeTitle = 'Chào đón mùa lễ hội Giáng Sinh';
+  static const String welcomeTitle = 'Welcome to the Christmas Season';
   static const String welcomeSubtitle =
-      'Đếm ngược, theo dõi hành trình kỳ diệu và tận hưởng khoảnh khắc ấm áp cùng gia đình.';
-  static const String foundationStatusTitle = 'Nền tảng kỹ thuật Phase 1';
+      'Count down, follow the magical journey, and cherish cozy moments with your family.';
+  static const String foundationStatusTitle = 'Technical Foundation Phase 1';
   static const String foundationStatusDesc =
-      'Hệ thống Flutter đã sẵn sàng với kiến trúc phân tầng, không phụ thuộc bên ngoài và bảo vệ quyền riêng tư tuyệt đối.';
-  static const String offlineFirstBadge = '100% Cục bộ & Offline';
-  static const String privacyBadge = 'Bảo mật & Riêng tư';
-  static const String enterHomeButton = 'Vào Trang Chủ';
+      'Flutter framework ready with layered architecture, zero external dependencies, and complete privacy protection.';
+  static const String offlineFirstBadge = '100% Local & Offline';
+  static const String privacyBadge = 'Private & Secure';
+  static const String enterHomeButton = 'Enter Home';
 
   // Home Navigation (Phase 2)
-  static const String homeTitle = 'Trang Chủ';
-  static const String homeGreetingPrefix = 'Mùa lễ hội đang chờ đón bạn';
-  static const String countdownPreviewTitle = 'Đếm Ngược Giáng Sinh';
+  static const String homeTitle = 'Home';
+  static const String homeGreetingPrefix = 'The holiday season awaits you';
+  static const String countdownPreviewTitle = 'Christmas Countdown';
   static const String countdownPreviewSubtitle =
-      'Đếm chính xác từng khoảnh khắc đến 00:00:00 ngày 25/12';
-  static const String openCountdownButton = 'Xem Đếm Ngược';
-  static const String aboutAppButton = 'Giới thiệu & Nền tảng';
+      'Counting down every moment to 00:00:00 on December 25';
+  static const String openCountdownButton = 'View Countdown';
+  static const String aboutAppButton = 'About & Foundation';
 
   // Coming Soon Section
-  static const String comingSoonTitle = 'Tính Năng Đang Phát Triển';
+  static const String comingSoonTitle = 'Upcoming Features';
   static const String comingSoonSubtitle =
-      'Các phân hệ trong lộ trình tiếp theo của dự án';
-  static const String comingSoonBadge = 'Sắp ra mắt';
+      'Next chapters in the project roadmap';
+  static const String comingSoonBadge = 'Coming Soon';
   static const String trackerFeatureTitle = 'Santa Tracker';
   static const String trackerFeatureDesc =
-      'Mô phỏng hành trình phát quà của ông già Noel vòng quanh thế giới.';
-  static const String villageFeatureTitle = 'Ngôi Làng Bắc Cực';
+      "Simulate Santa's global journey delivering gifts around the world.";
+  static const String villageFeatureTitle = 'North Pole Village';
   static const String villageFeatureDesc =
-      'Khám phá xưởng đồ chơi của các chú lùn và chuồng tuần lộc.';
-  static const String gamesFeatureTitle = 'Trò Chơi Giáng Sinh';
+      "Explore the elves' toy workshop and the magical reindeer stables.";
+  static const String gamesFeatureTitle = 'Christmas Mini-Games';
   static const String gamesFeatureDesc =
-      'Các mini-game lễ hội nhẹ nhàng, mang tính giáo dục và giải trí.';
-  static const String adventFeatureTitle = 'Lịch Advent';
+      'Festive, educational, and delightful holiday mini-games.';
+  static const String adventFeatureTitle = 'Advent Calendar';
   static const String adventFeatureDesc =
-      'Mở 24 ô quà bất ngờ đếm ngược từng ngày trong tháng 12.';
+      'Open 24 surprise gift doors counting down the days of December.';
 
   // Countdown Screen
-  static const String countdownScreenTitle = 'Đếm Ngược Đến Giáng Sinh';
-  static const String nextChristmasPrefix = 'Mục tiêu: Giáng Sinh 25/12/';
-  static const String backToHomeButton = 'Quay lại Trang Chủ';
-  static const String daysLabel = 'Ngày';
-  static const String hoursLabel = 'Giờ';
-  static const String minutesLabel = 'Phút';
-  static const String secondsLabel = 'Giây';
-  static const String christmasDayBadge = 'Hôm nay là Giáng Sinh!';
+  static const String countdownScreenTitle = 'Countdown to Christmas';
+  static const String nextChristmasPrefix = 'Target: Christmas 12/25/';
+  static const String backToHomeButton = 'Back to Home';
+  static const String daysLabel = 'Days';
+  static const String hoursLabel = 'Hours';
+  static const String minutesLabel = 'Mins';
+  static const String secondsLabel = 'Secs';
+  static const String christmasDayBadge = 'Today is Christmas!';
 
   // Dynamic Messages
   static const String messageChristmasDay =
-      'Giáng Sinh an lành! Chúc bạn và gia đình một mùa lễ hội tràn ngập niềm vui và yêu thương!';
+      'Merry Christmas! Wishing you and your family a season filled with joy and love!';
   static const String messageUnder24Hours =
-      'Chỉ còn vài giờ nữa thôi! Thời khắc Giáng Sinh diệu kỳ sắp gõ cửa!';
+      'Only a few hours left! The magical Christmas moment is almost here!';
   static const String messageOneToSevenDays =
-      'Không khí lễ hội đã ngập tràn, cùng đếm ngược từng ngày đến Giáng Sinh!';
+      'Holiday cheer is all around, counting down the days to Christmas!';
   static const String messageEightToThirtyDays =
-      'Mùa lễ hội đang đến gần, hãy chuẩn bị đón Giáng Sinh ấm áp bên gia đình!';
+      'The festive season is approaching, get ready for a cozy Christmas with loved ones!';
   static const String messageOverThirtyDays =
-      'Cùng mong chờ và đón chào một mùa Giáng Sinh an lành sắp đến!';
+      'Looking forward to welcoming a peaceful and joyous Christmas!';
 
   // Santa Tracker (Phase 3)
   static const String santaTrackerScreenTitle = 'Santa Tracker';
-  static const String simulationBadgeLabel = 'HÀNH TRÌNH MÔ PHỎNG';
+  static const String simulationBadgeLabel = 'SIMULATION JOURNEY';
   static const String simulationSubtitle =
-      'Theo dõi lộ trình phát quà mô phỏng của Ông Già Noel qua 12 điểm dừng vòng quanh thế giới.';
-  static const String openSantaTrackerButton = 'Mở Santa Tracker';
-  static const String santaTrackerActiveBadge = 'Hoạt động';
+      "Track Santa's simulated gift delivery route across 12 worldwide stops.";
+  static const String openSantaTrackerButton = 'Open Santa Tracker';
+  static const String santaTrackerActiveBadge = 'Active';
 
   // Offline Banner
   static const String offlineSimulationBanner =
-      'Bạn đang offline — hành trình mô phỏng vẫn hoạt động';
+      "You're offline — simulated journey continues smoothly";
 
   // Journey Status Labels
-  static const String statusNotStarted = 'Chưa bắt đầu';
-  static const String statusInProgress = 'Đang di chuyển';
-  static const String statusPaused = 'Đang tạm dừng';
-  static const String statusCompleted = 'Đã hoàn thành';
+  static const String statusNotStarted = 'Not Started';
+  static const String statusInProgress = 'In Progress';
+  static const String statusPaused = 'Paused';
+  static const String statusCompleted = 'Completed';
 
   // Journey Info Labels
-  static const String infoCardTitle = 'Thông Tin Hành Trình';
-  static const String currentLocationLabel = 'Vị trí hiện tại';
-  static const String nextDestinationLabel = 'Điểm đến tiếp theo';
-  static const String journeyStatusLabel = 'Trạng thái hành trình';
-  static const String giftsDeliveredLabel = 'Số quà đã giao (mô phỏng)';
-  static const String simulatedEtaLabel = 'Thời gian đến dự kiến (ETA)';
-  static const String routeProgressLabel = 'Tiến độ lộ trình';
-  static const String etaMinutesSuffix = 'phút mô phỏng';
-  static const String giftsUnitSuffix = 'món quà';
+  static const String infoCardTitle = 'Journey Information';
+  static const String currentLocationLabel = 'Current Location';
+  static const String nextDestinationLabel = 'Next Destination';
+  static const String journeyStatusLabel = 'Journey Status';
+  static const String giftsDeliveredLabel = 'Gifts Delivered (Simulated)';
+  static const String simulatedEtaLabel = 'Estimated Time of Arrival (ETA)';
+  static const String routeProgressLabel = 'Route Progress';
+  static const String etaMinutesSuffix = 'simulated mins';
+  static const String giftsUnitSuffix = 'gifts';
 
   // Manual Controls
-  static const String controlPanelTitle = 'Điều Khiển Hành Trình';
-  static const String startJourneyButton = 'Bắt đầu hành trình';
-  static const String nextStopButton = 'Điểm dừng tiếp theo';
-  static const String pauseJourneyButton = 'Tạm dừng';
-  static const String resumeJourneyButton = 'Tiếp tục';
-  static const String resetJourneyButton = 'Đặt lại hành trình';
+  static const String controlPanelTitle = 'Journey Controls';
+  static const String startJourneyButton = 'Start Journey';
+  static const String nextStopButton = 'Next Stop';
+  static const String pauseJourneyButton = 'Pause';
+  static const String resumeJourneyButton = 'Resume';
+  static const String resetJourneyButton = 'Reset Journey';
 
   // Map & Legend
-  static const String mapLegendCurrent = 'Vị trí Santa';
-  static const String mapLegendCompleted = 'Đã đi qua';
-  static const String mapLegendUpcoming = 'Chưa đến';
+  static const String mapLegendCurrent = "Santa's Location";
+  static const String mapLegendCompleted = 'Visited';
+  static const String mapLegendUpcoming = 'Upcoming';
   static const String journeyCompletedBanner =
-      'Ông già Noel đã hoàn thành hành trình phát quà mô phỏng vòng quanh thế giới!';
+      'Santa Claus has completed his simulated worldwide gift delivery journey!';
 
   // North Pole Village (Phase 4)
-  static const String villageScreenTitle = 'Ngôi Làng Bắc Cực';
+  static const String villageScreenTitle = 'North Pole Village';
   static const String villageSubtitle =
-      'Khám phá các địa điểm diệu kỳ trong ngôi làng Giáng Sinh của Ông Già Noel.';
-  static const String openVillageButton = 'Khám Phá Ngôi Làng';
-  static const String villageActiveBadge = 'Hoạt động';
-  static const String villageProgressLabel = 'Tiến độ khám phá';
-  static const String villageLocationsCountSuffix = 'địa điểm';
+      "Discover magical landmarks inside Santa Claus's Christmas village.";
+  static const String openVillageButton = 'Explore Village';
+  static const String villageActiveBadge = 'Active';
+  static const String villageProgressLabel = 'Exploration Progress';
+  static const String villageLocationsCountSuffix = 'locations';
   static const String villageCompletedTitle =
-      'Làng Bắc Cực Đã Khám Phá Hoàn Tất!';
+      'North Pole Village Fully Explored!';
   static const String villageCompletedBanner =
-      'Chúc mừng! Bạn đã khám phá toàn bộ 8 địa điểm diệu kỳ tại Ngôi Làng Bắc Cực!';
-  static const String locationStatusDiscovered = 'Đã khám phá';
-  static const String locationStatusUndiscovered = 'Chưa khám phá';
-  static const String discoverLocationButton = 'Khám Phá Địa Điểm Này';
-  static const String closeDetailSheetButton = 'Đóng chi tiết';
+      'Congratulations! You have discovered all 8 magical locations in the North Pole Village!';
+  static const String locationStatusDiscovered = 'Discovered';
+  static const String locationStatusUndiscovered = 'Undiscovered';
+  static const String discoverLocationButton = 'Explore This Location';
+  static const String closeDetailSheetButton = 'Close Details';
   static const String selectLocationHint =
-      'Nhấn vào một địa điểm trên bản đồ làng để khám phá.';
+      'Tap any landmark on the village map to explore.';
 
   // Village Categories
-  static const String categoryPlaza = 'Quảng trường';
-  static const String categoryResidence = 'Nơi ở';
-  static const String categoryWorkshop = 'Xưởng quà';
-  static const String categoryStables = 'Chuồng tuần lộc';
-  static const String categoryLandmark = 'Biểu tượng';
-  static const String categoryPostOffice = 'Bưu điện';
-  static const String categoryBakery = 'Tiệm bánh';
-  static const String categoryNature = 'Thiên nhiên';
+  static const String categoryPlaza = 'Plaza';
+  static const String categoryResidence = 'Residence';
+  static const String categoryWorkshop = 'Workshop';
+  static const String categoryStables = 'Stables';
+  static const String categoryLandmark = 'Landmark';
+  static const String categoryPostOffice = 'Post Office';
+  static const String categoryBakery = 'Bakery';
+  static const String categoryNature = 'Nature';
 
   // Mini Games (Phase 5)
-  static const String miniGamesScreenTitle = 'Trò Chơi Giáng Sinh';
+  static const String miniGamesScreenTitle = 'Christmas Games';
   static const String miniGamesSubtitle =
-      'Hai trò chơi lễ hội vui nhộn, rèn luyện trí nhớ và phản xạ nhanh.';
-  static const String openMiniGamesButton = 'Chơi Trò Chơi';
-  static const String miniGamesActiveBadge = 'Hoạt động';
-  static const String playGameButton = 'Bắt Đầu Chơi';
-  static const String replayGameButton = 'Chơi Lại';
-  static const String gameCompletedBadge = 'Đã hoàn thành';
+      'Two festive mini-games to challenge memory and quick reflexes.';
+  static const String openMiniGamesButton = 'Play Games';
+  static const String miniGamesActiveBadge = 'Active';
+  static const String playGameButton = 'Start Playing';
+  static const String replayGameButton = 'Play Again';
+  static const String gameCompletedBadge = 'Completed';
 
   // Memory Match Game
-  static const String memoryMatchTitle = 'Lật Thẻ Giáng Sinh';
+  static const String memoryMatchTitle = 'Holiday Memory Match';
   static const String memoryMatchDesc =
-      'Lật thẻ và tìm 6 cặp biểu tượng Giáng sinh giống nhau.';
-  static const String movesLabel = 'Lượt thử';
-  static const String pairsFoundLabel = 'Cặp đã tìm';
-  static const String bestMovesLabel = 'Kỷ lục ít lượt nhất';
-  static const String completedCountLabel = 'Số lần thắng';
-  static const String memoryMatchWinTitle = 'Tuyệt Vời! Bạn Đã Thắng!';
+      'Flip cards to match 6 pairs of festive holiday icons.';
+  static const String movesLabel = 'Moves';
+  static const String pairsFoundLabel = 'Pairs Found';
+  static const String bestMovesLabel = 'Best Moves';
+  static const String completedCountLabel = 'Wins';
+  static const String memoryMatchWinTitle = 'Brilliant! You Won!';
   static const String memoryMatchWinMessage =
-      'Bạn đã tìm thấy tất cả các cặp thẻ Giáng Sinh!';
+      'You found all matching holiday card pairs!';
 
   // Catch the Gifts Game
-  static const String catchGiftsTitle = 'Bắt Quà Giáng Sinh';
+  static const String catchGiftsTitle = 'Catch the Gifts';
   static const String catchGiftsDesc =
-      'Chạm nhanh vào những hộp quà xuất hiện trong 30 giây.';
-  static const String scoreLabel = 'Điểm số';
-  static const String highScoreLabel = 'Điểm cao nhất';
-  static const String timeRemainingLabel = 'Thời gian';
-  static const String totalGiftsLabel = 'Tổng quà đã bắt';
-  static const String secondsSuffix = 'giây';
-  static const String pointsSuffix = 'điểm';
-  static const String catchGiftsGameOverTitle = 'Hết Giờ Rồi!';
+      'Tap falling gift boxes as fast as you can in 30 seconds.';
+  static const String scoreLabel = 'Score';
+  static const String highScoreLabel = 'High Score';
+  static const String timeRemainingLabel = 'Time';
+  static const String totalGiftsLabel = 'Total Gifts Caught';
+  static const String secondsSuffix = 'sec';
+  static const String pointsSuffix = 'pts';
+  static const String catchGiftsGameOverTitle = "Time's Up!";
   static const String catchGiftsGameOverMessage =
-      'Bạn đã hoàn thành lượt chơi Bắt Quà Giáng Sinh!';
+      'You completed this round of Catch the Gifts!';
   static const String catchGiftsInstructions =
-      'Chạm vào những hộp quà xuất hiện trên màn hình để ghi điểm!';
+      'Tap falling gift boxes on screen to score points!';
 
   // Advent Storybook (Phase 5)
-  static const String adventScreenTitle = 'Cuốn Sách Advent 24 Ngày';
+  static const String adventScreenTitle = '24-Day Advent Storybook';
   static const String adventSubtitle =
-      'Mở khóa 24 câu chuyện, điều ước và câu đố Giáng sinh diệu kỳ.';
-  static const String openAdventButton = 'Đọc Cuốn Sách';
-  static const String adventActiveBadge = 'Hoạt động';
-  static const String adventChapterPrefix = 'Chương';
-  static const String adventDayPrefix = 'Ngày';
-  static const String adventUnlockedCountLabel = 'Đã mở khóa';
-  static const String adventReadCountLabel = 'Đã đọc';
-  static const String adventStatusLocked = 'Đang khóa';
-  static const String adventStatusUnlocked = 'Sẵn sàng đọc';
-  static const String adventStatusRead = 'Đã đọc';
-  static const String readChapterButton = 'Đọc Chương Này';
-  static const String markAsReadButton = 'Đã Đọc Xong';
-  static const String backToStorybookButton = 'Quay Lại Cuốn Sách';
-  static const String unlockConditionPrefix = 'Điều kiện mở khóa';
+      'Unlock 24 magical holiday stories, wishes, and Christmas riddles.';
+  static const String openAdventButton = 'Read Storybook';
+  static const String adventActiveBadge = 'Active';
+  static const String adventChapterPrefix = 'Chapter';
+  static const String adventDayPrefix = 'Day';
+  static const String adventUnlockedCountLabel = 'Unlocked';
+  static const String adventReadCountLabel = 'Read';
+  static const String adventStatusLocked = 'Locked';
+  static const String adventStatusUnlocked = 'Ready to Read';
+  static const String adventStatusRead = 'Read';
+  static const String readChapterButton = 'Read Chapter';
+  static const String markAsReadButton = 'Mark as Read';
+  static const String backToStorybookButton = 'Back to Storybook';
+  static const String unlockConditionPrefix = 'Unlock Condition';
   static const String chapterLockedMessage =
-      'Chương này đang bị khóa. Hãy hoàn thành nhiệm vụ để mở khóa!';
-  static const String festiveMessageTitle = 'Lời Chúc Lễ Hội';
-  static const String activityPromptTitle = 'Hoạt Động / Câu Đố Vui';
+      'This chapter is currently locked. Complete the task to unlock!';
+  static const String festiveMessageTitle = 'Holiday Wish';
+  static const String activityPromptTitle = 'Activity / Fun Riddle';
   static const String allChaptersUnlockedBanner =
-      'Tuyệt vời! Bạn đã mở khóa toàn bộ 24 chương sách Advent!';
+      'Wonderful! You unlocked all 24 Advent chapters!';
   static const String allChaptersReadBanner =
-      'Chúc mừng! Bạn đã đọc trọn vẹn cuốn sách Advent 24 Ngày!';
+      'Congratulations! You finished the entire 24-Day Advent Storybook!';
+
+  // Daily Notifications & Even-Day Specials
+  static const String dailyRemindersTitle = 'Daily Holiday Reminders';
+  static const String dailyRemindersSubtitle =
+      'Festive countdown cheer & special surprises on even days';
+  static const String enableDailyReminders = 'Daily Reminders';
+  static const String enableDailyRemindersDesc =
+      'Receive a cheerful holiday reminder every day at your preferred time.';
+  static const String reminderTimeLabel = 'Reminder Time';
+  static const String evenDaysSpecialTitle = 'Even-Day Special Surprises';
+  static const String evenDaysSpecialDesc =
+      'On even calendar days (2nd, 4th, 6th...), unlock exclusive mystery gifts, elf riddles, and Santa radar alerts!';
+  static const String todayNotificationPreviewTitle =
+      "Today's Notification Preview";
+  static const String sendTestNotificationButton = 'Send Test Notification Now';
+  static const String testNotificationSentToast =
+      'Festive notification sent! Check your notification bar.';
+  static const String evenDaySpecialBadge = 'Even Day Special';
+  static const String oddDayCheerBadge = 'Daily Cheer';
+  static const String notificationChannelName = 'Christmas Daily Reminders';
+  static const String notificationChannelDesc =
+      'Festive daily countdown reminders and special even-day holiday surprises';
+  static const String permissionNotice =
+      'Please allow notification permissions to receive holiday cheer daily.';
+  static const String closeNotificationSheet = 'Close';
 }

@@ -1,5 +1,6 @@
 import 'package:flutter/foundation.dart';
 
+import '../../../../core/constants/app_strings.dart';
 import 'village_location.dart';
 
 class VillageExplorationState {
@@ -52,7 +53,8 @@ class VillageExplorationState {
     return isDiscovered(selectedLocationId!);
   }
 
-  String get progressDisplay => '$discoveredCount / $totalCount địa điểm';
+  String get progressDisplay =>
+      '$discoveredCount / $totalCount ${AppStrings.villageLocationsCountSuffix}';
 
   VillageExplorationState copyWith({
     List<VillageLocation>? locations,

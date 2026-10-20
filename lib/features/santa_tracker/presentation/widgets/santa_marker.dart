@@ -66,7 +66,7 @@ class _SantaMarkerState extends State<SantaMarker>
   @override
   Widget build(BuildContext context) {
     return Semantics(
-      label: 'Vị trí Santa tại ${widget.stopName}',
+      label: "Santa's location at ${widget.stopName}",
       child: AnimatedBuilder(
         animation: _scaleAnimation,
         builder: (context, child) {

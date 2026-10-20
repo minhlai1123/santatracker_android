@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import '../../../../core/constants/app_dimensions.dart';
 import '../../../../core/constants/app_strings.dart';
 import '../../../../core/theme/app_colors.dart';
+import '../../../../core/theme/christmas_typography.dart';
 import '../../../../shared/widgets/festive_button.dart';
 import '../../../welcome/presentation/widgets/festive_badge.dart';
 import '../../domain/models/village_location.dart';
@@ -43,11 +44,7 @@ class VillageLocationDetailSheet extends StatelessWidget {
             Expanded(
               child: Text(
                 AppStrings.selectLocationHint,
-                style: TextStyle(
-                  fontSize: 13,
-                  color: AppColors.textSecondary,
-                  height: 1.4,
-                ),
+                style: ChristmasTypography.bodyMedium,
               ),
             ),
           ],
@@ -107,11 +104,7 @@ class VillageLocationDetailSheet extends StatelessWidget {
                         Expanded(
                           child: Text(
                             loc.name,
-                            style: const TextStyle(
-                              fontSize: 17,
-                              fontWeight: FontWeight.w700,
-                              color: AppColors.textPrimary,
-                            ),
+                            style: ChristmasTypography.titleMedium,
                           ),
                         ),
                         IconButton(
@@ -225,7 +218,7 @@ class VillageLocationDetailSheet extends StatelessWidget {
                   SizedBox(width: AppDimensions.spaceSM),
                   Expanded(
                     child: Text(
-                      'Địa điểm này đã nằm trong hành trình khám phá của bạn',
+                      'This location is already part of your exploration journey',
                       style: TextStyle(
                         fontSize: 13,
                         fontWeight: FontWeight.w600,

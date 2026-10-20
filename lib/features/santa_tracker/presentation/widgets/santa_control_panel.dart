@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 
 import '../../../../core/constants/app_dimensions.dart';
 import '../../../../core/constants/app_strings.dart';
+import '../../../../core/services/christmas_audio_service.dart';
 import '../../../../core/theme/app_colors.dart';
+import '../../../../core/theme/christmas_typography.dart';
 import '../../domain/models/santa_tracker_state.dart';
 
 class SantaControlPanel extends StatelessWidget {
@@ -49,11 +51,7 @@ class SantaControlPanel extends StatelessWidget {
               Expanded(
                 child: Text(
                   AppStrings.controlPanelTitle,
-                  style: TextStyle(
-                    fontSize: 16,
-                    fontWeight: FontWeight.w700,
-                    color: AppColors.textPrimary,
-                  ),
+                  style: ChristmasTypography.titleMedium,
                 ),
               ),
             ],
@@ -61,10 +59,16 @@ class SantaControlPanel extends StatelessWidget {
           const SizedBox(height: AppDimensions.spaceMD),
           ElevatedButton.icon(
             key: const Key('btn_start_journey'),
-            onPressed: state.canStart ? onStart : null,
+            onPressed: state.canStart
+                ? () {
+                    ChristmasAudioService.playButtonClick();
+                    onStart();
+                  }
+                : null,
             style: ElevatedButton.styleFrom(
               backgroundColor: AppColors.christmasRed,
               foregroundColor: Colors.white,
+              textStyle: ChristmasTypography.buttonLabel,
               padding: const EdgeInsets.symmetric(
                 horizontal: AppDimensions.spaceMD,
                 vertical: 12,
@@ -79,10 +83,16 @@ class SantaControlPanel extends StatelessWidget {
           const SizedBox(height: AppDimensions.spaceSM),
           ElevatedButton.icon(
             key: const Key('btn_next_stop'),
-            onPressed: state.canAdvance ? onNextStop : null,
+            onPressed: state.canAdvance
+                ? () {
+                    ChristmasAudioService.playButtonClick();
+                    onNextStop();
+                  }
+                : null,
             style: ElevatedButton.styleFrom(
               backgroundColor: AppColors.pineGreen,
               foregroundColor: Colors.white,
+              textStyle: ChristmasTypography.buttonLabel,
               padding: const EdgeInsets.symmetric(
                 horizontal: AppDimensions.spaceMD,
                 vertical: 12,
@@ -101,8 +111,18 @@ class SantaControlPanel extends StatelessWidget {
                 child: OutlinedButton.icon(
                   key: const Key('btn_pause_resume_journey'),
                   onPressed: isPaused
-                      ? (state.canResume ? onResume : null)
-                      : (state.canPause ? onPause : null),
+                      ? (state.canResume
+                            ? () {
+                                ChristmasAudioService.playButtonClick();
+                                onResume();
+                              }
+                            : null)
+                      : (state.canPause
+                            ? () {
+                                ChristmasAudioService.playButtonClick();
+                                onPause();
+                              }
+                            : null),
                   style: OutlinedButton.styleFrom(
                     foregroundColor: AppColors.pineGreen,
                     side: BorderSide(
@@ -131,7 +151,12 @@ class SantaControlPanel extends StatelessWidget {
               Expanded(
                 child: OutlinedButton.icon(
                   key: const Key('btn_reset_journey'),
-                  onPressed: state.canReset ? onReset : null,
+                  onPressed: state.canReset
+                      ? () {
+                          ChristmasAudioService.playButtonClick();
+                          onReset();
+                        }
+                      : null,
                   style: OutlinedButton.styleFrom(
                     foregroundColor: AppColors.christmasRed,
                     side: BorderSide(

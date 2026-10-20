@@ -4,6 +4,8 @@ import '../../../../core/constants/app_dimensions.dart';
 import '../../../../core/constants/app_strings.dart';
 import '../../../../core/theme/app_colors.dart';
 
+import '../../../../core/theme/christmas_typography.dart';
+
 class WelcomeHeader extends StatelessWidget {
   const WelcomeHeader({super.key});
 
@@ -35,25 +37,19 @@ class WelcomeHeader extends StatelessWidget {
           ),
         ),
         const SizedBox(height: AppDimensions.spaceLG),
-        const Text(
+        Text(
           AppStrings.appName,
           textAlign: TextAlign.center,
-          style: TextStyle(
-            fontSize: 28,
-            fontWeight: FontWeight.w800,
-            color: AppColors.textPrimary,
-            letterSpacing: 0.4,
+          style: ChristmasTypography.displayLarge.copyWith(
+            color: AppColors.christmasRed,
           ),
         ),
         const SizedBox(height: AppDimensions.spaceSM),
-        const Text(
+        Text(
           AppStrings.festiveTagline,
           textAlign: TextAlign.center,
-          style: TextStyle(
-            fontSize: 14,
-            fontWeight: FontWeight.w600,
+          style: ChristmasTypography.titleSmall.copyWith(
             color: AppColors.pineGreen,
-            letterSpacing: 0.3,
           ),
         ),
       ],

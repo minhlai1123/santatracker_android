@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import '../../../../core/constants/app_dimensions.dart';
 import '../../../../core/constants/app_strings.dart';
 import '../../../../core/theme/app_colors.dart';
+import '../../../../core/theme/christmas_typography.dart';
 import '../../../../shared/widgets/festive_button.dart';
 import '../../../welcome/presentation/widgets/festive_badge.dart';
 
@@ -63,14 +64,7 @@ class MiniGameHubCard extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(
-                      title,
-                      style: const TextStyle(
-                        fontSize: 18,
-                        fontWeight: FontWeight.w700,
-                        color: AppColors.textPrimary,
-                      ),
-                    ),
+                    Text(title, style: ChristmasTypography.titleLarge),
                     const SizedBox(height: 2),
                     const FestiveBadge(
                       label: AppStrings.miniGamesActiveBadge,
@@ -83,14 +77,7 @@ class MiniGameHubCard extends StatelessWidget {
             ],
           ),
           const SizedBox(height: AppDimensions.spaceMD),
-          Text(
-            description,
-            style: const TextStyle(
-              fontSize: 14,
-              color: AppColors.textSecondary,
-              height: 1.4,
-            ),
-          ),
+          Text(description, style: ChristmasTypography.bodyMedium),
           if (statsHighlights.isNotEmpty) ...[
             const SizedBox(height: AppDimensions.spaceMD),
             Wrap(

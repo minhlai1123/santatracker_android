@@ -28,7 +28,7 @@ class SharedPreferencesAdventStorage implements AdventStorage {
       return result;
     } catch (e, stackTrace) {
       debugPrint(
-        'SharedPreferencesAdventStorage: Lỗi khi nạp danh sách mở khóa: $e\n$stackTrace',
+        'SharedPreferencesAdventStorage: Failed to load unlocked days: $e\n$stackTrace',
       );
       return {1};
     }
@@ -45,7 +45,7 @@ class SharedPreferencesAdventStorage implements AdventStorage {
       await prefs.setStringList(keyUnlockedDays, validList);
     } catch (e, stackTrace) {
       debugPrint(
-        'SharedPreferencesAdventStorage: Lỗi khi lưu danh sách mở khóa: $e\n$stackTrace',
+        'SharedPreferencesAdventStorage: Failed to save unlocked days: $e\n$stackTrace',
       );
     }
   }
@@ -69,7 +69,7 @@ class SharedPreferencesAdventStorage implements AdventStorage {
       return result;
     } catch (e, stackTrace) {
       debugPrint(
-        'SharedPreferencesAdventStorage: Lỗi khi nạp danh sách đã đọc: $e\n$stackTrace',
+        'SharedPreferencesAdventStorage: Failed to load read days: $e\n$stackTrace',
       );
       return {};
     }
@@ -86,7 +86,7 @@ class SharedPreferencesAdventStorage implements AdventStorage {
       await prefs.setStringList(keyReadDays, validList);
     } catch (e, stackTrace) {
       debugPrint(
-        'SharedPreferencesAdventStorage: Lỗi khi lưu danh sách đã đọc: $e\n$stackTrace',
+        'SharedPreferencesAdventStorage: Failed to save read days: $e\n$stackTrace',
       );
     }
   }

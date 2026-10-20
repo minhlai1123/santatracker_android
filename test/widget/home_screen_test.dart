@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:chrimastsatastracker/core/constants/app_strings.dart';
+import 'package:chrimastsatastracker/core/services/christmas_audio_service.dart';
 import 'package:chrimastsatastracker/core/theme/app_theme.dart';
 import 'package:chrimastsatastracker/features/home/presentation/screens/home_screen.dart';
 
@@ -42,8 +43,8 @@ void main() {
       expect(find.text(AppStrings.gamesFeatureTitle), findsOneWidget);
       expect(find.text(AppStrings.adventFeatureTitle), findsOneWidget);
 
-      // All 4 feature cards have "Hoạt động" active badge
-      expect(find.text('Hoạt động'), findsNWidgets(4));
+      // All 4 feature cards have "Active" active badge
+      expect(find.text(AppStrings.santaTrackerActiveBadge), findsNWidgets(4));
 
       // Open buttons for all features
       expect(find.text(AppStrings.openSantaTrackerButton), findsOneWidget);
@@ -278,6 +279,30 @@ void main() {
 
       expect(find.text(AppStrings.appName), findsAtLeastNWidgets(1));
       expect(tester.takeException(), isNull);
+    });
+
+    testWidgets('toggles background music when music button is pressed', (
+      WidgetTester tester,
+    ) async {
+      ChristmasAudioService.bgmEnabled = true;
+      await tester.pumpWidget(buildTestableWidget());
+      await tester.pumpAndSettle();
+
+      final musicBtn = find.byKey(const Key('btn_toggle_music'));
+      expect(musicBtn, findsOneWidget);
+      expect(find.byIcon(Icons.music_note_rounded), findsOneWidget);
+
+      await tester.tap(musicBtn);
+      await tester.pumpAndSettle();
+
+      expect(ChristmasAudioService.bgmEnabled, isFalse);
+      expect(find.byIcon(Icons.music_off_rounded), findsOneWidget);
+
+      await tester.tap(musicBtn);
+      await tester.pumpAndSettle();
+
+      expect(ChristmasAudioService.bgmEnabled, isTrue);
+      expect(find.byIcon(Icons.music_note_rounded), findsOneWidget);
     });
   });
 }

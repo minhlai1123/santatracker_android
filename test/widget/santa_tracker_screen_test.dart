@@ -232,7 +232,7 @@ void main() {
         // 15. Verify games and advent features are present on HomeScreen as active features
         expect(find.text(AppStrings.gamesFeatureTitle), findsOneWidget);
         expect(find.text(AppStrings.adventFeatureTitle), findsOneWidget);
-        expect(find.text('Hoạt động'), findsNWidgets(4));
+        expect(find.text(AppStrings.santaTrackerActiveBadge), findsNWidgets(4));
 
         // 14. Navigate to SantaTrackerScreen and back
         final openTrackerBtn = find.byKey(const Key('btn_open_santa_tracker'));

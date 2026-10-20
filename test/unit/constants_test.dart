@@ -32,7 +32,7 @@ void main() {
 
       // Phase 3 strings
       expect(AppStrings.santaTrackerScreenTitle, isNotEmpty);
-      expect(AppStrings.simulationBadgeLabel, equals('HÀNH TRÌNH MÔ PHỎNG'));
+      expect(AppStrings.simulationBadgeLabel, equals('SIMULATION JOURNEY'));
       expect(AppStrings.offlineSimulationBanner, isNotEmpty);
       expect(AppStrings.statusNotStarted, isNotEmpty);
       expect(AppStrings.statusInProgress, isNotEmpty);
@@ -48,11 +48,11 @@ void main() {
       expect(AppStrings.villageScreenTitle, isNotEmpty);
       expect(AppStrings.villageSubtitle, isNotEmpty);
       expect(AppStrings.openVillageButton, isNotEmpty);
-      expect(AppStrings.villageActiveBadge, equals('Hoạt động'));
+      expect(AppStrings.villageActiveBadge, equals('Active'));
       expect(AppStrings.villageProgressLabel, isNotEmpty);
       expect(AppStrings.villageCompletedBanner, isNotEmpty);
-      expect(AppStrings.locationStatusDiscovered, equals('Đã khám phá'));
-      expect(AppStrings.locationStatusUndiscovered, equals('Chưa khám phá'));
+      expect(AppStrings.locationStatusDiscovered, equals('Discovered'));
+      expect(AppStrings.locationStatusUndiscovered, equals('Undiscovered'));
       expect(AppStrings.discoverLocationButton, isNotEmpty);
       expect(AppStrings.selectLocationHint, isNotEmpty);
 
@@ -60,13 +60,13 @@ void main() {
       expect(AppStrings.miniGamesScreenTitle, isNotEmpty);
       expect(AppStrings.miniGamesSubtitle, isNotEmpty);
       expect(AppStrings.openMiniGamesButton, isNotEmpty);
-      expect(AppStrings.miniGamesActiveBadge, equals('Hoạt động'));
+      expect(AppStrings.miniGamesActiveBadge, equals('Active'));
       expect(AppStrings.memoryMatchTitle, isNotEmpty);
       expect(AppStrings.catchGiftsTitle, isNotEmpty);
       expect(AppStrings.adventScreenTitle, isNotEmpty);
       expect(AppStrings.adventSubtitle, isNotEmpty);
       expect(AppStrings.openAdventButton, isNotEmpty);
-      expect(AppStrings.adventActiveBadge, equals('Hoạt động'));
+      expect(AppStrings.adventActiveBadge, equals('Active'));
       expect(AppStrings.adventStatusLocked, isNotEmpty);
       expect(AppStrings.adventStatusUnlocked, isNotEmpty);
       expect(AppStrings.adventStatusRead, isNotEmpty);

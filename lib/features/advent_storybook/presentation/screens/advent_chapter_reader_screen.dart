@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 
 import '../../../../core/constants/app_dimensions.dart';
 import '../../../../core/constants/app_strings.dart';
+import '../../../../core/services/christmas_audio_service.dart';
 import '../../../../core/theme/app_colors.dart';
+import '../../../../core/theme/christmas_typography.dart';
 import '../../../../shared/widgets/festive_button.dart';
 import '../controllers/advent_storybook_controller.dart';
 import '../../domain/models/advent_chapter.dart';
@@ -76,12 +78,12 @@ class _AdventChapterReaderScreenState extends State<AdventChapterReaderScreen> {
                               children: [
                                 Text(
                                   '${AppStrings.adventChapterPrefix.toUpperCase()} ${widget.chapter.dayNumber}',
-                                  style: const TextStyle(
-                                    fontSize: 12,
-                                    fontWeight: FontWeight.w800,
-                                    letterSpacing: 1.2,
-                                    color: AppColors.christmasRed,
-                                  ),
+                                  style: ChristmasTypography.titleSmall
+                                      .copyWith(
+                                        fontSize: 12,
+                                        letterSpacing: 1.2,
+                                        color: AppColors.christmasRed,
+                                      ),
                                 ),
                                 if (isRead)
                                   Container(
@@ -120,12 +122,12 @@ class _AdventChapterReaderScreenState extends State<AdventChapterReaderScreen> {
                             // Chapter Title
                             Text(
                               widget.chapter.title,
-                              style: const TextStyle(
-                                fontSize: 22,
-                                fontWeight: FontWeight.w800,
-                                color: AppColors.textPrimary,
-                                height: 1.3,
-                              ),
+                              style: ChristmasTypography.displaySubtitle
+                                  .copyWith(
+                                    fontSize: 24,
+                                    color: AppColors.textPrimary,
+                                    height: 1.3,
+                                  ),
                             ),
                             const SizedBox(height: AppDimensions.spaceLG),
 
@@ -139,10 +141,10 @@ class _AdventChapterReaderScreenState extends State<AdventChapterReaderScreen> {
                             // Story Content
                             Text(
                               widget.chapter.storyContent,
-                              style: const TextStyle(
-                                fontSize: 15,
-                                height: 1.7,
-                                color: Color(0xFF2D3748),
+                              style: ChristmasTypography.bodyLarge.copyWith(
+                                fontSize: 16,
+                                height: 1.75,
+                                color: const Color(0xFF2D3748),
                                 letterSpacing: 0.2,
                               ),
                             ),
@@ -272,13 +274,14 @@ class _AdventChapterReaderScreenState extends State<AdventChapterReaderScreen> {
                               icon: Icons.check_circle_rounded,
                               style: FestiveButtonStyle.primary,
                               onPressed: () {
+                                ChristmasAudioService.playSuccessChime();
                                 widget.controller.markChapterAsRead(
                                   widget.chapter.dayNumber,
                                 );
                                 ScaffoldMessenger.of(context).showSnackBar(
                                   SnackBar(
                                     content: Text(
-                                      'Đã ghi nhận đọc ${widget.chapter.title}!',
+                                      'Marked ${widget.chapter.title} as read!',
                                     ),
                                     duration: const Duration(seconds: 2),
                                   ),
@@ -288,6 +291,7 @@ class _AdventChapterReaderScreenState extends State<AdventChapterReaderScreen> {
                           ),
                         ],
                       ),
+                      const SizedBox(height: 80),
                     ],
                   ),
                 ),

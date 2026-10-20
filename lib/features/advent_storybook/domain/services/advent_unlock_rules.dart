@@ -6,55 +6,55 @@ class AdventUnlockRules {
   static String getUnlockDescription(int dayNumber) {
     switch (dayNumber) {
       case 1:
-        return 'Mở sẵn khi bắt đầu mùa lễ hội.';
+        return 'Available from the start of the holiday season.';
       case 2:
-        return 'Chiến thắng trò chơi Lật Thẻ Giáng Sinh lần đầu tiên.';
+        return 'Win the Holiday Memory Match game for the first time.';
       case 3:
-        return 'Hoàn thành trò chơi Bắt Quà Giáng Sinh lần đầu tiên.';
+        return 'Complete the Catch the Gifts game for the first time.';
       case 4:
-        return 'Đọc xong Chương 1 của cuốn sách.';
+        return 'Finish reading Chapter 1 of the storybook.';
       case 5:
-        return 'Đạt từ 10 điểm trở lên trong Bắt Quà Giáng Sinh.';
+        return 'Score 10 points or more in Catch the Gifts.';
       case 6:
-        return 'Thắng Lật Thẻ Giáng Sinh với từ 18 lượt thử trở xuống.';
+        return 'Win Memory Match in 18 moves or fewer.';
       case 7:
-        return 'Bắt được tổng cộng từ 15 hộp quà trong Bắt Quà Giáng Sinh.';
+        return 'Catch a total of 15 gifts in Catch the Gifts.';
       case 8:
-        return 'Đọc xong ít nhất 3 chương trong cuốn sách.';
+        return 'Read at least 3 chapters in the storybook.';
       case 9:
-        return 'Chiến thắng Lật Thẻ Giáng Sinh từ 2 lần trở lên.';
+        return 'Win Memory Match 2 or more times.';
       case 10:
-        return 'Đạt điểm cao từ 20 điểm trở lên trong Bắt Quà Giáng Sinh.';
+        return 'Achieve a score of 20 points or higher in Catch the Gifts.';
       case 11:
-        return 'Hoàn thành từ 2 lượt chơi Bắt Quà Giáng Sinh trở lên.';
+        return 'Complete 2 or more rounds of Catch the Gifts.';
       case 12:
-        return 'Đọc xong ít nhất 6 chương trong cuốn sách.';
+        return 'Read at least 6 chapters in the storybook.';
       case 13:
-        return 'Thắng Lật Thẻ Giáng Sinh với từ 14 lượt thử trở xuống.';
+        return 'Win Memory Match in 14 moves or fewer.';
       case 14:
-        return 'Bắt được tổng cộng từ 35 hộp quà trong Bắt Quà Giáng Sinh.';
+        return 'Catch a total of 35 gifts in Catch the Gifts.';
       case 15:
-        return 'Chiến thắng Lật Thẻ Giáng Sinh từ 3 lần trở lên.';
+        return 'Win Memory Match 3 or more times.';
       case 16:
-        return 'Đạt điểm cao từ 30 điểm trở lên trong Bắt Quà Giáng Sinh.';
+        return 'Achieve a score of 30 points or higher in Catch the Gifts.';
       case 17:
-        return 'Hoàn thành từ 3 lượt chơi Bắt Quà Giáng Sinh trở lên.';
+        return 'Complete 3 or more rounds of Catch the Gifts.';
       case 18:
-        return 'Đọc xong ít nhất 10 chương trong cuốn sách.';
+        return 'Read at least 10 chapters in the storybook.';
       case 19:
-        return 'Thắng Lật Thẻ với <= 12 lượt hoặc thắng từ 4 lần trở lên.';
+        return 'Win Memory Match in <= 12 moves or win 4 or more times.';
       case 20:
-        return 'Bắt được tổng cộng từ 60 hộp quà trong Bắt Quà Giáng Sinh.';
+        return 'Catch a total of 60 gifts in Catch the Gifts.';
       case 21:
-        return 'Đọc xong ít nhất 15 chương trong cuốn sách.';
+        return 'Read at least 15 chapters in the storybook.';
       case 22:
-        return 'Chiến thắng Lật Thẻ Giáng Sinh từ 5 lần trở lên.';
+        return 'Win Memory Match 5 or more times.';
       case 23:
-        return 'Đạt điểm cao >= 40 hoặc tổng quà bắt được >= 80.';
+        return 'Achieve a score >= 40 or catch >= 80 gifts total.';
       case 24:
-        return 'Đã mở khóa 23 chương trước và đọc ít nhất 18 chương.';
+        return 'Unlock all 23 previous chapters and read at least 18 chapters.';
       default:
-        return 'Chưa rõ điều kiện mở khóa.';
+        return 'Unlock condition unknown.';
     }
   }
 

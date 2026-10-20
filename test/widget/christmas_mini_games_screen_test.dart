@@ -49,15 +49,24 @@ void main() {
         expect(find.byKey(const Key('hub_card_memory_match')), findsOneWidget);
         expect(find.text(AppStrings.memoryMatchTitle), findsOneWidget);
         expect(find.byKey(const Key('btn_play_memory_match')), findsOneWidget);
-        expect(find.textContaining('Số lần thắng: 2'), findsOneWidget);
-        expect(find.textContaining('14 lượt'), findsOneWidget);
+        expect(
+          find.textContaining('${AppStrings.completedCountLabel}: 2'),
+          findsOneWidget,
+        );
+        expect(find.textContaining('14 moves'), findsOneWidget);
 
         // Catch the Gifts card & stats
         expect(find.byKey(const Key('hub_card_catch_gifts')), findsOneWidget);
         expect(find.text(AppStrings.catchGiftsTitle), findsOneWidget);
         expect(find.byKey(const Key('btn_play_catch_gifts')), findsOneWidget);
-        expect(find.textContaining('Điểm cao nhất: 25 điểm'), findsOneWidget);
-        expect(find.textContaining('Tổng quà đã bắt: 30'), findsOneWidget);
+        expect(
+          find.textContaining('${AppStrings.highScoreLabel}: 25 pts'),
+          findsOneWidget,
+        );
+        expect(
+          find.textContaining('${AppStrings.totalGiftsLabel}: 30'),
+          findsOneWidget,
+        );
       },
     );
 

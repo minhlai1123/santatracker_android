@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import '../../../../core/constants/app_dimensions.dart';
 import '../../../../core/constants/app_strings.dart';
 import '../../../../core/theme/app_colors.dart';
+import '../../../../core/theme/christmas_typography.dart';
 import '../../../../shared/widgets/festive_button.dart';
 import '../controllers/catch_gifts_controller.dart';
 import '../controllers/mini_games_controller.dart';
@@ -174,30 +175,35 @@ class _CatchGiftsScreenState extends State<CatchGiftsScreen> {
                 width: 72,
                 height: 72,
                 decoration: BoxDecoration(
-                  color: AppColors.christmasRed.withAlpha(25),
+                  gradient: AppColors.festiveHeaderGradient,
                   shape: BoxShape.circle,
+                  boxShadow: [
+                    BoxShadow(
+                      color: AppColors.christmasRed.withAlpha(50),
+                      blurRadius: 10,
+                      offset: const Offset(0, 4),
+                    ),
+                  ],
                 ),
                 child: const Icon(
                   Icons.card_giftcard_rounded,
                   size: 40,
-                  color: AppColors.christmasRed,
+                  color: AppColors.warmGold,
                 ),
               ),
               const SizedBox(height: AppDimensions.spaceMD),
-              const Text(
+              Text(
                 AppStrings.catchGiftsTitle,
-                style: TextStyle(
-                  fontSize: 20,
-                  fontWeight: FontWeight.w700,
-                  color: AppColors.textPrimary,
+                style: ChristmasTypography.displaySubtitle.copyWith(
+                  fontSize: 22,
+                  color: AppColors.christmasRed,
                 ),
               ),
               const SizedBox(height: AppDimensions.spaceSM),
-              const Text(
+              Text(
                 AppStrings.catchGiftsInstructions,
                 textAlign: TextAlign.center,
-                style: TextStyle(
-                  fontSize: 14,
+                style: ChristmasTypography.bodyMedium.copyWith(
                   color: AppColors.textSecondary,
                   height: 1.4,
                 ),
@@ -238,19 +244,20 @@ class _CatchGiftsScreenState extends State<CatchGiftsScreen> {
                 ),
               ),
               const SizedBox(height: AppDimensions.spaceMD),
-              const Text(
+              Text(
                 AppStrings.catchGiftsGameOverTitle,
-                style: TextStyle(
-                  fontSize: 20,
-                  fontWeight: FontWeight.w700,
-                  color: AppColors.textPrimary,
+                style: ChristmasTypography.displaySubtitle.copyWith(
+                  fontSize: 22,
+                  color: AppColors.christmasRed,
                 ),
               ),
               const SizedBox(height: AppDimensions.spaceXS),
-              const Text(
+              Text(
                 AppStrings.catchGiftsGameOverMessage,
                 textAlign: TextAlign.center,
-                style: TextStyle(fontSize: 13, color: AppColors.textSecondary),
+                style: ChristmasTypography.bodySmall.copyWith(
+                  color: AppColors.textSecondary,
+                ),
               ),
               const SizedBox(height: AppDimensions.spaceMD),
               Container(
@@ -344,7 +351,7 @@ class _CatchGiftsScreenState extends State<CatchGiftsScreen> {
                 bottom: 8,
                 left: 12,
                 child: Text(
-                  'Bắt các hộp quà đang rơi!',
+                  'Catch the falling gifts!',
                   style: TextStyle(
                     fontSize: 11,
                     color: AppColors.textMuted.withAlpha(160),
@@ -379,14 +386,16 @@ class _CatchGiftsScreenState extends State<CatchGiftsScreen> {
       children: [
         Text(
           label,
-          style: const TextStyle(fontSize: 12, color: AppColors.textSecondary),
+          style: ChristmasTypography.statLabel.copyWith(
+            fontSize: 12,
+            color: AppColors.textSecondary,
+          ),
         ),
         const SizedBox(height: 2),
         Text(
           value,
-          style: TextStyle(
+          style: ChristmasTypography.statValue.copyWith(
             fontSize: 18,
-            fontWeight: FontWeight.w700,
             color: color,
           ),
         ),

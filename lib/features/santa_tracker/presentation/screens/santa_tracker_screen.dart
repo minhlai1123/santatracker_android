@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import '../../../../core/constants/app_dimensions.dart';
 import '../../../../core/constants/app_strings.dart';
 import '../../../../core/theme/app_colors.dart';
+import '../../../../core/theme/christmas_typography.dart';
+import '../../../../shared/widgets/christmas_background.dart';
 import '../../../../shared/widgets/festive_button.dart';
 import '../../../welcome/presentation/widgets/festive_badge.dart';
 import '../../domain/models/santa_stop.dart';
@@ -65,77 +67,77 @@ class _SantaTrackerScreenState extends State<SantaTrackerScreen>
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: const Text(AppStrings.santaTrackerScreenTitle)),
-      body: SafeArea(
-        child: AnimatedBuilder(
-          animation: _controller,
-          builder: (context, _) {
-            final state = _controller.state;
+      body: ChristmasBackground(
+        isDarkTheme: false,
+        showSnowfall: true,
+        child: SafeArea(
+          child: AnimatedBuilder(
+            animation: _controller,
+            builder: (context, _) {
+              final state = _controller.state;
 
-            return Center(
-              child: SingleChildScrollView(
-                padding: const EdgeInsets.symmetric(
-                  horizontal: AppDimensions.spaceLG,
-                  vertical: AppDimensions.spaceLG,
-                ),
-                child: ConstrainedBox(
-                  constraints: const BoxConstraints(maxWidth: 600),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.stretch,
-                    children: [
-                      const Center(
-                        child: FestiveBadge(
-                          label: AppStrings.simulationBadgeLabel,
-                          icon: Icons.public_rounded,
-                          backgroundColor: AppColors.redTint,
-                          textColor: AppColors.christmasRed,
+              return Center(
+                child: SingleChildScrollView(
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: AppDimensions.spaceLG,
+                    vertical: AppDimensions.spaceLG,
+                  ),
+                  child: ConstrainedBox(
+                    constraints: const BoxConstraints(maxWidth: 600),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.stretch,
+                      children: [
+                        const Center(
+                          child: FestiveBadge(
+                            label: AppStrings.simulationBadgeLabel,
+                            icon: Icons.public_rounded,
+                            backgroundColor: AppColors.redTint,
+                            textColor: AppColors.christmasRed,
+                          ),
                         ),
-                      ),
-                      const SizedBox(height: AppDimensions.spaceSM),
-                      const Text(
-                        AppStrings.simulationSubtitle,
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                          fontSize: 13,
-                          color: AppColors.textSecondary,
-                          height: 1.4,
+                        const SizedBox(height: AppDimensions.spaceSM),
+                        const Text(
+                          AppStrings.simulationSubtitle,
+                          textAlign: TextAlign.center,
+                          style: ChristmasTypography.bodyMedium,
                         ),
-                      ),
-                      if (state.isOffline) ...[
+                        if (state.isOffline) ...[
+                          const SizedBox(height: AppDimensions.spaceMD),
+                          SantaOfflineBanner(isOffline: state.isOffline),
+                        ],
                         const SizedBox(height: AppDimensions.spaceMD),
-                        SantaOfflineBanner(isOffline: state.isOffline),
-                      ],
-                      const SizedBox(height: AppDimensions.spaceMD),
-                      SantaWorldMap(
-                        state: state,
-                        shouldAnimateMarker: _controller.shouldAnimateMarker,
-                      ),
-                      const SizedBox(height: AppDimensions.spaceLG),
-                      SantaControlPanel(
-                        state: state,
-                        onStart: _controller.startJourney,
-                        onNextStop: _controller.advanceToNextStop,
-                        onPause: _controller.pauseJourney,
-                        onResume: _controller.resumeJourney,
-                        onReset: _controller.resetJourney,
-                      ),
-                      const SizedBox(height: AppDimensions.spaceLG),
-                      SantaJourneyInfoCard(state: state),
-                      if (Navigator.of(context).canPop()) ...[
-                        const SizedBox(height: AppDimensions.spaceLG),
-                        FestiveButton(
-                          label: AppStrings.backToHomeButton,
-                          icon: Icons.home_outlined,
-                          style: FestiveButtonStyle.secondary,
-                          isExpanded: true,
-                          onPressed: () => Navigator.of(context).pop(),
+                        SantaWorldMap(
+                          state: state,
+                          shouldAnimateMarker: _controller.shouldAnimateMarker,
                         ),
+                        const SizedBox(height: AppDimensions.spaceLG),
+                        SantaControlPanel(
+                          state: state,
+                          onStart: _controller.startJourney,
+                          onNextStop: _controller.advanceToNextStop,
+                          onPause: _controller.pauseJourney,
+                          onResume: _controller.resumeJourney,
+                          onReset: _controller.resetJourney,
+                        ),
+                        const SizedBox(height: AppDimensions.spaceLG),
+                        SantaJourneyInfoCard(state: state),
+                        if (Navigator.of(context).canPop()) ...[
+                          const SizedBox(height: AppDimensions.spaceLG),
+                          FestiveButton(
+                            label: AppStrings.backToHomeButton,
+                            icon: Icons.home_outlined,
+                            style: FestiveButtonStyle.secondary,
+                            isExpanded: true,
+                            onPressed: () => Navigator.of(context).pop(),
+                          ),
+                        ],
                       ],
-                    ],
+                    ),
                   ),
                 ),
-              ),
-            );
-          },
+              );
+            },
+          ),
         ),
       ),
     );

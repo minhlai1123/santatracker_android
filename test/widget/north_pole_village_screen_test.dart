@@ -46,7 +46,7 @@ void main() {
         // Initial hint card when no location is selected
         expect(find.byKey(const Key('village_hint_card')), findsOneWidget);
         expect(find.text(AppStrings.selectLocationHint), findsOneWidget);
-        expect(find.textContaining('0 / 8 địa điểm'), findsOneWidget);
+        expect(find.textContaining('0 / 8 locations'), findsOneWidget);
       },
     );
 
@@ -69,7 +69,7 @@ void main() {
           find.byKey(const Key('village_location_detail_sheet')),
           findsOneWidget,
         );
-        expect(find.text('Quảng Trường Lễ Hội'), findsAtLeastNWidgets(1));
+        expect(find.text('Holiday Plaza'), findsAtLeastNWidgets(1));
         expect(
           find.byKey(const Key('badge_location_undiscovered')),
           findsOneWidget,
@@ -106,7 +106,7 @@ void main() {
         await tester.tap(marker);
         await tester.pumpAndSettle();
 
-        expect(find.textContaining('0 / 8 địa điểm'), findsOneWidget);
+        expect(find.textContaining('0 / 8 locations'), findsOneWidget);
 
         // 7. Tap "Khám Phá Địa Điểm Này"
         final discoverBtn = find.byKey(const Key('btn_discover_location'));
@@ -119,7 +119,7 @@ void main() {
           find.byKey(const Key('badge_location_discovered')),
           findsOneWidget,
         );
-        expect(find.textContaining('1 / 8 địa điểm'), findsOneWidget);
+        expect(find.textContaining('1 / 8 locations'), findsOneWidget);
         expect(controller.state.isDiscovered('santa_house'), isTrue);
 
         controller.dispose();
@@ -147,7 +147,7 @@ void main() {
           findsOneWidget,
         );
         expect(find.text(AppStrings.villageCompletedBanner), findsOneWidget);
-        expect(find.textContaining('8 / 8 địa điểm'), findsOneWidget);
+        expect(find.textContaining('8 / 8 locations'), findsOneWidget);
         expect(find.text('100%'), findsOneWidget);
 
         controller.dispose();
@@ -174,7 +174,7 @@ void main() {
         // 15. All 4 features are active in Phase 5
         expect(find.text(AppStrings.gamesFeatureTitle), findsOneWidget);
         expect(find.text(AppStrings.adventFeatureTitle), findsOneWidget);
-        expect(find.text('Hoạt động'), findsNWidgets(4));
+        expect(find.text(AppStrings.villageActiveBadge), findsNWidgets(4));
 
         // 12. Open North Pole Village
         final openVillageBtn = find.byKey(const Key('btn_open_village'));

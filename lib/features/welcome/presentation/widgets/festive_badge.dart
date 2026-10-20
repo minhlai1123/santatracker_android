@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../../../../core/constants/app_dimensions.dart';
 import '../../../../core/theme/app_colors.dart';
+import '../../../../core/theme/christmas_typography.dart';
 
 class FestiveBadge extends StatelessWidget {
   final String label;
@@ -45,12 +46,7 @@ class FestiveBadge extends StatelessWidget {
           Flexible(
             child: Text(
               label,
-              style: TextStyle(
-                fontSize: 12,
-                fontWeight: FontWeight.w600,
-                color: textColor,
-                letterSpacing: 0.2,
-              ),
+              style: ChristmasTypography.badgeLabel.copyWith(color: textColor),
               overflow: TextOverflow.ellipsis,
             ),
           ),

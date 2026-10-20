@@ -5,17 +5,17 @@ import '../models/countdown_state.dart';
 class CountdownCalculator {
   const CountdownCalculator();
 
-  /// Kiểm tra xem thời điểm đã cho có thuộc đúng ngày Giáng Sinh (25/12) hay không.
+  /// Checks if the given date is Christmas Day (December 25th).
   static bool isChristmasDay(DateTime dateTime) {
     return dateTime.month == 12 && dateTime.day == 25;
   }
 
-  /// Xác định mốc Giáng Sinh tiếp theo (00:00:00 ngày 25/12 theo giờ địa phương).
+  /// Determines the next Christmas target (00:00:00 on Dec 25th in local time).
   ///
-  /// - Nếu thời điểm hiện tại trước 00:00:00 ngày 25/12 của năm hiện tại,
-  ///   mục tiêu là ngày 25/12 của năm hiện tại.
-  /// - Nếu thời điểm hiện tại đúng hoặc sau 00:00:00 ngày 25/12,
-  ///   mục tiêu là ngày 25/12 của năm tiếp theo.
+  /// - If current time is before 00:00:00 on Dec 25th of the current year,
+  ///   the target is Dec 25th of the current year.
+  /// - If current time is on or after 00:00:00 on Dec 25th,
+  ///   the target is Dec 25th of the next year.
   static DateTime getNextChristmasTarget(DateTime now) {
     final currentYearTarget = DateTime(now.year, 12, 25, 0, 0, 0);
     if (now.isBefore(currentYearTarget)) {
@@ -25,7 +25,7 @@ class CountdownCalculator {
     }
   }
 
-  /// Xác định loại thông điệp tương ứng dựa trên trạng thái ngày lễ và khoảng thời gian còn lại.
+  /// Determines the message type based on holiday status and remaining duration.
   static CountdownMessageType getMessageType({
     required bool isChristmas,
     required Duration remainingDuration,
@@ -48,7 +48,7 @@ class CountdownCalculator {
     }
   }
 
-  /// Lấy chuỗi thông điệp tiếng Việt tương ứng với loại thông điệp.
+  /// Retrieves the message string corresponding to the message type.
   static String getMessageForType(CountdownMessageType type) {
     switch (type) {
       case CountdownMessageType.christmasDay:
@@ -64,8 +64,8 @@ class CountdownCalculator {
     }
   }
 
-  /// Tính toán toàn bộ trạng thái đếm ngược cho một thời điểm cụ thể.
-  /// Hàm thuần túy (pure function), dễ dàng kiểm thử độc lập mà không cần chờ thời gian thật.
+  /// Calculates the full countdown state for a given moment in time.
+  /// Pure function for reliable unit testing without requiring real-time delays.
   static CountdownState calculate(DateTime now) {
     final isChristmas = isChristmasDay(now);
     final target = getNextChristmasTarget(now);

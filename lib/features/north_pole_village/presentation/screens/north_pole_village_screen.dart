@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 
 import '../../../../core/constants/app_dimensions.dart';
 import '../../../../core/constants/app_strings.dart';
+import '../../../../core/services/christmas_audio_service.dart';
+import '../../../../shared/widgets/christmas_background.dart';
 import '../../../../shared/widgets/festive_button.dart';
 import '../../data/village_storage.dart';
 import '../../domain/models/village_location.dart';
@@ -52,56 +54,62 @@ class _NorthPoleVillageScreenState extends State<NorthPoleVillageScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: const Text(AppStrings.villageScreenTitle)),
-      body: SafeArea(
-        child: AnimatedBuilder(
-          animation: _controller,
-          builder: (context, _) {
-            final state = _controller.state;
+      body: ChristmasBackground(
+        isDarkTheme: false,
+        showSnowfall: true,
+        child: SafeArea(
+          child: AnimatedBuilder(
+            animation: _controller,
+            builder: (context, _) {
+              final state = _controller.state;
 
-            return Center(
-              child: SingleChildScrollView(
-                padding: const EdgeInsets.symmetric(
-                  horizontal: AppDimensions.spaceLG,
-                  vertical: AppDimensions.spaceLG,
-                ),
-                child: ConstrainedBox(
-                  constraints: const BoxConstraints(maxWidth: 600),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.stretch,
-                    children: [
-                      VillageProgressHeader(state: state),
-                      const SizedBox(height: AppDimensions.spaceLG),
-                      VillageMap(
-                        locations: state.locations,
-                        discoveredLocationIds: state.discoveredLocationIds,
-                        selectedLocationId: state.selectedLocationId,
-                        onSelectLocation: (id) =>
-                            _controller.selectLocation(id),
-                      ),
-                      const SizedBox(height: AppDimensions.spaceLG),
-                      VillageLocationDetailSheet(
-                        location: state.selectedLocation,
-                        isDiscovered: state.isSelectedLocationDiscovered,
-                        onDiscover: () =>
-                            _controller.markSelectedLocationAsDiscovered(),
-                        onClose: () => _controller.selectLocation(null),
-                      ),
-                      if (Navigator.of(context).canPop()) ...[
+              return Center(
+                child: SingleChildScrollView(
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: AppDimensions.spaceLG,
+                    vertical: AppDimensions.spaceLG,
+                  ),
+                  child: ConstrainedBox(
+                    constraints: const BoxConstraints(maxWidth: 600),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.stretch,
+                      children: [
+                        VillageProgressHeader(state: state),
                         const SizedBox(height: AppDimensions.spaceLG),
-                        FestiveButton(
-                          label: AppStrings.backToHomeButton,
-                          icon: Icons.home_outlined,
-                          style: FestiveButtonStyle.secondary,
-                          isExpanded: true,
-                          onPressed: () => Navigator.of(context).pop(),
+                        VillageMap(
+                          locations: state.locations,
+                          discoveredLocationIds: state.discoveredLocationIds,
+                          selectedLocationId: state.selectedLocationId,
+                          onSelectLocation: (id) =>
+                              _controller.selectLocation(id),
                         ),
+                        const SizedBox(height: AppDimensions.spaceLG),
+                        VillageLocationDetailSheet(
+                          location: state.selectedLocation,
+                          isDiscovered: state.isSelectedLocationDiscovered,
+                          onDiscover: () {
+                            ChristmasAudioService.playSuccessChime();
+                            _controller.markSelectedLocationAsDiscovered();
+                          },
+                          onClose: () => _controller.selectLocation(null),
+                        ),
+                        if (Navigator.of(context).canPop()) ...[
+                          const SizedBox(height: AppDimensions.spaceLG),
+                          FestiveButton(
+                            label: AppStrings.backToHomeButton,
+                            icon: Icons.home_outlined,
+                            style: FestiveButtonStyle.secondary,
+                            isExpanded: true,
+                            onPressed: () => Navigator.of(context).pop(),
+                          ),
+                        ],
                       ],
-                    ],
+                    ),
                   ),
                 ),
-              ),
-            );
-          },
+              );
+            },
+          ),
         ),
       ),
     );

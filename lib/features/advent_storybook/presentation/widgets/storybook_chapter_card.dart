@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import '../../../../core/constants/app_dimensions.dart';
 import '../../../../core/constants/app_strings.dart';
 import '../../../../core/theme/app_colors.dart';
+import '../../../../core/theme/christmas_typography.dart';
 import '../../../welcome/presentation/widgets/festive_badge.dart';
 import '../../domain/models/advent_chapter.dart';
 import '../../domain/models/advent_chapter_status.dart';
@@ -83,10 +84,9 @@ class StorybookChapterCard extends StatelessWidget {
                             )
                           : Text(
                               '${chapter.dayNumber}',
-                              style: TextStyle(
-                                fontSize: 14,
-                                fontWeight: FontWeight.w800,
+                              style: ChristmasTypography.titleSmall.copyWith(
                                 color: statusColor,
+                                fontWeight: FontWeight.w800,
                               ),
                             ),
                     ),
@@ -98,9 +98,8 @@ class StorybookChapterCard extends StatelessWidget {
                       children: [
                         Text(
                           '${AppStrings.adventDayPrefix} ${chapter.dayNumber}: ${chapter.title}',
-                          style: TextStyle(
+                          style: ChristmasTypography.cardTitle.copyWith(
                             fontSize: 14,
-                            fontWeight: FontWeight.w700,
                             color: isLocked
                                 ? AppColors.textSecondary
                                 : AppColors.textPrimary,

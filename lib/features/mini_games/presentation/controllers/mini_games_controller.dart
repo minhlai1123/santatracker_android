@@ -23,7 +23,7 @@ class MiniGamesController extends ChangeNotifier {
     try {
       _record = await _storage.loadRecord();
     } catch (e) {
-      debugPrint('MiniGamesController: Lỗi nạp dữ liệu: $e');
+      debugPrint('MiniGamesController: Error loading data: $e');
       _record = const MiniGameRecord.initial();
     } finally {
       _isLoading = false;

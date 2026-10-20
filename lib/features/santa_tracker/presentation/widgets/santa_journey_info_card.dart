@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import '../../../../core/constants/app_dimensions.dart';
 import '../../../../core/constants/app_strings.dart';
 import '../../../../core/theme/app_colors.dart';
+import '../../../../core/theme/christmas_typography.dart';
 import '../../domain/models/santa_journey_status.dart';
 import '../../domain/models/santa_tracker_state.dart';
 
@@ -52,19 +53,13 @@ class SantaJourneyInfoCard extends StatelessWidget {
                   children: [
                     const Text(
                       AppStrings.infoCardTitle,
-                      style: TextStyle(
-                        fontSize: 17,
-                        fontWeight: FontWeight.w700,
-                        color: AppColors.textPrimary,
-                      ),
+                      style: ChristmasTypography.titleMedium,
                     ),
                     const SizedBox(height: 2),
                     Text(
                       '${AppStrings.routeProgressLabel}: ${state.progressFractionDisplay}',
                       key: const Key('info_route_progress'),
-                      style: const TextStyle(
-                        fontSize: 12,
-                        fontWeight: FontWeight.w600,
+                      style: ChristmasTypography.badgeLabel.copyWith(
                         color: AppColors.textSecondary,
                       ),
                     ),
@@ -85,11 +80,7 @@ class SantaJourneyInfoCard extends StatelessWidget {
             child: Text(
               state.currentStop.description,
               key: const Key('info_current_stop_description'),
-              style: const TextStyle(
-                fontSize: 13,
-                color: AppColors.textSecondary,
-                height: 1.4,
-              ),
+              style: ChristmasTypography.bodyMedium,
             ),
           ),
           if (state.isCompleted) ...[
@@ -224,24 +215,9 @@ class SantaJourneyInfoCard extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text(
-                label,
-                style: const TextStyle(
-                  fontSize: 12,
-                  fontWeight: FontWeight.w500,
-                  color: AppColors.textSecondary,
-                ),
-              ),
+              Text(label, style: ChristmasTypography.bodySmall),
               const SizedBox(height: 2),
-              Text(
-                value,
-                key: valueKey,
-                style: const TextStyle(
-                  fontSize: 15,
-                  fontWeight: FontWeight.w700,
-                  color: AppColors.textPrimary,
-                ),
-              ),
+              Text(value, key: valueKey, style: ChristmasTypography.titleSmall),
             ],
           ),
         ),

@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 
 import '../../../../core/constants/app_dimensions.dart';
 import '../../../../core/constants/app_strings.dart';
-import '../../../../core/theme/app_colors.dart';
+import '../../../../core/theme/christmas_typography.dart';
+import '../../../../shared/widgets/christmas_background.dart';
 import '../controllers/mini_games_controller.dart';
 import '../widgets/mini_game_hub_card.dart';
 import 'catch_gifts_screen.dart';
@@ -71,76 +72,72 @@ class _ChristmasMiniGamesScreenState extends State<ChristmasMiniGamesScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: const Text(AppStrings.miniGamesScreenTitle)),
-      body: SafeArea(
-        child: AnimatedBuilder(
-          animation: _controller,
-          builder: (context, _) {
-            final record = _controller.record;
+      body: ChristmasBackground(
+        isDarkTheme: false,
+        showSnowfall: true,
+        child: SafeArea(
+          child: AnimatedBuilder(
+            animation: _controller,
+            builder: (context, _) {
+              final record = _controller.record;
 
-            return Center(
-              child: SingleChildScrollView(
-                padding: const EdgeInsets.all(AppDimensions.spaceLG),
-                child: ConstrainedBox(
-                  constraints: const BoxConstraints(maxWidth: 540),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.stretch,
-                    children: [
-                      // Header Section
-                      const Text(
-                        AppStrings.miniGamesScreenTitle,
-                        style: TextStyle(
-                          fontSize: 22,
-                          fontWeight: FontWeight.w800,
-                          color: AppColors.textPrimary,
+              return Center(
+                child: SingleChildScrollView(
+                  padding: const EdgeInsets.all(AppDimensions.spaceLG),
+                  child: ConstrainedBox(
+                    constraints: const BoxConstraints(maxWidth: 540),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.stretch,
+                      children: [
+                        // Header Section
+                        const Text(
+                          AppStrings.miniGamesScreenTitle,
+                          style: ChristmasTypography.titleLarge,
                         ),
-                      ),
-                      const SizedBox(height: AppDimensions.spaceXS),
-                      const Text(
-                        AppStrings.miniGamesSubtitle,
-                        style: TextStyle(
-                          fontSize: 14,
-                          color: AppColors.textSecondary,
-                          height: 1.4,
+                        const SizedBox(height: AppDimensions.spaceXS),
+                        const Text(
+                          AppStrings.miniGamesSubtitle,
+                          style: ChristmasTypography.bodyMedium,
                         ),
-                      ),
-                      const SizedBox(height: AppDimensions.spaceXL),
+                        const SizedBox(height: AppDimensions.spaceXL),
 
-                      // Game 1: Christmas Memory Match
-                      MiniGameHubCard(
-                        key: const Key('hub_card_memory_match'),
-                        icon: Icons.grid_view_rounded,
-                        title: AppStrings.memoryMatchTitle,
-                        description: AppStrings.memoryMatchDesc,
-                        statsHighlights: [
-                          '${AppStrings.completedCountLabel}: ${record.memoryMatchCompletions}',
-                          if (record.memoryMatchBestMoves != null)
-                            '${AppStrings.bestMovesLabel}: ${record.memoryMatchBestMoves} lượt',
-                        ],
-                        playButtonKey: const Key('btn_play_memory_match'),
-                        onPlay: () => _navigateToMemoryMatch(context),
-                      ),
-                      const SizedBox(height: AppDimensions.spaceLG),
+                        // Game 1: Christmas Memory Match
+                        MiniGameHubCard(
+                          key: const Key('hub_card_memory_match'),
+                          icon: Icons.grid_view_rounded,
+                          title: AppStrings.memoryMatchTitle,
+                          description: AppStrings.memoryMatchDesc,
+                          statsHighlights: [
+                            '${AppStrings.completedCountLabel}: ${record.memoryMatchCompletions}',
+                            if (record.memoryMatchBestMoves != null)
+                              '${AppStrings.bestMovesLabel}: ${record.memoryMatchBestMoves} moves',
+                          ],
+                          playButtonKey: const Key('btn_play_memory_match'),
+                          onPlay: () => _navigateToMemoryMatch(context),
+                        ),
+                        const SizedBox(height: AppDimensions.spaceLG),
 
-                      // Game 2: Catch the Gifts
-                      MiniGameHubCard(
-                        key: const Key('hub_card_catch_gifts'),
-                        icon: Icons.card_giftcard_rounded,
-                        title: AppStrings.catchGiftsTitle,
-                        description: AppStrings.catchGiftsDesc,
-                        statsHighlights: [
-                          '${AppStrings.highScoreLabel}: ${record.catchGiftsHighScore} điểm',
-                          '${AppStrings.totalGiftsLabel}: ${record.catchGiftsTotalGifts}',
-                          '${AppStrings.completedCountLabel}: ${record.catchGiftsCompletions}',
-                        ],
-                        playButtonKey: const Key('btn_play_catch_gifts'),
-                        onPlay: () => _navigateToCatchGifts(context),
-                      ),
-                    ],
+                        // Game 2: Catch the Gifts
+                        MiniGameHubCard(
+                          key: const Key('hub_card_catch_gifts'),
+                          icon: Icons.card_giftcard_rounded,
+                          title: AppStrings.catchGiftsTitle,
+                          description: AppStrings.catchGiftsDesc,
+                          statsHighlights: [
+                            '${AppStrings.highScoreLabel}: ${record.catchGiftsHighScore} pts',
+                            '${AppStrings.totalGiftsLabel}: ${record.catchGiftsTotalGifts}',
+                            '${AppStrings.completedCountLabel}: ${record.catchGiftsCompletions}',
+                          ],
+                          playButtonKey: const Key('btn_play_catch_gifts'),
+                          onPlay: () => _navigateToCatchGifts(context),
+                        ),
+                      ],
+                    ),
                   ),
                 ),
-              ),
-            );
-          },
+              );
+            },
+          ),
         ),
       ),
     );

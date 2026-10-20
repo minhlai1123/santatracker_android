@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../../../core/constants/app_dimensions.dart';
+import '../../../../core/services/christmas_audio_service.dart';
 import '../../../../core/theme/app_colors.dart';
 import '../../domain/models/memory_card.dart';
 
@@ -17,12 +18,17 @@ class MemoryCardWidget extends StatelessWidget {
     return Semantics(
       button: true,
       label: isRevealed
-          ? '${card.name}${card.isMatched ? ' đã ghép' : ''}'
-          : 'Thẻ chưa lật',
+          ? '${card.name}${card.isMatched ? ' matched' : ''}'
+          : 'Card face down',
       child: Material(
         color: Colors.transparent,
         child: InkWell(
-          onTap: isRevealed ? null : onTap,
+          onTap: isRevealed
+              ? null
+              : () {
+                  ChristmasAudioService.playGiftPop();
+                  onTap();
+                },
           borderRadius: BorderRadius.circular(AppDimensions.radiusMD),
           child: AnimatedContainer(
             duration: const Duration(milliseconds: 250),

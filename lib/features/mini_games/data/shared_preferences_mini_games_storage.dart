@@ -35,7 +35,7 @@ class SharedPreferencesMiniGamesStorage implements MiniGamesStorage {
       );
     } catch (e, stackTrace) {
       debugPrint(
-        'SharedPreferencesMiniGamesStorage: Lỗi khi nạp kỷ lục: $e\n$stackTrace',
+        'SharedPreferencesMiniGamesStorage: Failed to load records: $e\n$stackTrace',
       );
       return const MiniGameRecord.initial();
     }
@@ -67,7 +67,7 @@ class SharedPreferencesMiniGamesStorage implements MiniGamesStorage {
       );
     } catch (e, stackTrace) {
       debugPrint(
-        'SharedPreferencesMiniGamesStorage: Lỗi khi lưu kỷ lục: $e\n$stackTrace',
+        'SharedPreferencesMiniGamesStorage: Failed to save records: $e\n$stackTrace',
       );
     }
   }

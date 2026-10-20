@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import '../../../../core/constants/app_dimensions.dart';
 import '../../../../core/constants/app_strings.dart';
 import '../../../../core/theme/app_colors.dart';
+import '../../../../core/theme/christmas_typography.dart';
 import '../../domain/models/village_exploration_state.dart';
 
 class VillageProgressHeader extends StatelessWidget {
@@ -36,19 +37,13 @@ class VillageProgressHeader extends StatelessWidget {
                 children: [
                   const Text(
                     AppStrings.villageScreenTitle,
-                    style: TextStyle(
-                      fontSize: 18,
-                      fontWeight: FontWeight.w700,
-                      color: AppColors.textPrimary,
-                    ),
+                    style: ChristmasTypography.titleLarge,
                   ),
                   const SizedBox(height: 2),
                   Text(
                     '${AppStrings.villageProgressLabel}: ${state.progressDisplay}',
                     key: const Key('village_progress_text'),
-                    style: const TextStyle(
-                      fontSize: 13,
-                      fontWeight: FontWeight.w600,
+                    style: ChristmasTypography.badgeLabel.copyWith(
                       color: AppColors.textSecondary,
                     ),
                   ),

@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import '../../../../core/constants/app_dimensions.dart';
 import '../../../../core/constants/app_strings.dart';
 import '../../../../core/theme/app_colors.dart';
+import '../../../../core/theme/christmas_typography.dart';
 import '../../domain/models/advent_storybook_state.dart';
 
 class StorybookCoverHeader extends StatelessWidget {
@@ -35,13 +36,20 @@ class StorybookCoverHeader extends StatelessWidget {
                 width: 52,
                 height: 52,
                 decoration: BoxDecoration(
-                  color: AppColors.christmasRed.withAlpha(25),
+                  gradient: AppColors.festiveHeaderGradient,
                   shape: BoxShape.circle,
+                  boxShadow: [
+                    BoxShadow(
+                      color: AppColors.christmasRed.withAlpha(50),
+                      blurRadius: 8,
+                      offset: const Offset(0, 3),
+                    ),
+                  ],
                 ),
                 child: const Icon(
                   Icons.auto_stories_rounded,
                   size: AppDimensions.iconSizeMD,
-                  color: AppColors.christmasRed,
+                  color: AppColors.warmGold,
                 ),
               ),
               const SizedBox(width: AppDimensions.spaceMD),
@@ -49,19 +57,17 @@ class StorybookCoverHeader extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    const Text(
+                    Text(
                       AppStrings.adventScreenTitle,
-                      style: TextStyle(
-                        fontSize: 18,
-                        fontWeight: FontWeight.w800,
-                        color: AppColors.textPrimary,
+                      style: ChristmasTypography.displaySubtitle.copyWith(
+                        fontSize: 20,
+                        color: AppColors.christmasRed,
                       ),
                     ),
                     const SizedBox(height: 2),
                     Text(
                       AppStrings.adventSubtitle,
-                      style: const TextStyle(
-                        fontSize: 12,
+                      style: ChristmasTypography.bodySmall.copyWith(
                         color: AppColors.textSecondary,
                         height: 1.3,
                       ),
@@ -189,9 +195,8 @@ class StorybookCoverHeader extends StatelessWidget {
                   label,
                   maxLines: 1,
                   overflow: TextOverflow.ellipsis,
-                  style: const TextStyle(
+                  style: ChristmasTypography.statLabel.copyWith(
                     fontSize: 11,
-                    fontWeight: FontWeight.w600,
                     color: AppColors.textSecondary,
                   ),
                 ),
@@ -199,9 +204,8 @@ class StorybookCoverHeader extends StatelessWidget {
               const SizedBox(width: 4),
               Text(
                 '$count / $total',
-                style: TextStyle(
+                style: ChristmasTypography.statValue.copyWith(
                   fontSize: 12,
-                  fontWeight: FontWeight.w700,
                   color: color,
                 ),
               ),

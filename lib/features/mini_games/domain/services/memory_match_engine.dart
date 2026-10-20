@@ -9,12 +9,12 @@ class MemoryMatchEngine {
   static const int totalPairsCount = 6;
 
   static const List<({IconData icon, String name})> cardDefinitions = [
-    (icon: Icons.park_rounded, name: 'Cây Thông'),
-    (icon: Icons.card_giftcard_rounded, name: 'Hộp Quà'),
-    (icon: Icons.pets_rounded, name: 'Tuần Lộc'),
-    (icon: Icons.ac_unit_rounded, name: 'Người Tuyết'),
-    (icon: Icons.star_rounded, name: 'Ngôi Sao'),
-    (icon: Icons.notifications_active_rounded, name: 'Chuông Vàng'),
+    (icon: Icons.park_rounded, name: 'Christmas Tree'),
+    (icon: Icons.card_giftcard_rounded, name: 'Gift Box'),
+    (icon: Icons.pets_rounded, name: 'Reindeer'),
+    (icon: Icons.ac_unit_rounded, name: 'Snowman'),
+    (icon: Icons.star_rounded, name: 'Golden Star'),
+    (icon: Icons.notifications_active_rounded, name: 'Jingle Bells'),
   ];
 
   static List<MemoryCard> createInitialDeck({Random? random}) {

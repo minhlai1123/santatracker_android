@@ -1,16 +1,16 @@
 enum CountdownMessageType {
-  /// Lời chúc mừng trong đúng ngày Giáng Sinh (25/12)
+  /// Holiday greetings on Christmas Day (Dec 25th)
   christmasDay,
 
-  /// Thông điệp khi còn dưới 24 giờ
+  /// Message when under 24 hours remain
   under24Hours,
 
-  /// Thông điệp khi còn từ 1 đến 7 ngày
+  /// Message when 1 to 7 days remain
   oneToSevenDays,
 
-  /// Thông điệp khi còn từ 8 đến 30 ngày
+  /// Message when 8 to 30 days remain
   eightToThirtyDays,
 
-  /// Thông điệp khi còn trên 30 ngày
+  /// Message when over 30 days remain
   overThirtyDays,
 }

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../../../../core/constants/app_dimensions.dart';
 import '../../../../core/constants/app_strings.dart';
+import '../../../../shared/widgets/christmas_background.dart';
 import '../../../mini_games/presentation/controllers/mini_games_controller.dart';
 import '../controllers/advent_storybook_controller.dart';
 import '../../domain/models/advent_chapter.dart';
@@ -94,44 +95,48 @@ class _AdventStorybookScreenState extends State<AdventStorybookScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: const Text(AppStrings.adventScreenTitle)),
-      body: SafeArea(
-        child: AnimatedBuilder(
-          animation: _controller,
-          builder: (context, _) {
-            final state = _controller.state;
+      body: ChristmasBackground(
+        isDarkTheme: false,
+        showSnowfall: true,
+        child: SafeArea(
+          child: AnimatedBuilder(
+            animation: _controller,
+            builder: (context, _) {
+              final state = _controller.state;
 
-            return Center(
-              child: ConstrainedBox(
-                constraints: const BoxConstraints(maxWidth: 580),
-                child: ListView.separated(
-                  padding: const EdgeInsets.all(AppDimensions.spaceLG),
-                  itemCount: state.chapters.length + 1,
-                  separatorBuilder: (context, index) =>
-                      const SizedBox(height: AppDimensions.spaceSM),
-                  itemBuilder: (context, index) {
-                    if (index == 0) {
-                      return Padding(
-                        padding: const EdgeInsets.only(
-                          bottom: AppDimensions.spaceMD,
-                        ),
-                        child: StorybookCoverHeader(state: state),
+              return Center(
+                child: ConstrainedBox(
+                  constraints: const BoxConstraints(maxWidth: 580),
+                  child: ListView.separated(
+                    padding: const EdgeInsets.all(AppDimensions.spaceLG),
+                    itemCount: state.chapters.length + 1,
+                    separatorBuilder: (context, index) =>
+                        const SizedBox(height: AppDimensions.spaceSM),
+                    itemBuilder: (context, index) {
+                      if (index == 0) {
+                        return Padding(
+                          padding: const EdgeInsets.only(
+                            bottom: AppDimensions.spaceMD,
+                          ),
+                          child: StorybookCoverHeader(state: state),
+                        );
+                      }
+
+                      final chapter = state.chapters[index - 1];
+                      final status = state.getChapterStatus(chapter.dayNumber);
+
+                      return StorybookChapterCard(
+                        key: Key('chapter_card_${chapter.dayNumber}'),
+                        chapter: chapter,
+                        status: status,
+                        onTap: () => _onChapterTap(context, chapter, status),
                       );
-                    }
-
-                    final chapter = state.chapters[index - 1];
-                    final status = state.getChapterStatus(chapter.dayNumber);
-
-                    return StorybookChapterCard(
-                      key: Key('chapter_card_${chapter.dayNumber}'),
-                      chapter: chapter,
-                      status: status,
-                      onTap: () => _onChapterTap(context, chapter, status),
-                    );
-                  },
+                    },
+                  ),
                 ),
-              ),
-            );
-          },
+              );
+            },
+          ),
         ),
       ),
     );

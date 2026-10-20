@@ -63,7 +63,9 @@ class AdventStorybookController extends ChangeNotifier {
         isLoading: false,
       );
     } catch (e, stackTrace) {
-      debugPrint('AdventStorybookController: Lỗi khởi tạo: $e\n$stackTrace');
+      debugPrint(
+        'AdventStorybookController: Initialization error: $e\n$stackTrace',
+      );
       _state = _state.copyWith(
         unlockedChapterDays: {1},
         readChapterDays: {},
