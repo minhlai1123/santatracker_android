@@ -13,6 +13,8 @@ import '../../domain/models/countdown_state.dart';
 import '../../domain/services/countdown_calculator.dart';
 import '../widgets/countdown_display.dart';
 import '../widgets/countdown_message_card.dart';
+import '../widgets/home_screen_widget_card.dart';
+import '../../../../core/services/christmas_widget_service.dart';
 
 class CountdownScreen extends StatefulWidget {
   final DateTime Function()? clock;
@@ -36,6 +38,7 @@ class _CountdownScreenState extends State<CountdownScreen>
     WidgetsBinding.instance.addObserver(this);
     _state = CountdownCalculator.calculate(_now());
     _startTimer();
+    ChristmasWidgetService.updateWidget();
   }
 
   void _startTimer() {
@@ -107,6 +110,8 @@ class _CountdownScreenState extends State<CountdownScreen>
                     CountdownDisplay(state: _state),
                     const SizedBox(height: AppDimensions.spaceXL),
                     CountdownMessageCard(state: _state),
+                    const SizedBox(height: AppDimensions.spaceXL),
+                    HomeScreenWidgetCard(clock: widget.clock),
                     const SizedBox(height: AppDimensions.spaceXL),
                     FestiveButton(
                       label: AppStrings.backToHomeButton,

@@ -227,4 +227,16 @@ class AppStrings {
   static const String permissionNotice =
       'Please allow notification permissions to receive holiday cheer daily.';
   static const String closeNotificationSheet = 'Close';
+
+  // Home Screen Widget
+  static const String widgetSectionTitle = 'Home Screen Widget';
+  static const String widgetSectionSubtitle =
+      'Pin the countdown and even-day surprises to your home screen';
+  static const String widgetHowToAddAndroid =
+      'Android: Touch & hold empty space on home screen → Widgets → Chrimastsatastracker';
+  static const String widgetHowToAddIos =
+      'iPhone: Touch & hold background → Tap (+) → Search Chrimastsatastracker';
+  static const String syncWidgetButton = 'Sync Widget';
+  static const String widgetSyncedToast =
+      'Home Screen Widget updated successfully!';
 }

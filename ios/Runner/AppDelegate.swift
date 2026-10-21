@@ -2,6 +2,7 @@ import Flutter
 import UIKit
 import AVFoundation
 import UserNotifications
+import WidgetKit
 
 @main
 @objc class AppDelegate: FlutterAppDelegate, FlutterImplicitEngineDelegate {
@@ -93,6 +94,19 @@ import UserNotifications
           }
         case "cancelDaily":
           UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: ["daily_christmas_reminder"])
+          result(true)
+        default:
+          result(FlutterMethodNotImplemented)
+        }
+      }
+
+      let widgetChannel = FlutterMethodChannel(name: "com.chrimastsatastracker/widget", binaryMessenger: messenger)
+      widgetChannel.setMethodCallHandler { (call, result) in
+        switch call.method {
+        case "updateWidget":
+          if #available(iOS 14.0, *) {
+            WidgetCenter.shared.reloadAllTimelines()
+          }
           result(true)
         default:
           result(FlutterMethodNotImplemented)

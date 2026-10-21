@@ -18,6 +18,7 @@ import io.flutter.plugin.common.MethodChannel
 class MainActivity : FlutterActivity() {
     private val AUDIO_CHANNEL = "com.chrimastsatastracker/audio"
     private val NOTIFICATION_CHANNEL = "com.chrimastsatastracker/notifications"
+    private val WIDGET_CHANNEL = "com.chrimastsatastracker/widget"
     private var soundPool: SoundPool? = null
     private val soundMap = HashMap<String, Int>()
     private var bgmPlayer: MediaPlayer? = null
@@ -29,6 +30,7 @@ class MainActivity : FlutterActivity() {
         initSoundPool()
         initBgmPlayer()
         ChristmasNotificationHelper.createNotificationChannel(this)
+        ChristmasAppWidgetProvider.updateAllWidgets(this)
 
         MethodChannel(flutterEngine.dartExecutor.binaryMessenger, AUDIO_CHANNEL).setMethodCallHandler { call, result ->
             when (call.method) {
@@ -98,6 +100,16 @@ class MainActivity : FlutterActivity() {
                             )
                         }
                     }
+                    result.success(true)
+                }
+                else -> result.notImplemented()
+            }
+        }
+
+        MethodChannel(flutterEngine.dartExecutor.binaryMessenger, WIDGET_CHANNEL).setMethodCallHandler { call, result ->
+            when (call.method) {
+                "updateWidget" -> {
+                    ChristmasAppWidgetProvider.updateAllWidgets(this)
                     result.success(true)
                 }
                 else -> result.notImplemented()
@@ -208,6 +220,7 @@ class MainActivity : FlutterActivity() {
         if (isBgmPlaying) {
             startBgm()
         }
+        ChristmasAppWidgetProvider.updateAllWidgets(this)
     }
 
     override fun onPause() {

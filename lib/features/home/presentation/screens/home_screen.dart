@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import '../../../../core/constants/app_dimensions.dart';
 import '../../../../core/constants/app_strings.dart';
 import '../../../../core/services/christmas_audio_service.dart';
+import '../../../../core/services/christmas_widget_service.dart';
 import '../../../../core/theme/app_colors.dart';
 import '../../../../shared/widgets/christmas_background.dart';
 import '../../../../shared/widgets/festive_button.dart';
@@ -40,6 +41,7 @@ class _HomeScreenState extends State<HomeScreen> with WidgetsBindingObserver {
     _notifController = NotificationSettingsController(clock: widget.clock);
     _notifController.load();
     ChristmasAudioService.startBgm();
+    ChristmasWidgetService.updateWidget();
   }
 
   @override

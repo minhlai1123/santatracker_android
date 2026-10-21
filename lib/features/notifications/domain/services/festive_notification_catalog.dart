@@ -6,12 +6,12 @@ class FestiveNotificationCatalog {
   static bool isEvenDay(DateTime date) => date.day % 2 == 0;
 
   static int daysUntilChristmas(DateTime date) {
-    var targetYear = date.year;
-    var target = DateTime(targetYear, 12, 25);
-    if (date.isAfter(target)) {
-      target = DateTime(targetYear + 1, 12, 25);
+    final startOfDate = DateTime(date.year, date.month, date.day);
+    var target = DateTime(date.year, 12, 25);
+    if (startOfDate.isAfter(target)) {
+      target = DateTime(date.year + 1, 12, 25);
     }
-    return target.difference(DateTime(date.year, date.month, date.day)).inDays;
+    return target.difference(startOfDate).inDays;
   }
 
   static FestiveNotificationItem getNotificationForDate(DateTime date) {

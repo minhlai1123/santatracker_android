@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Chrimastsatastracker</string>
+    <string name="widget_name">Christmas Countdown</string>
+    <string name="widget_description">Track days to Christmas and even-day special surprises on your home screen.</string>
+</resources>
