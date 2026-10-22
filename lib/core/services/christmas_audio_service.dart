@@ -124,4 +124,23 @@ class ChristmasAudioService {
       } catch (_) {}
     }
   }
+
+  /// Plays a resonant, loud golden Christmas bell chime sequence.
+  static Future<void> playChristmasBell() async {
+    if (!soundEnabled) return;
+
+    try {
+      await HapticFeedback.heavyImpact();
+    } catch (_) {}
+
+    if (_isTestEnvironment) return;
+
+    try {
+      await _channel.invokeMethod('playSound', {'sound': 'christmas_bell'});
+    } catch (_) {
+      try {
+        await SystemSound.play(SystemSoundType.click);
+      } catch (_) {}
+    }
+  }
 }

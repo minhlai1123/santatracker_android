@@ -223,7 +223,10 @@ class AppStrings {
   static const String oddDayCheerBadge = 'Daily Cheer';
   static const String notificationChannelName = 'Christmas Daily Reminders';
   static const String notificationChannelDesc =
-      'Festive daily countdown reminders and special even-day holiday surprises';
+      'Festive daily countdown reminders with loud Christmas bell chimes and special even-day holiday surprises';
+  static const String notificationBellChimeTitle = 'Loud Christmas Bell Chime';
+  static const String notificationBellChimeDesc =
+      'Daily notifications ring with a loud festive holiday chime and jingle vibration.';
   static const String permissionNotice =
       'Please allow notification permissions to receive holiday cheer daily.';
   static const String closeNotificationSheet = 'Close';

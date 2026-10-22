@@ -134,6 +134,7 @@ class MainActivity : FlutterActivity() {
             loadSound(pool, "jingle_click", "assets/audio/jingle_click.wav")
             loadSound(pool, "sparkle_magic", "assets/audio/sparkle_magic.wav")
             loadSound(pool, "gift_pop", "assets/audio/gift_pop.wav")
+            loadSound(pool, "christmas_bell", "assets/audio/christmas_bell.wav")
         } catch (e: Exception) {
             e.printStackTrace()
         }

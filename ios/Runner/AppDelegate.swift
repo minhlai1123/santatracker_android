@@ -67,7 +67,7 @@ import WidgetKit
           let content = UNMutableNotificationContent()
           content.title = title
           content.body = body
-          content.sound = .default
+          content.sound = UNNotificationSound(named: UNNotificationSoundName("christmas_bell.wav"))
           let request = UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: nil)
           UNUserNotificationCenter.current().add(request) { _ in
             DispatchQueue.main.async {
@@ -85,7 +85,7 @@ import WidgetKit
           let content = UNMutableNotificationContent()
           content.title = "🎄 Christmas Daily Reminders"
           content.body = "Tap to open today's holiday countdown and festive surprise!"
-          content.sound = .default
+          content.sound = UNNotificationSound(named: UNNotificationSoundName("christmas_bell.wav"))
           let request = UNNotificationRequest(identifier: "daily_christmas_reminder", content: content, trigger: trigger)
           UNUserNotificationCenter.current().add(request) { _ in
             DispatchQueue.main.async {

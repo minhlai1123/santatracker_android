@@ -47,6 +47,13 @@ void main() {
         );
         expect(find.text(AppStrings.enableDailyReminders), findsOneWidget);
 
+        // Loud Bell Chime Callout & Preview
+        expect(
+          find.text(AppStrings.notificationBellChimeTitle),
+          findsOneWidget,
+        );
+        expect(find.byKey(const Key('btn_preview_bell_sound')), findsOneWidget);
+
         // Even-Day Special callout & badge
         expect(find.text(AppStrings.evenDaysSpecialDesc), findsOneWidget);
         expect(
@@ -95,6 +102,40 @@ void main() {
       await tester.pumpAndSettle();
 
       expect(controller.settings.isEnabled, isFalse);
+    });
+
+    testWidgets('Tapping bell chime preview button triggers safely', (
+      WidgetTester tester,
+    ) async {
+      final storage = NotificationPreferencesStorage();
+      final controller = NotificationSettingsController(
+        storage: storage,
+        clock: () => DateTime(2026, 10, 20, 10, 0, 0),
+      );
+      await controller.load();
+
+      await tester.pumpWidget(
+        MaterialApp(
+          theme: AppTheme.lightTheme,
+          home: Scaffold(
+            body: NotificationSettingsSheet(controller: controller),
+          ),
+        ),
+      );
+      await tester.pumpAndSettle();
+
+      final previewBtn = find.byKey(const Key('btn_preview_bell_sound'));
+      expect(previewBtn, findsOneWidget);
+      await tester.tap(previewBtn);
+      await tester.pumpAndSettle();
+
+      final testNotifBtn = find.byKey(const Key('btn_send_test_notification'));
+      expect(testNotifBtn, findsOneWidget);
+      await tester.ensureVisible(testNotifBtn);
+      await tester.tap(testNotifBtn);
+      await tester.pumpAndSettle();
+
+      expect(find.text(AppStrings.testNotificationSentToast), findsOneWidget);
     });
 
     testWidgets(

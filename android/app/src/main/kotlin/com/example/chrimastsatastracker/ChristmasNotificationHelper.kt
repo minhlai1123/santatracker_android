@@ -4,33 +4,56 @@ import android.app.AlarmManager
 import android.app.NotificationChannel
 import android.app.NotificationManager
 import android.app.PendingIntent
+import android.content.ContentResolver
 import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
+import android.media.AudioAttributes
+import android.net.Uri
 import android.os.Build
 import androidx.core.app.NotificationCompat
 import java.util.Calendar
 
 object ChristmasNotificationHelper {
-    const val CHANNEL_ID = "christmas_daily_reminders"
+    const val OLD_CHANNEL_ID = "christmas_daily_reminders"
+    const val CHANNEL_ID = "christmas_daily_reminders_v2"
     const val PREFS_NAME = "ChristmasNotificationPrefs"
     const val PREF_HOUR = "pref_hour"
     const val PREF_MINUTE = "pref_minute"
     const val PREF_ENABLED = "pref_enabled"
     const val NOTIFICATION_ID = 2512
 
+    fun getBellSoundUri(context: Context): Uri {
+        return Uri.parse("${ContentResolver.SCHEME_ANDROID_RESOURCE}://${context.packageName}/raw/christmas_bell")
+    }
+
     fun createNotificationChannel(context: Context) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            val notificationManager: NotificationManager =
+                context.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
+
+            // Remove legacy channel without custom sound if present
+            try {
+                notificationManager.deleteNotificationChannel(OLD_CHANNEL_ID)
+            } catch (_: Exception) {}
+
+            val soundUri = getBellSoundUri(context)
+            val audioAttributes = AudioAttributes.Builder()
+                .setContentType(AudioAttributes.CONTENT_TYPE_SONIFICATION)
+                .setUsage(AudioAttributes.USAGE_NOTIFICATION)
+                .build()
+
             val name = "Christmas Daily Reminders"
-            val descriptionText = "Festive daily countdown reminders and special even-day holiday surprises"
+            val descriptionText = "Festive daily countdown reminders with loud Christmas bell chimes and special even-day holiday surprises"
             val importance = NotificationManager.IMPORTANCE_HIGH
             val channel = NotificationChannel(CHANNEL_ID, name, importance).apply {
                 description = descriptionText
+                setSound(soundUri, audioAttributes)
                 enableVibration(true)
+                vibrationPattern = longArrayOf(0, 350, 180, 350, 180, 500)
                 enableLights(true)
+                lightColor = 0xFFFFD700.toInt()
             }
-            val notificationManager: NotificationManager =
-                context.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
             notificationManager.createNotificationChannel(channel)
         }
     }
@@ -57,12 +80,16 @@ object ChristmasNotificationHelper {
             PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE
         )
 
+        val soundUri = getBellSoundUri(context)
         val builder = NotificationCompat.Builder(context, CHANNEL_ID)
             .setSmallIcon(R.mipmap.ic_launcher)
             .setContentTitle(title)
             .setContentText(body)
             .setStyle(NotificationCompat.BigTextStyle().bigText(body))
-            .setPriority(NotificationCompat.PRIORITY_HIGH)
+            .setPriority(NotificationCompat.PRIORITY_MAX)
+            .setSound(soundUri)
+            .setVibrate(longArrayOf(0, 350, 180, 350, 180, 500))
+            .setLights(0xFFFFD700.toInt(), 500, 1000)
             .setContentIntent(pendingIntent)
             .setAutoCancel(true)
 

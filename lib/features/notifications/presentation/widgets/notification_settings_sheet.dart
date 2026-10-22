@@ -79,7 +79,7 @@ class _NotificationSettingsSheetState extends State<NotificationSettingsSheet> {
   }
 
   Future<void> _sendTest() async {
-    ChristmasAudioService.playButtonClick();
+    ChristmasAudioService.playChristmasBell();
     await widget.controller.sendTestNotification();
 
     if (mounted) {
@@ -320,6 +320,75 @@ class _NotificationSettingsSheetState extends State<NotificationSettingsSheet> {
               ),
               const SizedBox(height: AppDimensions.spaceLG),
             ],
+
+            // Loud Christmas Bell Chime Card
+            Container(
+              padding: const EdgeInsets.all(AppDimensions.spaceMD),
+              decoration: BoxDecoration(
+                color: const Color(0xFFFEF2F2),
+                borderRadius: BorderRadius.circular(AppDimensions.radiusLG),
+                border: Border.all(color: const Color(0xFFFCA5A5), width: 1.2),
+              ),
+              child: Row(
+                children: [
+                  Container(
+                    width: 40,
+                    height: 40,
+                    decoration: BoxDecoration(
+                      color: AppColors.christmasRed.withAlpha(25),
+                      shape: BoxShape.circle,
+                    ),
+                    child: const Icon(
+                      Icons.notifications_active_rounded,
+                      color: AppColors.christmasRed,
+                      size: 22,
+                    ),
+                  ),
+                  const SizedBox(width: AppDimensions.spaceMD),
+                  const Expanded(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          AppStrings.notificationBellChimeTitle,
+                          style: TextStyle(
+                            fontFamily: ChristmasTypography.fontFamilyUI,
+                            fontFamilyFallback:
+                                ChristmasTypography.fallbackFonts,
+                            fontSize: 14,
+                            fontWeight: FontWeight.w700,
+                            color: Color(0xFF991B1B),
+                          ),
+                        ),
+                        SizedBox(height: 2),
+                        Text(
+                          AppStrings.notificationBellChimeDesc,
+                          style: TextStyle(
+                            fontFamily: ChristmasTypography.fontFamilyUI,
+                            fontFamilyFallback:
+                                ChristmasTypography.fallbackFonts,
+                            fontSize: 12,
+                            height: 1.3,
+                            color: Color(0xFF7F1D1D),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  IconButton(
+                    key: const Key('btn_preview_bell_sound'),
+                    tooltip: 'Play chime preview',
+                    icon: const Icon(
+                      Icons.volume_up_rounded,
+                      color: AppColors.christmasRed,
+                      size: 24,
+                    ),
+                    onPressed: () => ChristmasAudioService.playChristmasBell(),
+                  ),
+                ],
+              ),
+            ),
+            const SizedBox(height: AppDimensions.spaceMD),
 
             // Even-Day Special Feature Callout
             Container(
