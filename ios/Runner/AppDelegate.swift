@@ -15,7 +15,37 @@ import WidgetKit
     didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?
   ) -> Bool {
     UNUserNotificationCenter.current().delegate = self
+
+    // Configure AVAudioSession to allow audio playback even when device is on silent switch
+    do {
+      try AVAudioSession.sharedInstance().setCategory(.playback, mode: .default, options: [.mixWithOthers])
+      try AVAudioSession.sharedInstance().setActive(true)
+    } catch {
+      print("AVAudioSession error: \(error)")
+    }
+
     return super.application(application, didFinishLaunchingWithOptions: launchOptions)
+  }
+
+  // Display notification banner, sound, and badge even when app is active in foreground
+  override func userNotificationCenter(
+    _ center: UNUserNotificationCenter,
+    willPresent notification: UNNotification,
+    withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void
+  ) {
+    if #available(iOS 14.0, *) {
+      completionHandler([.banner, .sound, .badge, .list])
+    } else {
+      completionHandler([.alert, .sound, .badge])
+    }
+  }
+
+  override func userNotificationCenter(
+    _ center: UNUserNotificationCenter,
+    didReceive response: UNNotificationResponse,
+    withCompletionHandler completionHandler: @escaping () -> Void
+  ) {
+    completionHandler()
   }
 
   func didInitializeImplicitFlutterEngine(_ engineBridge: FlutterImplicitEngineBridge) {
@@ -68,6 +98,9 @@ import WidgetKit
           content.title = title
           content.body = body
           content.sound = UNNotificationSound(named: UNNotificationSoundName("christmas_bell.wav"))
+          if let payload = args?["payload"] as? String {
+            content.userInfo = ["payload": payload]
+          }
           let request = UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: nil)
           UNUserNotificationCenter.current().add(request) { _ in
             DispatchQueue.main.async {
@@ -116,9 +149,14 @@ import WidgetKit
   }
 
   private func playSound(named name: String) {
+    var path: String?
     let key = FlutterDartProject.lookupKey(forAsset: "assets/audio/\(name).wav")
-    guard let path = Bundle.main.path(forResource: key, ofType: nil) else { return }
-    let url = URL(fileURLWithPath: path)
+    path = Bundle.main.path(forResource: key, ofType: nil)
+    if path == nil {
+      path = Bundle.main.path(forResource: name, ofType: "wav")
+    }
+    guard let soundPath = path else { return }
+    let url = URL(fileURLWithPath: soundPath)
     do {
       let player = try AVAudioPlayer(contentsOf: url)
       player.prepareToPlay()
